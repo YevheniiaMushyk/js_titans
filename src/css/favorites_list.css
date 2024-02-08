@@ -1,0 +1,36 @@
+.empty-message {
+}
+
+.favorites-container {
+  border-radius: 30px;
+  width: 335px;
+  height: 1644px;
+  background: #e8e8e8;
+}
+
+.workouts-title {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: #1b1b1b;
+  padding-top: 64px;
+  padding-left: 48px;
+}
+.workouts-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.workout-card {
+  flex-basis: 100%;
+  max-width: 295px;
+  list-style-type: none;
+  border-radius: 15px;
+  padding: 140px 105px;
+  /* width: 295px; */
+  height: 165px;
+  background: #fff;
+  margin-left: 20px;
+  margin-right: 20px;
+}
