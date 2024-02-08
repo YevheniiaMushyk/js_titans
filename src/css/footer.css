@@ -41,7 +41,7 @@ footer {
   margin-bottom: 40px;
 }
 .footer-svg {
-  /* border: 1px solid rgba(246, 246, 246, 0.2); */
+  border: 1px solid rgba(246, 246, 246, 0.2);
   border-radius: 10px;
   padding: 0;
   width: 36px;
@@ -57,11 +57,13 @@ footer {
   line-height: 100%;
   letter-spacing: -0.02em;
   color: #f6f6f6;
-  margin-bottom: 20px;
 }
 .body-span {
   font-style: italic;
   color: rgba(246, 246, 246, 0.3);
+}
+.form-ft {
+  margin-top: 20px;
 }
 .footer-form {
   margin-bottom: 60px;
@@ -73,6 +75,7 @@ footer {
   line-height: 129%;
   color: #f6f6f6;
   letter-spacing: -0.02em;
+  margin-top: 20px;
 }
 .footer-input {
   margin-bottom: 12px;
@@ -86,7 +89,7 @@ footer {
   border-radius: 30px;
   border: 1px solid rgb(246, 246, 246);
   display: block;
-  margin: 12px auto;
+  margin: 20px auto 12px;
   outline: none;
   height: 42px;
 }
@@ -117,6 +120,7 @@ footer {
 .footer-policy {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .footer-text-policy {
   font-family: var(--font-family);
@@ -165,8 +169,8 @@ footer {
       url(../img/footer_t@1x-min.png);
   }
   .footer-soc-input {
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: flex;
+    flex-wrap: wrap;
   }
   .footer-logo {
     font-size: 28px;
@@ -185,8 +189,11 @@ footer {
   .footer-text {
     font-size: 54px;
     line-height: 93%;
-    margin-bottom: 32px;
     max-width: 345px;
+  }
+  .form-ft {
+    margin-top: 32px;
+    margin-left: auto;
   }
   .form-text {
     font-size: 18px;
@@ -233,7 +240,7 @@ footer {
 @media screen and (min-width: 1408px) {
   .footer-container {
     max-width: 1408px;
-    padding: 0 48px;
+    padding: 64px 48px 0;
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
         rgba(46, 47, 66, 0.7)
@@ -241,9 +248,11 @@ footer {
       url(../img/footer_d@1x-min.png);
   }
 }
-/* .footer-soc-input {
-  align-items: flex-start;
-  justify-content: space-between;
+
+.footer-soc-input {
+  display: flex;
+  justify-content: space-between; /* Рівномірно розподіляє простір між елементами */
+  align-items: stretch; /* Вирівнює елементи по вертикалі */
 }
 .footer-logo {
   font-size: 28px;
@@ -252,6 +261,32 @@ footer {
 .footer-social {
   margin-top: 30px;
 }
+.footer-svg {
+  width: 44px;
+  height: 44px;
+}
+.footer-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 488px;
+}
+.footer-policy {
+  text-align: center;
+  justify-content: space-between;
+}
+
+.footer-text {
+  font-size: 64px;
+  line-height: 97%;
+}
+
+.form-text {
+  margin-top: 0; /* Видаляє відступ зверху для тексту */
+}
+/* 
+
+
 .footer-svg {
   width: 44px;
   height: 44px;
