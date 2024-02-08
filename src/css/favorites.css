@@ -1,14 +1,16 @@
-.home {
-  padding: 6px 16px 6px 0px;
-}
-.header__nav-favlist {
-  display: flex;
-  padding: 8px 28px;
-  background-color: var(--button_fon);
-  border-radius: 60px;
-}
-.header__nav-fav_item {
-  padding: 6px 14px;
-  background-color: #ffffff;
-  border-radius: 30px;
+@media screen and (min-width: 736px) {
+  .home {
+    padding: 6px 16px 6px 0px;
+  }
+  .header__nav-favlist {
+    display: flex;
+    padding: 8px 28px;
+    background-color: var(--button_fon);
+    border-radius: 60px;
+  }
+  .header__nav-fav_item {
+    padding: 6px 14px;
+    background-color: #ffffff;
+    border-radius: 30px;
+  }
 }
