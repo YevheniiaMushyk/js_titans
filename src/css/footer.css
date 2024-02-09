@@ -43,13 +43,19 @@ footer {
 .footer-svg {
   border: 1px solid rgba(246, 246, 246, 0.2);
   border-radius: 10px;
-  padding: 0;
+  padding: 8px;
   width: 36px;
   height: 36px;
+  fill: #7e847f;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-svg:hover {
+  fill: #5f6560;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-svg:focus {
+  fill: #5f6560;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-text {
   font-weight: 400;
