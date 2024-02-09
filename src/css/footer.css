@@ -25,11 +25,18 @@ footer {
   flex-shrink: 0;
 }
 .footer-logo {
+  display: block;
   color: var(--sub_text);
   font-weight: 700;
   font-size: 16px;
   line-height: 112%;
   letter-spacing: -0.02em;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+.footer-logo:hover,
+.footer-logo:focus {
+  transform: scale(1.1);
 }
 .footer-social {
   display: flex;
@@ -41,22 +48,22 @@ footer {
   margin-bottom: 40px;
 }
 .footer-svg {
-  border: 1px solid rgba(246, 246, 246, 0.2);
+  border: 1px solid var(--sub_text);
   border-radius: 10px;
   padding: 8px;
   width: 36px;
   height: 36px;
-  fill: #7e847f;
+  fill: var(--sub_text);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: fill, stroke;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
-.footer-svg:hover {
-  fill: #5f6560;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.footer-soc-sv:hover .footer-svg,
+.footer-soc-sv:focus .footer-svg {
+  transform: scale(1.1);
 }
-.footer-svg:focus {
-  fill: #5f6560;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 .footer-text {
   font-weight: 400;
   font-size: 32px;
@@ -116,15 +123,14 @@ footer {
   margin: 0 auto;
   height: 42px;
   border: none;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.footer-button:hover {
-  background-color: var(--button_fon_hover);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+
+.footer-button:hover,
 .footer-button:focus {
   background-color: var(--button_fon_hover);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
 }
 .footer-policy {
   display: flex;
