@@ -1,16 +1,18 @@
 <header class="header container">
   <a class="header__logo" href="./index.html" target="_blank">energy.flow</a>
   <nav class="header__nav">
-    <ul class="header__nav-list">
-      <li class="header__nav-light_item">
-        <a href="./index.html" class="header__nav-link" target="_self">home</a>
-      </li>
-
-      <li class="header__nav-item">
+    <ul class="header__nav-favlist">
+      <li class="header__nav-item home">
         <a
-          href="./favorites.html"
+          href="./index.html"
           class="header__nav-link light_text"
           target="_self"
+          >home</a
+        >
+      </li>
+
+      <li class="header__nav-fav_item">
+        <a href="./favorites.html" class="header__nav-link" target="_self"
           >favorites</a
         >
       </li>
@@ -45,11 +47,11 @@
       </svg>
     </a>
   </div>
-  <button class="header__button" type="button">
+  <button class="favheader__button" type="button">
     <svg width="32" height="16">
       <use href="./img/icons.svg#icon-align-justify"></use>
     </svg>
   </button>
 </header>
 
-<script type="module" src="./js/header.js"></script>
+<script type="module" src="./js/favorites.js"></script>
