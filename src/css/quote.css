@@ -1,0 +1,225 @@
+.quote-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote-card-label {
+  margin-right: 58px;
+}
+
+.quote-card {
+  background-color: #7e847f;
+
+  border-radius: 30px;
+}
+
+.quote-svg-man {
+  width: 34px;
+  height: 32px;
+}
+
+.svg-container-coma {
+  margin-bottom: 16px;
+}
+
+.quote-card-label {
+  color: #f6f6f6;
+
+  font-weight: 500;
+}
+
+.quote-card-top {
+  display: flex;
+  align-items: center;
+}
+
+.quote-card-text {
+  color: #f6f6f699;
+
+  text-align: left;
+  overflow: scroll;
+}
+
+.quote-card-author {
+    color: #f6f6f6;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+    .quote-picture {
+    border-radius: 30px;
+  }
+
+@media screen and (max-width: 767px) {
+  .quote-container {
+    width: 375px;
+    padding: 0 20px;
+  }
+
+  .quote-card {
+    width: 335px;
+    height: 272px;
+
+    padding: 40px 20px;
+  }
+
+  .quote-svg-coma {
+    width: 28px;
+    height: 28px;
+  }
+
+  .quote-card-label {
+    color: #f6f6f6;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+
+    margin-right: 58px;
+  }
+
+  .quote-card-top {
+    height: 28px;
+  }
+
+  .svg-container-man {
+    margin-right: 12px;
+  }
+
+  .quote-text {
+    padding-left: 46px;
+  }
+
+  .quote-card-text {
+    font-size: 14px;
+    line-height: 18px;
+
+    margin-top: 14px;
+
+    width: 249px;
+    height: 110px;
+  }
+
+  .quote-picture {
+    width: 335px;
+    height: 272px;
+    border-radius: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .quote-container {
+    width: 768px;
+    padding: 0 16px;
+  }
+
+  .quote-card {
+    width: 736px;
+    height: 302px;
+
+    background-color: #7e847f;
+
+    border-radius: 30px;
+    padding: 64px 80px;
+  }
+
+  .quote-card-label {
+    font-size: 24px;
+    line-height: 32px;
+
+    width: 192px;
+    margin-right: 286px;
+  }
+
+  .quote-card-top {
+    display: flex;
+    align-items: center;
+    height: 32px;
+  }
+
+  .svg-container-man {
+    margin-right: 16px;
+  }
+
+  .quote-text {
+    padding-left: 50px;
+  }
+
+  .quote-card-text {
+    font-size: 16px;
+    line-height: 24px;
+
+    margin-top: 16px;
+
+    width: 526px;
+    height: 77px;
+  }
+
+  .quote-card-author {
+    margin-top: 25px;
+  }
+
+  .quote-picture {
+    width: 736px;
+    height: 302px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote-container {
+    width: 1440px;
+    padding: 0 16px;
+  }
+
+  .quote-wrap {
+    display: flex;
+  }
+
+  .quote-card {
+    width: 704px;
+    height: 302px;
+
+    padding: 64px 64px;
+  }
+
+  .quote-card-label {
+    font-size: 24px;
+    line-height: 32px;
+
+    width: 192px;
+    margin-right: 286px;
+  }
+
+  .quote-card-top {
+    height: 32px;
+  }
+
+  .svg-container-man {
+    margin-right: 16px;
+  }
+
+  .quote-text {
+    padding-left: 50px;
+  }
+
+  .quote-card-text {
+    font-size: 16px;
+    line-height: 24px;
+
+    margin-top: 16px;
+
+    width: 526px;
+    height: 77px;
+  }
+
+  .quote-card-author {
+    margin-top: 25px;
+  }
+
+  .quote-picture {
+    width: 704px;
+    height: 302px;
+  }
+}
