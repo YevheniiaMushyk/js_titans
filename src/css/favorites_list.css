@@ -181,6 +181,11 @@
     background: #7e847f;
   }
   .workout-card__remove-btn {
+    background-color: #ffffff;
+  }
+  .workout-card__icon {
+    /* fill: #7e847f; */
+    fill: #1b1b1b;
   }
   .workout-card__start {
     display: flex;
@@ -194,10 +199,14 @@
     line-height: 129%;
     color: #1b1b1b;
   }
+  .workout-card__icon-arrow {
+    fill: #1b1b1b;
+  }
   .workout-card__info {
     display: flex;
     flex-wrap: wrap;
   }
+
   .workout-card__title {
     /* font-family: var(--font-family); */
     font-weight: 400;

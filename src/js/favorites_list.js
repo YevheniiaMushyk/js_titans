@@ -14,36 +14,19 @@ async function fetchFavourites() {
     return [];
   }
 }
+console.log();
 
-// // Функція для відображення повідомлення про відсутність улюблених вправ
-// function showEmptyMessage() {
-//   list.innerHTML = `<div class="empty-list">
-//        <img class = "empty-item"
-//             srcset="  ./img/dumbbell@1x-min.png 1x,
-//                       ./img/dumbbell@1x-min.png 2x "
-//                     src="./img/dumbbell@1x-min.png"
-//                     alt="dumbbell"
-//                     width="85"
-//                     height="52" /><p class="empty-message">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p>
-//                     </div>`;
-// }
-
-async function initPage() {
-  try {
-    // Отримуємо дані з localStorage
-    const storedData = localStorage.getItem('favourites');
-
-    // Перевіряємо, чи є дані в localStorage
-    if (storedData) {
-      // Додаємо збережені дані на сторінку
-      list.insertAdjacentHTML('beforeend', storedData);
-    } else {
-      // Якщо немає даних в localStorage, ініціалізуємо сторінку
-      await renderFavourites();
-    }
-  } catch (error) {
-    console.error(error);
-  }
+// // Функція для відображення повідомлення про відсутність вправ
+function showEmptyMessage() {
+  list.innerHTML = `<div class="empty-list">
+       <img class = "empty-item"
+            srcset="  ./img/dumbbell@1x-min.png 1x,
+                      ./img/dumbbell@1x-min.png 2x "
+                    src="./img/dumbbell@1x-min.png"
+                    alt="dumbbell"
+                    width="85"
+                    height="52" /><p class="empty-message">It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</p>
+                    </div>`;
 }
 
 function createWorkoutCards(workouts) {
@@ -84,9 +67,24 @@ function createWorkoutCards(workouts) {
   list.insertAdjacentHTML('beforeend', markup);
 }
 
-// Функція для відображення списку улюблених вправ на сторінці
+async function initPage() {
+  try {
+    const storedData = localStorage.getItem('favourites');
+
+    if (storedData) {
+      list.insertAdjacentHTML('beforeend', storedData);
+    } else {
+      // Якщо немає даних в localStorage, ініціалізуємо сторінку
+      await renderFavourites();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function renderFavourites() {
   const favourites = await fetchFavourites();
+
   if (!favourites.length) {
     showEmptyMessage();
     return;
@@ -99,7 +97,7 @@ async function renderFavourites() {
 async function removeFavourite(workoutId) {
   try {
     await axios.delete(`${API_URL}/${workoutId}`);
-    await renderFavourites(); // Після видалення оновлюємо список улюблених вправ
+    await renderFavourites(); // Після видалення оновлюємо список
   } catch (error) {
     console.error(error);
   }
