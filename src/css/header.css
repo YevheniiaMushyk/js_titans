@@ -24,8 +24,8 @@
   transition-timing-function: ease;
 }
 
-.header__icon:hover .header__icon_svg,
-.header__icon:focus .header__icon_svg {
+.header__icon_link:hover .header__icon_svg,
+.header__icon_link:focus .header__icon_svg {
   fill: var(--button_fon_hover);
   stroke: var(--button_fon_hover);
 }
