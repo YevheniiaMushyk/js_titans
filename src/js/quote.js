@@ -1,1 +1,4 @@
-console.log(100000);
+const ref = document.querySelector('.quote-card-text');
+
+
+

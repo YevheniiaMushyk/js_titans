@@ -37,20 +37,20 @@
   color: #f6f6f699;
 
   text-align: left;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .quote-card-author {
-    color: #f6f6f6;
+  color: #f6f6f6;
 
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-  }
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
 
-    .quote-picture {
-    border-radius: 30px;
-  }
+.quote-picture {
+  border-radius: 30px;
+}
 
 @media screen and (max-width: 767px) {
   .quote-container {
@@ -106,6 +106,10 @@
     width: 335px;
     height: 272px;
     border-radius: 30px;
+  }
+
+  .quote-wrap {
+    margin-bottom: 20px;
   }
 }
 
@@ -165,6 +169,10 @@
     width: 736px;
     height: 302px;
   }
+
+  .quote-wrap {
+    margin-bottom: 16px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -175,6 +183,7 @@
 
   .quote-wrap {
     display: flex;
+    margin-bottom: 16px;
   }
 
   .quote-card {
