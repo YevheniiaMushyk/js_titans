@@ -14,9 +14,54 @@ async function fetchFavourites() {
     return [];
   }
 }
-console.log();
 
-// // Функція для відображення повідомлення про відсутність вправ
+fetchFavourites().then(data => {
+  localStorage.setItem('favouritesData', JSON.stringify(data));
+});
+const favouritesDataString = localStorage.getItem('favouritesData');
+const favouritesData = JSON.parse(favouritesDataString);
+console.log(favouritesData);
+
+async function fetchDataAndSaveToLocal() {
+  try {
+    const response = await axios.get(API_URL);
+    const data = response.data;
+    localStorage.setItem('favouritesData', JSON.stringify(data));
+    console.log('Data saved to localStorage:', data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+fetchDataAndSaveToLocal();
+
+// async function initPage() {
+//   try {
+//     const storedData = localStorage.getItem('favouritesData');
+
+//     if (storedData) {
+//       const favouritesData = JSON.parse(storedData);
+//       createWorkoutCards(favouritesData); // Відобразити картки на сторінці
+//     } else {
+//       // Якщо немає даних в localStorage, ініціалізуємо сторінку
+//       await renderFavourites();
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+function checkLocalStorageAndRender() {
+  const storedData = localStorage.getItem('favouritesData');
+
+  if (storedData) {
+    const favouritesData = JSON.parse(storedData);
+    createWorkoutCards(favouritesData); // Відобразити картки на сторінці
+  } else {
+    showEmptyMessage();
+  }
+}
+checkLocalStorageAndRender();
+
+// Функція для відображення повідомлення про відсутність вправ
 function showEmptyMessage() {
   list.innerHTML = `<div class="empty-list">
        <img class = "empty-item"
@@ -29,57 +74,53 @@ function showEmptyMessage() {
                     </div>`;
 }
 
-function createWorkoutCards(workouts) {
+// function createWorkoutCards(workoutsObj) {
+//   const list = document.querySelector('.workouts-list');
+
+//   for (const key in workoutsObj) {
+//     if (workoutsObj.hasOwnProperty(key)) {
+//       console.log(key, workoutsObj[key]);
+//     }
+//   }
+// }
+
+function createWorkoutCards(workoutsObj) {
+  // const list = document.querySelector('.workouts-list');
+
+  const workouts = workoutsObj.results; // Отримуємо масив вправ з об'єкта
+
   const markup = workouts
     .map(
-      ({ name, burnedCalories, bodyPart, target, _id }) => `
-         <li class="workout-card">
-        <div class="workout-card__header">
-          <p>WORKOUT</p>
-          <button class="workout-card__remove-btn" data-workout-id="${_id}">
-            <svg
-              width="16"
-              height="16">
-             <use href="../img/icons.svg#icon-trash"></use>
-            </svg>
-          </button>
-          <button class="workout-card__start-btn" data-workout-id="${_id}">
-            Start
-          </button>
-        </div>
-        <div class="workout-card__info">
-          <svg
-            width="24"
-            height="24" >
-           <use href="../img/icons.svg#icon-fav_run_man"></use>
+      workout => `
+    <li class="workout-card">
+      <div class="workout-card__header">
+        <p>WORKOUT</p>
+        <button class="workout-card__remove-btn" data-workout-id="${workout._id}">
+          <svg width="16" height="16">
+            <use href="../img/icons.svg#icon-trash"></use>
           </svg>
-          <h3 class="workout-card__title">${name}</h3>
-          <p class="workout-card__calories">
-            ${burnedCalories} ккал за 3 хв.
-          </p>
-          <p class="workout-card__body-part">${bodyPart}</p>
-          <p class="workout-card__target">${target}</p>
-        </div>
-      </li>
-    `
+        </button>
+        <button class="workout-card__start-btn" data-workout-id="${workout._id}">
+          Start
+        </button>
+      </div>
+      <div class="workout-card__info">
+        <svg width="24" height="24">
+          <use href="../img/icons.svg#icon-fav_run_man"></use>
+        </svg>
+        <h3 class="workout-card__title">${workout.name}</h3>
+        <p class="workout-card__calories">
+          ${workout.burnedCalories} ккал за 3 хв.
+        </p>
+        <p class="workout-card__body-part">${workout.bodyPart}</p>
+        <p class="workout-card__target">${workout.target}</p>
+      </div>
+    </li>
+  `
     )
     .join('');
-  list.insertAdjacentHTML('beforeend', markup);
-}
 
-async function initPage() {
-  try {
-    const storedData = localStorage.getItem('favourites');
-
-    if (storedData) {
-      list.insertAdjacentHTML('beforeend', storedData);
-    } else {
-      // Якщо немає даних в localStorage, ініціалізуємо сторінку
-      await renderFavourites();
-    }
-  } catch (error) {
-    console.error(error);
-  }
+  list.innerHTML = markup;
 }
 
 async function renderFavourites() {
@@ -111,4 +152,4 @@ list.addEventListener('click', async event => {
   }
 });
 // Ініціалізація сторінки після завантаження
-initPage();
+// initPage();

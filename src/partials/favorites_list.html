@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>favorites_list</title>
-    <link rel="stylesheet" href="../css/favorites_list.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <script type="module" src="../js/favorites_list.js"></script>
   </head>
   <body>
@@ -35,7 +35,8 @@
             </svg>
             <h3 class="workout-card__title">${name}</h3>
             <p class="workout-card__calories">
-              ${burnedCalories} ккал за 3 хв.
+              ${burnedCalories}
+              <span class="workout-card__span">ккал за 3 хв.</span>
             </p>
             <p class="workout-card__body-part">${bodyPart}</p>
             <p class="workout-card__target">${target}</p>

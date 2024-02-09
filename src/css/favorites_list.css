@@ -48,13 +48,22 @@
     border-radius: 30px;
     border-radius: 30px;
   }
+  .workouts-title {
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    /* color: #1b1b1b; */
+    padding-top: 64px;
+    padding-left: 48px;
+    padding-bottom: 80px;
+  }
 }
 
 @media screen and (min-width: 736px) and (max-width: 1407px) {
   .favorites-container {
     width: 736px;
     height: 928px;
-
+    margin: 0 auto;
     background: #e8e8e8;
     border-radius: 30px;
     border-radius: 30px;
@@ -90,6 +99,22 @@
 
     color: #1b1b1b;
   }
+  .workouts-title {
+    /* font-family: var(--font-family); */
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 109%;
+    letter-spacing: -0.02em;
+    color: #1b1b1b;
+
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    /* color: #1b1b1b; */
+    padding-top: 64px;
+    padding-left: 48px;
+    padding-bottom: 80px;
+  }
 }
 
 @media screen and (min-width: 1408px) {
@@ -97,6 +122,7 @@
     border-radius: 50px;
     width: 1408px;
     height: 687px;
+    margin: 0 auto;
 
     background: #e8e8e8;
   }
@@ -131,10 +157,13 @@
 
     color: #1b1b1b;
   }
-}
-
-@media screen and (max-width: 735px) {
   .workouts-title {
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 109%;
+    letter-spacing: -0.02em;
+    color: #1b1b1b;
+
     font-size: 32px;
     line-height: 100%;
     letter-spacing: -0.02em;
@@ -143,6 +172,9 @@
     padding-left: 48px;
     padding-bottom: 80px;
   }
+}
+
+@media screen and (max-width: 735px) {
   .workouts-list {
     display: flex;
     flex-wrap: wrap;
@@ -198,6 +230,7 @@
     font-size: 14px;
     line-height: 129%;
     color: #1b1b1b;
+    background-color: #ffffff;
   }
   .workout-card__icon-arrow {
     fill: #1b1b1b;
@@ -205,6 +238,7 @@
   .workout-card__info {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
   }
 
   .workout-card__title {
@@ -212,6 +246,13 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 100%;
+    color: #1b1b1b;
+  }
+  .workout-card__span {
+    /* font-family: var(--font-family); */
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
     color: #1b1b1b;
   }
   .workout-card__calories {
