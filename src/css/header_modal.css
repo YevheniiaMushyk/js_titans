@@ -1,4 +1,5 @@
-.modal {
+.modal,
+.favmodal {
   position: fixed;
   top: 0;
   right: 0;
@@ -12,7 +13,8 @@
   background-position: bottom;
   background-size: contain;
 }
-.modal::backdrop {
+.modal::backdrop,
+.favmodal::backdrop {
   background-color: rgba(18, 18, 18, 0.4);
 }
 .modal__container {
@@ -27,7 +29,8 @@
   align-items: center;
   margin-bottom: 263px;
 }
-.modal__button_close {
+.modal__button_close,
+.favmodal__button_close {
   position: absolute;
   right: 0;
   top: 0;

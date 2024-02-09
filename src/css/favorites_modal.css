@@ -1,0 +1,10 @@
+.favmodal__nav-link {
+  text-transform: capitalize;
+  padding: 6px 26px;
+  background-color: var(--sub_text);
+  border-radius: 30px;
+}
+.favmodal__nav-link_lightext {
+  text-transform: capitalize;
+  color: var(--sub_text);
+}

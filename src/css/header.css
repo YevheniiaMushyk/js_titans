@@ -53,7 +53,8 @@
     margin-bottom: 20px;
   }
 
-  .header__button {
+  .header__button,
+  .favheader__button {
     background-color: transparent;
     width: 32px;
     height: 16px;
@@ -61,7 +62,8 @@
 }
 
 @media screen and (min-width: 736px) {
-  .header__button {
+  .header__button,
+  .favheader__button {
     display: none;
   }
   .header__logo {
