@@ -22,7 +22,7 @@ function onSubmit(e) {
   const userData = {
     email: userEmail,
   };
-  //   showLoader('true');
+  showLoader('true');
   addEmail(userData)
     .then(({ data, status }) => {
       if (status === 201) {
@@ -38,7 +38,7 @@ function onSubmit(e) {
     })
     .finally(() => {
       form.reset();
-      //   showLoader(false);
+      showLoader(false);
     });
 }
 
@@ -61,7 +61,7 @@ export function showAlert(msg, type = 'info') {
   }
 }
 
-// function showLoader(state = true) {
-//   loader.style.display = !state ? 'none' : 'inline-block';
-//   form.disabled = state;
-// }
+function showLoader(state = true) {
+  loader.style.display = !state ? 'none' : 'inline-block';
+  form.disabled = state;
+}
