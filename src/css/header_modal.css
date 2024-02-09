@@ -1,5 +1,7 @@
 .modal,
 .favmodal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
@@ -25,24 +27,11 @@
 .modal__header {
   position: relative;
   display: flex;
+
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 263px;
 }
-.modal__button_close,
-.favmodal__button_close {
-  position: absolute;
-  right: 0;
-  top: 0;
 
-  background-color: transparent;
-}
-.modal__nav-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-  align-items: center;
-}
 .modal__logo {
   display: block;
   font-size: 16px;
@@ -50,10 +39,58 @@
   letter-spacing: -2%;
   line-height: 1.125;
   color: var(--sub_text);
+
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
+
+.modal__logo:hover {
+  transform: scale(1.1);
+}
+
+.modal__button_close,
+.favmodal__button_close {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.modal__button_close:hover,
+.favmodal__button_close:hover {
+  transform: scale(1.2);
+}
+
 .modal__nav {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
 }
+
+.modal__nav-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: center;
+}
+
+.modal__nav-item {
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.modal__nav-item:hover {
+  transform: scale(1.2);
+}
+
 .modal__nav-link {
   text-transform: capitalize;
   padding: 6px 26px;
@@ -63,4 +100,32 @@
 .modal__nav-link_lightext {
   text-transform: capitalize;
   color: var(--sub_text);
+}
+.modal__icons {
+  display: flex;
+  column-gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.modal__icon_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 41px;
+  height: 41px;
+
+  border: 1px solid var(--sub_text);
+  border-radius: 10px;
+
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.modal__icon_svg {
+  fill: var(--sub_text);
+  stroke: var(--sub_text);
+}
+
+.modal__icon_link:hover {
+  transform: scale(1.2);
 }
