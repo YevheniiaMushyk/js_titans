@@ -2,3 +2,8 @@
   font-size: 56px;
   background-color: var(--button_fon_hover);
 }
+
+.hero_main {
+  display: flex;
+  flex-direction: row;
+}
