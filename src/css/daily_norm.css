@@ -126,5 +126,20 @@
 }
 
 @media screen and (min-width: 1408px) {
+    .daily-section {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
 
+    .image-container {
+        width: 704px;
+       
+    }
+
+    .daily-info {
+        max-width: 526px;
+    }
+    .daily-container {
+        margin-right: 64px;
+    }
 }
