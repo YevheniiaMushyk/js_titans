@@ -1,0 +1,23 @@
+#toTop {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/icons.svg#icon-arrow);
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--button_fon);
+    fill: var(--sub_text);
+    border: none;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 1408px) {
+    #toTop {
+        width: 100px;
+        height: 100px;
+        background-size: 33px;
+    }
+}
