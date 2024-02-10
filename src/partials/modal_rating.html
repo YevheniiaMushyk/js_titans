@@ -1,53 +1,23 @@
 <dialog class="modal_rating modal_rating__container">
   <button class="modal_rating_close">
-    <svg class="modal_rating_icon" width="20" height="20">
-      <use href="./img/icons.svg#icon-x"></use>
+    <svg class="modal_rating_icon" width="28" height="28">
+      <use class="modal_rating_svg" href="./img/icons.svg#icon-x"></use>
     </svg>
   </button>
   <form class="modal_rating_form" autocomplete="off">
     <p class="modal_rating_text">rating</p>
-    <div class="modal_rating_rating">
-      <div class="modal_rating_items">
-        <input
-          id="rating5"
-          type="radio"
-          class="modal_rating_item"
-          name="rating"
-          value="5"
-        />
-        <label for="rating5" class="modal_rating_label"></label>
-        <input
-          rating4
-          type="radio"
-          class="modal_rating_item"
-          name="rating"
-          value="4"
-        />
-        <label for="rating4" class="modal_rating_label"></label>
-        <input
-          rating3
-          type="radio"
-          class="modal_rating_item"
-          name="rating"
-          value="3"
-        />
-        <label for="rating3" class="modal_rating_label"></label>
-        <input
-          rating2
-          type="radio"
-          class="modal_rating_item"
-          name="rating"
-          value="2"
-        />
-        <label for="rating2" class="modal_rating_label"></label>
-        <input
-          rating1
-          type="radio"
-          class="modal_rating_item"
-          name="rating"
-          value="1"
-        />
-        <label for="rating1" class="modal_rating_label"></label>
+    <div class="modal_rating_stars">
+      <div class="modal_rating_item">
+        <input id="rate-5" type="radio" name="rate" value="5" />
+        <label for="rate-5" class="fa-solid fa-star"></label>
+        <input id="rate-4" type="radio" name="rate" value="4" />
+        <label for="rate-4" class="fa-solid fa-star"></label>
+        <input id="rate-3" type="radio" name="rate" value="3" />
+        <label for="rate-3" class="fa-solid fa-star"></label>
+        <input id="rate-2" type="radio" name="rate" value="2" />
+        <label for="rate-2" class="fa-solid fa-star"></label>
+        <input id="rate-1" type="radio" name="rate" value="1" />
+        <label for="rate-1" class="fa-solid fa-star"></label>
       </div>
     </div>
     <input
@@ -57,7 +27,16 @@
       placeholder="Email"
       required
     />
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea
+      class="modal_rating_textarea"
+      name="coment"
+      rows="8"
+      placeholder="Your comment"
+    ></textarea>
     <button class="modal_rating_button" type="submit">send</button>
   </form>
 </dialog>
+<script
+  src="https://kit.fontawesome.com/cee7c6938b.js"
+  crossorigin="anonymous"
+></script>
