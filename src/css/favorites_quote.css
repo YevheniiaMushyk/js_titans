@@ -1,65 +1,91 @@
-
-
+.favorites-quote {
+  margin: 0 auto;
+}
 .favorites-card {
-    color:var(--button_fon);
-    justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 30px;
-    text-align: left;
-    display: flex;
-}
-.favorites-container {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--button_fon);
+  border-radius: 30px;
 }
 
-.favorites-icon{
-    color: var(--sub_text);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(246, 246, 246, 0.1);
-    fill: #F4F4FD;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
+.favorites-icon {
+  color: var(--sub_text);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(246, 246, 246, 0.1);
+  fill: #f4f4fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .favorites-info {
-    max-width: 245px;
-    margin-left: 16px;
+  max-width: 245px;
+  margin-left: 16px;
 }
 
 .favorites-title {
-    color: var(--sub_text);
-    letter-spacing: 0.01em;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.4;
-   
+  color: var(--sub_text);
+  letter-spacing: 0.01em;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .favorites-text {
-    color: var(--sub_text);
-    letter-spacing: 0.03em;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.28;
-    opacity: 0.6;
-    margin-top: 2px;
+  color: var(--sub_text);
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  opacity: 0.6;
+  margin-top: 2px;
 }
 
 .favorites-text:last-child {
-    margin-top: 14px;
-} 
+  margin-top: 14px;
+}
 .favorites-sub-title {
-    color: var(--sub_text);
-    letter-spacing: 0.01em;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
+  color: var(--sub_text);
+  letter-spacing: 0.01em;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 767px) {
+  .favorites-container {
+    min-width: 320px;
+    max-width: 375px;
+    padding: 0 20px;
+  }
+
+  .favorites-card {
+    padding: 40px 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .favorites-container {
+    max-width: 768px;
+    padding: 0 16px;
+  }
+
+  .favorites-card {
+    padding: 64px 80px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .favorites-container {
+    max-width: 1440px;
+    padding: 0 16px;
+  }
+
+  .favorites-card {
+    padding: 64px 64px;
+  }
 }
