@@ -1,7 +1,9 @@
 .modal_rating {
   position: fixed;
   top: 50%;
-  right: 50%;
+  transform: translateY(-50%);
+
+  margin: 0 auto;
 
   background-color: var(--sub_text);
   border-radius: 20px;
