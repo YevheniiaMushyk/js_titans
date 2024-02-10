@@ -42,7 +42,7 @@ function onSubmit(e) {
     });
 }
 
-export function showAlert(msg, type = 'info') {
+function showAlert(msg, type = 'info') {
   if (type === 'OK') {
     iziToast.success({
       position: 'topCenter',
