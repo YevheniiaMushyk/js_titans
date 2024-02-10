@@ -18,12 +18,12 @@
 
 @font-face {
   font-family: DM_Sans;
-  src: url('./fonts/DMSans-Italic-VariableFont_opsz,wght.ttf');
+  src: url('./fonts/DMSans-VariableFont_opsz,wght.ttf');
 }
 
 @font-face {
   font-family: DM_Sans_Italic;
-  src: url('./fonts/DMSans-VariableFont_opsz,wght.ttf');
+  src: url('./fonts/DMSans-Italic-VariableFont_opsz,wght.ttf');
 }
 
 :root {
