@@ -122,17 +122,17 @@ async function handleLoadMore() {
 }
 function createexercisesCard(results, containerCardsEl) {
     const markup = results.map(({ rating, name, burnedCalories, bodyPart, target }) => `
-    <li class="exercises-item"><a href="#" class="exercises-item__link">
+    <li class="exercises-item">
             <div class="exercises-sub-title">
                 <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(rating).padEnd(3, '.0')}</span><svg class="exercises-rating__svg" width="18" height="18">
                             <use href="../img/icons.svg#icon-star_yellow"></use>
                         </svg></span>
                 </div>
-                <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
-                        class="exercises-start__svg" width="13" height="13" stroke="rgb(27, 27, 27)">
+                <a href="#" class="exercises-start"><span class="exercises-start__text">Start</span><svg
+                        class="exercises-start__svg" width="13" height="13">
                         <use href="../img/icons.svg#icon-arrow"></use>
-                    </svg></div>
+                    </svg></a>
             </div>
             <div class="exercises-title">
                 <svg class="exercises-title__svg" width="24" height="24">
@@ -148,7 +148,6 @@ function createexercisesCard(results, containerCardsEl) {
                 <p class="exercises-text__content"><span class="exercises-text__static">Target:</span>
                     <span class="exercises-text__dynamic">${target}</span></p>
             </div>
-        </a>
     </li>`).join("");
     containerCardsEl.innerHTML = markup;
 }

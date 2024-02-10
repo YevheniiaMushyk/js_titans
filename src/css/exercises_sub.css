@@ -2,6 +2,13 @@
 .exercises-item {
     max-width: 295px;
     margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgb(255, 255, 255);
 }
 
 .card-container {
@@ -12,21 +19,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.exercises-item__link {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background: rgb(255, 255, 255);
-    transition: all 250ms;
-}
-
-.exercises-item__link:hover {
-    transform: scale(1.04);
 }
 
 .exercises-sub-title {
@@ -75,6 +67,7 @@
     gap: 9px;
 }
 
+
 .exercises-start__text {
     color: rgb(27, 27, 27);
     font-size: 14px;
@@ -82,6 +75,7 @@
 }
 
 .exercises-start__svg {
+    stroke: rgb(27, 27, 27);
     width: 11.38px;
     height: 11.38px;
 }
