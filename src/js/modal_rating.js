@@ -14,6 +14,7 @@ let initDigit = 0;
 let formEmail = '';
 let formComent = '';
 let starRating = 0;
+
 const id = '64f389465ae26083f39b19d8';
 
 // правила відкриття та закриття вікна
@@ -62,21 +63,7 @@ for (let index = 0; index < stars.length; index++) {
 }
 
 // відправляємо запит при сабміті форми
-
 ratingForm.addEventListener('submit', ratingPatch);
-const patchToUpdate = {
-  rate: 0,
-  email: '',
-  review: '',
-};
-
-const options = {
-  method: 'PATCH',
-  body: JSON.stringify(patchToUpdate),
-  headers: {
-    'Content-Type': 'application/json; charset=UTF-8',
-  },
-};
 
 function ratingPatch(evt) {
   evt.preventDefault();
@@ -84,9 +71,6 @@ function ratingPatch(evt) {
   const form = evt.currentTarget;
   formEmail = form.elements.email.value;
   formComent = form.elements.coment.value;
-  patchToUpdate.email = formEmail;
-  patchToUpdate.review = formComent;
-  patchToUpdate.rate = parseInt(starRating);
 
   if (initDigit === 0) {
     iziToast.error({
@@ -95,9 +79,8 @@ function ratingPatch(evt) {
       backgroundColor: '#FF6666',
     });
   } else {
-    console.log(patchToUpdate);
     patchRating()
-      .then(data => {
+      .then(() => {
         modalRating.close();
         iziToast.info({
           message: 'Thank you for your feedback',
@@ -119,6 +102,19 @@ function ratingPatch(evt) {
 }
 
 function patchRating() {
+  let patchToUpdate = {};
+  patchToUpdate.rate = parseInt(starRating);
+  patchToUpdate.email = formEmail;
+  patchToUpdate.review = formComent;
+
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify(patchToUpdate),
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  };
+
   return fetch(
     `https://energyflow.b.goit.study/api/exercises/${id}/rating`,
     options
