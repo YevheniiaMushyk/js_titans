@@ -17,8 +17,10 @@
 .favorites-container {
     margin-top: 40px;
     margin-bottom: 40px;
+    margin-left: 20px;
     margin-right: 20px;
     display: flex;
+    
 }
 .favorites-icon {
     color: var(--sub_text);
@@ -242,7 +244,7 @@ margin-bottom: 204px;
     .favorites-icon-quotes-svg {
         width: 48px;
         height: 48px;
-        margin-top: 32px;
+        
     }
     
     .favorites-icon {
@@ -255,11 +257,19 @@ margin-bottom: 204px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 16px; /* Змінено margin-left на 16px для відстані між іконкою та текстом */
-    }
+        margin-left: 16px; 
+    }  
 
-   
-    
+    .favorites-icon-quotes {
+position: absolute;
+width: 37.03px;
+height: 31.04px;
+left: 10%;
+right: 12.85%;
+top: 20%;
+bottom: 15.33%;
+        }
+        
 
 }
 
@@ -270,7 +280,7 @@ margin-bottom: 204px;
     }
 
     .favorites-container {
-        width: 704px;
+        width: 526px;
        
     }
 
@@ -280,4 +290,7 @@ margin-bottom: 204px;
     .favorites-container {
         margin-right: 64px;
     }
+
+   
+
 }
