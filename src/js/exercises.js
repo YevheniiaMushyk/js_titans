@@ -43,8 +43,8 @@ function createMarkup(results) {
         <a href="">
         <img class="card-image" src="${imgUrl}" alt="Card Image">
             <ul class="card-item-desc"="${name}">
-                <li class="name">${name}</li>
-                <li class="filter">${filter}</li>
+                <li class="name" data-source="${name}">${name}</li>
+                <li class="filter" data-source="${filter}">${filter}</li>
             </ul>
         </a>
     </li>`
@@ -73,31 +73,19 @@ function onSearch() {
       showLoader(false);
     });
 }
-
 onSearch();
 refs.musclesButton.classList.add('active');
-refs.musclesButton.disabled = true;
 
 refs.buttons.addEventListener('click', e => {
   selected(e);
   const cardTarget = e.target;
-
   if (cardTarget === e.currentTarget) {
     return;
   } else if (cardTarget === refs.musclesButton) {
-    refs.musclesButton.disabled = true;
-    refs.bodypartButton.disabled = false;
-    refs.equipmentButton.disabled = false;
     params.filter = 'Muscles';
   } else if (cardTarget === refs.bodypartButton) {
-    refs.musclesButton.disabled = false;
-    refs.bodypartButton.disabled = true;
-    refs.equipmentButton.disabled = false;
     params.filter = 'Body parts';
   } else if (cardTarget === refs.equipmentButton) {
-    refs.musclesButton.disabled = false;
-    refs.bodypartButton.disabled = false;
-    refs.equipmentButton.disabled = true;
     params.filter = 'Equipment';
   }
   onSearch();
@@ -118,7 +106,6 @@ function selected(e) {
     btnPrev.classList.add('active');
   }
 }
-
 refs.pagination.addEventListener('click', onPagination);
 
 function pagesPagin(page, totalPages) {
@@ -128,7 +115,6 @@ function pagesPagin(page, totalPages) {
   }
   return pagSite;
 }
-
 async function onPagination(e) {
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
