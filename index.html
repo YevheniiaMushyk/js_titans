@@ -12,11 +12,15 @@
       referrerpolicy="no-referrer"
     />
     <title>EnergyFlow</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
     
     <script type="module" crossorigin src="/js_titans/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/js_titans/assets/loader-0deee413.js">
-    <link rel="modulepreload" crossorigin href="/js_titans/assets/vendor-8cce9181.js">
-    <link rel="stylesheet" href="/js_titans/assets/loader-e27183e6.css">
+    <link rel="modulepreload" crossorigin href="/js_titans/assets/loader-e700052a.js">
+    <link rel="modulepreload" crossorigin href="/js_titans/assets/vendor-db25513e.js">
+    <link rel="stylesheet" href="/js_titans/assets/loader-e2aa6612.css">
     <link rel="stylesheet" href="/js_titans/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -46,7 +50,7 @@
       target="_blank"
     >
       <svg class="header__icon_svg" width="28" height="28">
-        <use href="/js_titans/assets/icons-54830200.svg#icon-facebook"></use>
+        <use href="/js_titans/assets/icons-1a2706a7.svg#icon-facebook"></use>
       </svg>
     </a>
     <a
@@ -55,7 +59,7 @@
       target="_blank"
     >
       <svg class="header__icon_svg" width="28" height="28">
-        <use href="/js_titans/assets/icons-54830200.svg#icon-instagram"></use>
+        <use href="/js_titans/assets/icons-1a2706a7.svg#icon-instagram"></use>
       </svg>
     </a>
     <a
@@ -64,16 +68,21 @@
       target="_blank"
     >
       <svg class="header__icon_svg" width="28" height="28">
-        <use href="/js_titans/assets/icons-54830200.svg#icon-youtube"></use>
+        <use href="/js_titans/assets/icons-1a2706a7.svg#icon-youtube"></use>
       </svg>
     </a>
   </div>
   <button class="header__button" type="button">
     <svg width="32" height="16">
-      <use href="/js_titans/assets/icons-54830200.svg#icon-align-justify"></use>
+      <use href="/js_titans/assets/icons-1a2706a7.svg#icon-align-justify"></use>
     </svg>
   </button>
 </header>
+
+<button class="give_rating" id="modal_rating" type="button">
+  give a rating
+</button>
+
 
 
 
@@ -109,13 +118,13 @@
       <div class="quote-card-top">
         <div class="svg-container-man">
           <svg class="quote-svg-man" width="44" height="44">
-            <use href="/js_titans/assets/icons-54830200.svg#icon-run_man"></use>
+            <use href="/js_titans/assets/icons-1a2706a7.svg#icon-run_man"></use>
           </svg>
         </div>
         <h3 class="quote-card-label">Quote of the day</h3>
         <div class="svg-container-coma">
           <svg class="quote-svg-coma" width="48" height="48">
-            <use href="/js_titans/assets/icons-54830200.svg#icon-inverted_commas28"></use>
+            <use href="/js_titans/assets/icons-1a2706a7.svg#icon-inverted_commas28"></use>
           </svg>
         </div>
       </div>
@@ -341,14 +350,61 @@
 
 
     
-    
+    <dialog class="modal_rating">
+  <div class="modal_rating__container">
+    <button class="modal_rating_close">
+      <svg class="modal_rating_icon" width="28" height="28">
+        <use href="/js_titans/assets/icons-1a2706a7.svg#icon-xb"></use>
+      </svg>
+    </button>
+    <form class="modal_rating_form" autocomplete="off">
+      <p class="modal_rating_text">rating</p>
+      <div class="modal_rating_part">
+        <h3 class="modal_rating_digit">0.0</h3>
+        <div class="modal_rating_stars">
+          <input id="rate-5" type="radio" name="rate" value="5" />
+          <label for="rate-5" class="fa-solid fa-star" data-rating="5"></label>
+          <input id="rate-4" type="radio" name="rate" value="4" />
+          <label for="rate-4" class="fa-solid fa-star" data-rating="4"></label>
+          <input id="rate-3" type="radio" name="rate" value="3" />
+          <label for="rate-3" class="fa-solid fa-star" data-rating="3"></label>
+          <input id="rate-2" type="radio" name="rate" value="2" />
+          <label for="rate-2" class="fa-solid fa-star" data-rating="2"></label>
+          <input id="rate-1" type="radio" name="rate" value="1" />
+          <label for="rate-1" class="fa-solid fa-star" data-rating="1"></label>
+        </div>
+      </div>
+      <input
+        class="modal_rating_input"
+        type="email"
+        name="email"
+        placeholder="Email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        required
+      />
+      <textarea
+        class="modal_rating_textarea"
+        name="coment"
+        rows="8"
+        placeholder="Your comment"
+        required
+      ></textarea>
+      <button class="modal_rating_button" type="submit">send</button>
+    </form>
+  </div>
+</dialog>
+<script
+  src="https://kit.fontawesome.com/cee7c6938b.js"
+  crossorigin="anonymous"
+></script>
+
     <dialog class="modal modal__container">
   <div class="modal__structure">
     <div class="modal__header">
       <a class="modal__logo" href="./index.html" target="_blank">energy.flow</a>
       <button class="modal__button_close">
         <svg class="modal__button_icon" width="20" height="20">
-          <use href="/js_titans/assets/icons-54830200.svg#icon-x"></use>
+          <use href="/js_titans/assets/icons-1a2706a7.svg#icon-x"></use>
         </svg>
       </button>
     </div>
@@ -375,7 +431,7 @@
         target="_blank"
       >
         <svg class="modal__icon_svg" width="28" height="28">
-          <use href="/js_titans/assets/icons-54830200.svg#icon-facebook"></use>
+          <use href="/js_titans/assets/icons-1a2706a7.svg#icon-facebook"></use>
         </svg>
       </a>
       <a
@@ -384,7 +440,7 @@
         target="_blank"
       >
         <svg class="modal__icon_svg" width="28" height="28">
-          <use href="/js_titans/assets/icons-54830200.svg#icon-instagram"></use>
+          <use href="/js_titans/assets/icons-1a2706a7.svg#icon-instagram"></use>
         </svg>
       </a>
       <a
@@ -393,7 +449,7 @@
         target="_blank"
       >
         <svg class="modal__icon_svg" width="28" height="28">
-          <use href="/js_titans/assets/icons-54830200.svg#icon-youtube"></use>
+          <use href="/js_titans/assets/icons-1a2706a7.svg#icon-youtube"></use>
         </svg>
       </a>
     </div>
