@@ -1,6 +1,5 @@
 .quote-container {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .quote-card-label {
@@ -48,11 +47,18 @@
   line-height: 24px;
 }
 
-.quote-picture {
-  border-radius: 30px;
+.quote-img {
+  width: 100%;
+  height: 100;
 }
 
-@media screen and (max-width: 767px) {
+.quote-picture {
+  border-radius: 30px;
+  width: 335px;
+  height: 272px;
+}
+
+@media screen and (max-width: 767.9px) {
   .quote-container {
     width: 375px;
     padding: 0 20px;
