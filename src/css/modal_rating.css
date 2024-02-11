@@ -1,0 +1,234 @@
+.modal_rating {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+
+  margin: 0 auto;
+
+  background-color: var(--sub_text);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.modal_rating::backdrop {
+  background-color: rgba(27, 27, 27, 0.6);
+}
+.modal_rating__container {
+  position: relative;
+  min-width: 320px;
+}
+.modal_rating_close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.modal_rating_close:hover {
+  transform: scale(1.2);
+}
+
+.modal_rating_icon {
+  display: block;
+}
+
+.modal_rating_text {
+  color: var(--main_text);
+  font-weight: 500;
+  line-height: 1.33;
+  text-transform: capitalize;
+}
+
+.modal_rating_part {
+  display: flex;
+  column-gap: 2px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal_rating_digit {
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.modal_rating_stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  color-scheme: 2px;
+}
+
+.modal_rating_stars input {
+  display: none;
+}
+
+.modal_rating_stars label {
+  font-size: 24px;
+  color: rgba(27, 27, 27, 0.2);
+
+  float: right;
+  padding: 2px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: #eea10c;
+}
+
+input:checked ~ label {
+  color: #eea10c;
+}
+
+.modal_rating_input,
+.modal_rating_textarea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--main_text);
+  letter-spacing: 0.64px;
+
+  border: 1px solid rgba(27, 27, 27, 0.4);
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 12px 14px;
+
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal_rating_input:hover,
+.modal_rating_textarea:hover {
+  border-color: var(--main_text);
+}
+
+.modal_rating_input::placeholder,
+.modal_rating_textarea::placeholder {
+  color: rgba(27, 27, 27, 0.6);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.modal_rating_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 30px;
+  background: var(--button_fon);
+
+  color: var(--sub_text);
+  font-weight: 400;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal_rating_button:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 735px) {
+  .modal_rating {
+    height: 357px;
+    width: 335px;
+  }
+
+  .modal_rating__container {
+    padding: 40px 20px;
+  }
+
+  .modal_rating_text {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .modal_rating_part {
+    margin-bottom: 20px;
+  }
+
+  .modal_rating_input {
+    width: 295px;
+    height: 42px;
+    margin-bottom: 10px;
+  }
+
+  .modal_rating_textarea {
+    width: 295px;
+    height: 93px;
+    margin-bottom: 20px;
+  }
+
+  .modal_rating_input::placeholder,
+  .modal_rating_textarea::placeholder {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .modal_rating_button {
+    width: 295px;
+    padding: 12px;
+    font-size: 14px;
+    letter-spacing: 1.29;
+  }
+}
+
+@media screen and (min-width: 736px) {
+  .modal_rating {
+    height: 432px;
+    width: 450px;
+  }
+
+  .modal_rating__container {
+    padding: 50px;
+  }
+
+  .modal_rating_text {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .modal_rating_part {
+    margin-bottom: 32px;
+  }
+
+  .modal_rating_input {
+    width: 350px;
+    height: 42px;
+    margin-bottom: 16px;
+  }
+
+  .modal_rating_textarea {
+    width: 350px;
+    height: 106px;
+    margin-bottom: 32px;
+  }
+
+  .modal_rating_input::placeholder,
+  .modal_rating_textarea::placeholder {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .modal_rating_button {
+    width: 350px;
+    padding: 12px;
+    font-size: 16px;
+    letter-spacing: 1.5;
+  }
+}
