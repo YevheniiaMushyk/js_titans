@@ -9,6 +9,9 @@
 
 .hero_img{
   border-radius: 30px;
+  background-image: image-set(url('hero_m@1x-min.png') 1x,
+        url('hero_m@2x-min.png') 2x
+      );
 }
 .hero_tag{
   position: absolute;
@@ -71,6 +74,8 @@ box-sizing: border-box;
     width: 248px;
     height: 900px;
     border-radius: 50px 0px 50px 50px;
+    background-image: image-set(url('hero_t@1x-min.png') 1x,
+          url('img/hero_t@2x-min.png') 2x);
   }
 
   .hero_tag {
@@ -119,6 +124,8 @@ box-sizing: border-box;
     .hero_img {
       width: 704px;
       border-radius: 50px 0px 50px 50px;
+        background-image: image-set(url('img/hero_d@1x-min.png') 1x,
+            url('img/hero_d@2x-min.png') 2x);
     }
   
     .hero_tag {
@@ -158,12 +165,5 @@ box-sizing: border-box;
  }
 
 
-
-
-/* .hero_img_container {
-
-  background: url(../img/hero_m@1x-min.png), rgb(232, 232, 232);
-
-} */
 
 
