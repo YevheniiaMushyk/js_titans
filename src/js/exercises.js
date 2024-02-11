@@ -13,6 +13,7 @@ const refs = {
 const form = document.querySelector('.exercises-search-form');
 const loader = document.querySelector('.loader');
 let btnPrev = null;
+let paginationInstance = null;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 const params = {
@@ -55,15 +56,30 @@ function createMarkup(results) {
   showLoader(false);
 }
 
-function onSearch() {
+refs.bodypartButton.addEventListener('click', () => {
   params.page = 1;
+  onSearch();
+});
+
+function onSearch() {
+  // params.page = 1;
   getData()
     .then(data => {
       const { results, page, totalPages } = data;
+      params.totalPages = totalPages;
       createMarkup(results);
       if (totalPages > 1) {
         const pages = pagesPagin(page, totalPages);
         refs.pagination.innerHTML = pages;
+        const firstPageButton = document.querySelector('.pag-btn');
+        firstPageButton.classList.add('active');
+        if (params.filter !== 'Body parts') {
+          refs.pagination.style.display = 'block';
+        } else {
+          refs.pagination.style.display = 'none';
+        }
+      } else {
+        refs.pagination.style.display = 'none';
       }
     })
     .catch(error => {
@@ -88,6 +104,7 @@ refs.buttons.addEventListener('click', e => {
   } else if (cardTarget === refs.equipmentButton) {
     params.filter = 'Equipment';
   }
+  params.page = 1;
   onSearch();
 });
 
@@ -116,11 +133,15 @@ function pagesPagin(page, totalPages) {
   return pagSite;
 }
 async function onPagination(e) {
+  const buttons = document.querySelectorAll('.pag-btn');
+  buttons.forEach(button => {
+    button.classList.remove('active');
+  });
+  e.target.classList.add('active');
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
   try {
     const { results } = await getData();
-
     createMarkup(results);
   } catch (error) {
     console.log(error);

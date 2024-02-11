@@ -99,28 +99,42 @@
     color: var(--sub_text);
   }
 }
+
+/* -----------------pagination --------------  */
 #pagination {
   text-align: center;
 }
 
-.active #pagination {
-  gap: 10px;
-  color: #1b1b1b;
-  border: 1px solid black;
+.tui-pagination {
+  margin: 14px 0 0px !important;
 }
 
 .pag-btn {
-  width: 32px;
-  height: 32px;
+  font-family: 'DM Sans';
+  font-size: 20px !important;
+  padding: 0px !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  border: none !important;
+  background: none !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  /* border: none; */
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
-  color: #1b1b1b66;
-  background-color: var(--button_fon_gray);
-  cursor: pointer;
+  color: rgba(27, 27, 27, 0.4) !important;
+}
+
+.pag-btn.active {
+  color: #1b1b1b !important;
+  border: 1px solid #1b1b1b !important;
+}
+
+.tui-next,
+.tui-last,
+.tui-first,
+.tui-prev {
+  display: none !important;
 }
 
 @media screen and (max-width: 735px) {
@@ -138,7 +152,7 @@
   }
   .container-ex {
     padding: 66px 48px 32px;
-    border-radius: 50px;
+    border-radius: 50px !important;
   }
   .exercises-name {
     font-size: 44px;
@@ -171,7 +185,8 @@
   .card-cont-ret {
     flex-direction: row;
     justify-content: space-between;
-    gap: 14px;
+    gap: 14px !important;
+    margin-bottom: 32px;
   }
   .card-item {
     width: 313px;
