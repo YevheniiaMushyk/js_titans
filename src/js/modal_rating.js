@@ -13,22 +13,28 @@ const ratingForm = document.querySelector('.modal_rating_form');
 let initDigit = 0;
 let formEmail = '';
 let formComent = '';
+let starRating = 0;
 const id = '64f389465ae26083f39b19d8';
 
 // правила відкриття та закриття вікна
 modalRatingButton.addEventListener('click', () => {
+  initDigit = 0;
   digit.textContent = `${initDigit}.0`;
   modalRating.showModal();
 });
 
 modalRatingClose.addEventListener('click', () => {
-  digit.textContent = `0.0`;
+  initDigit = 0;
+  digit.textContent = `${initDigit}.0`;
+  ratingForm.reset();
   modalRating.close();
 });
 
 modalRating.addEventListener('click', e => {
   if (e.target === e.currentTarget) {
-    digit.textContent = `0.0`;
+    initDigit = 0;
+    digit.textContent = `${initDigit}.0`;
+    ratingForm.reset();
     modalRating.close();
   }
 });
@@ -49,29 +55,28 @@ for (let index = 0; index < stars.length; index++) {
   star.addEventListener('mouseleave', clearDigit);
 
   star.addEventListener('click', () => {
-    const starRating = star.dataset.rating;
+    starRating = star.dataset.rating;
     initDigit = starRating;
     digit.textContent = `${starRating}.0`;
   });
 }
 
-// відправляємо запит
+// відправляємо запит при сабміті форми
 
-const postToUpdate = {
-  rate: initDigit,
-  email: formEmail,
-  review: formComent,
+ratingForm.addEventListener('submit', ratingPatch);
+const patchToUpdate = {
+  rate: 0,
+  email: '',
+  review: '',
 };
 
 const options = {
   method: 'PATCH',
-  body: JSON.stringify(postToUpdate),
+  body: JSON.stringify(patchToUpdate),
   headers: {
     'Content-Type': 'application/json; charset=UTF-8',
   },
 };
-
-ratingForm.addEventListener('submit', ratingPatch);
 
 function ratingPatch(evt) {
   evt.preventDefault();
@@ -79,6 +84,9 @@ function ratingPatch(evt) {
   const form = evt.currentTarget;
   formEmail = form.elements.email.value;
   formComent = form.elements.coment.value;
+  patchToUpdate.email = formEmail;
+  patchToUpdate.review = formComent;
+  patchToUpdate.rate = parseInt(starRating);
 
   if (initDigit === 0) {
     iziToast.error({
@@ -87,17 +95,24 @@ function ratingPatch(evt) {
       backgroundColor: '#FF6666',
     });
   } else {
+    console.log(patchToUpdate);
     patchRating()
       .then(data => {
-        //;
+        modalRating.close();
+        iziToast.info({
+          message: 'Thank you for your feedback',
+          position: 'topCenter',
+        });
       })
       .catch(() => {
         iziToast.error({
           message: 'Something wrong. Please try again later!',
-          position: 'topRight',
+          position: 'topCenter',
         });
       })
       .finally(() => {
+        initDigit = 0;
+        digit.textContent = `${initDigit}.0`;
         ratingForm.reset();
       });
   }
