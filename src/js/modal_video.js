@@ -204,6 +204,7 @@ const caloriesElement = modal.querySelector('.exercise-calories');
 const descriptionElement = modal.querySelector('.exercise-description');
 const favoriteButton = modal.querySelector('.favorite-button');
 const ratingButton = document.querySelector('.rating-button');
+const tttt = document.querySelector('.workouts-list');
 
 // орієнтовно отримуємо доступ до модалки з оцінкою :
 const modalRating = document.querySelector('.modal_rating');
@@ -212,6 +213,16 @@ const FAVORITES_KEY_LOCAL_STORAGE = 'asdasdasdasdqweqweqwewerterterter123';
 
 // Додаємо обробник кліків на картки вправ для відкриття модального вікна
 containerCardsEl.addEventListener('click', event => {
+  const exerciseItem = event.target.closest('.exercises-item');
+  if (!exerciseItem) {
+    return;
+  }
+  const exerciseData = getExerciseData(exerciseItem);
+  fillModalWithData(exerciseData);
+  modal.style.display = 'block';
+});
+
+tttt.addEventListener('click', event => {
   const exerciseItem = event.target.closest('.exercises-item');
   if (!exerciseItem) {
     return;
