@@ -34,10 +34,7 @@
 }
 
 .daily-container {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 40px 20px;
   display: flex;
 }
 
@@ -85,11 +82,11 @@
 }
 
 @media screen and (min-width: 736px) {
+  .daily-section {
+    margin-bottom: 16px;
+  }
   .daily-container {
-    margin-top: 64px;
-    margin-bottom: 64px;
-    margin-left: 64px;
-    margin-right: 96px;
+    padding: 64px 96px 64px 64px;
   }
   .image-container {
     width: 736px;
@@ -132,8 +129,5 @@
 
   .daily-info {
     max-width: 526px;
-  }
-  .daily-container {
-    margin-right: 64px;
   }
 }

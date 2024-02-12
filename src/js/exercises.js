@@ -7,7 +7,7 @@ const refs = {
   musclesButton: document.querySelector('[data-filter="muscles"]'),
   bodypartButton: document.querySelector('[data-filter="bodypart"]'),
   equipmentButton: document.querySelector('[data-filter="equipment"]'),
-  cardContainer: document.querySelector('.card-container'),
+  cardContainer: document.querySelector('.exercises-card-container'),
   pagination: document.querySelector('#pagination'),
 };
 const form = document.querySelector('.exercises-search-form');
