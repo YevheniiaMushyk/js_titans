@@ -18,7 +18,6 @@ function onSubmit(e) {
     showAlert('The email field is empty!', 'ERROR');
     return;
   }
-
   const userData = {
     email: userEmail,
   };

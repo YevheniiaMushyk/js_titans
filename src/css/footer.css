@@ -1,6 +1,3 @@
-footer {
-  padding: 0 20px 20px;
-}
 .footer-container {
   background-color: var(--main_background);
   background-image: linear-gradient(
@@ -296,7 +293,7 @@ footer {
 
 /* ЛОАДЕР */
 
-.loader {
+/* .loader {
   display: none;
   position: relative;
   height: 10px;
@@ -330,4 +327,4 @@ footer {
 
 .error-circul {
   background-image: url(../img/error-circul.svg);
-}
+} */

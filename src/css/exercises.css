@@ -25,7 +25,7 @@
 
 .exercises-buttons {
   display: flex;
-  gap: 10px;
+  gap: 6px;
 }
 
 .exercises-button-muscles {
@@ -45,7 +45,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
-  padding: 7px, 14px, 7px, 14px;
+  padding: 7px, 14px;
   border-radius: 30px;
   border: none;
   color: var(--main_text);
@@ -53,21 +53,24 @@
 }
 
 .active {
-  color: var(--sub_tex);
+  color: var(--sub_text);
   background-color: var(--button_fon);
 }
 
-.card-container {
+
+
+.exercises-card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  row-gap: 40px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 20px;
   margin-bottom: 20px;
 }
 
 .card-item {
-  width: 313px;
-  height: 250px;
+  width: 295px;
+  /* height: 250px; */
   overflow: hidden;
   position: relative;
   border-radius: 12px;
@@ -111,74 +114,129 @@
   }
 }
 
+
+/* -----------------pagination --------------  */
+
 #pagination {
   text-align: center;
 }
 
-/* #pagination.active {
-  background-color: var(--button_fon_gray);
-  color: var(--main_text);
-  border: 1px solid var(--main_text);
-} */
+.tui-pagination {
+  margin: 0 auto;
+}
+
 .pag-btn {
-  width: 32px;
-  height: 32px;
+  font-family: 'DM Sans';
+  font-size: 20px !important;
+  padding: 0px !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  border: none !important;
+  background: none !important;
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  border: none;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: 0.04em;
-  color: #1b1b1b66;
-  background-color: var(--button_fon_gray);
-  cursor: pointer;
+  color: rgba(27, 27, 27, 0.4) !important;
+}
+
+.pag-btn.active {
+  color: #1b1b1b !important;
+  border: 1px solid #1b1b1b !important;
+}
+
+.tui-next,
+.tui-last,
+.tui-first,
+.tui-prev {
+  display: none !important;
 }
 
 @media screen and (max-width: 735px) {
+  .exercises {
+    min-height: 320px;
+  }
   .container-ex {
     min-width: 320px;
     max-width: 335px;
     margin: 0 auto;
-    height: 100%;
   }
 }
 
 @media screen and (min-width: 736px) {
   .exercises {
-    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 736px;
+  }
+  .container-ex {
+    padding: 66px 48px 32px;
+    border-radius: 50px !important;
+  }
+  .exercises-name {
+    font-size: 44px;
+    line-height: 109%;
+    margin-bottom: 32px;
+  }
+  .exercises-ft {
+    justify-content: space-between;
+    margin-bottom: 32px;
   }
 
   .exercises-buttons {
-    gap: 6px;
-    margin-bottom: 40px;
+    gap: 8px;
   }
+  .exercises-button-muscles {
+    width: 101px;
+    height: 44px;
+  }
+
 
   .exercises-button-muscles,
   .exercises-button-bodypart,
   .exercises-button-equipment {
-    padding: 7px 14px;
-    font-size: 14px;
+    width: 121px;
+    height: 44px;
   }
 
-  .card-container {
-    flex-direction: row;
-    gap: 20px;
-    row-gap: 20px;
+ 
+
+  .exercises-button-muscles,
+  .exercises-button-bodypart,
+  .exercises-button-equipment {
+    padding: 10px 20px;
+    font-size: 16px;
   }
 
   .card-item {
-    width: 295px;
-    height: 232px;
+    flex: 0 0 calc((100% - 14px) / 2);
+  }
+
+  .exercises-card-container {
+    gap: 14px;
+    margin-bottom: 32px;
   }
 }
 
 @media screen and (min-width: 1408px) {
+  .exercises {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1408px;
+  }
+
   .exercises-buttons {
     gap: 8px;
   }
 
-  .card-container {
-    column-gap: 14px;
-    row-gap: 14px;
+  .card-item {
+    flex: 0 0 calc((100% - 60px) / 4);
+    /* height: 250px; */
+  }
+  .exercises-card-container {
+    row-gap: 40px;
+    column-gap: 20px;
+    margin-bottom: 32px;
   }
 }
