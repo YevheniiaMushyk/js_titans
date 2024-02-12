@@ -1,125 +1,100 @@
-import iziToast from "izitoast";
+//import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 import axios from "axios";
-const URL = "https://energyflow.b.goit.study/api/exercises/";
+let URL = `https://energyflow.b.goit.study/api/exercises/`;
 const form = document.querySelector(".exercises-search-form");
-const containerCardsEl = document.querySelector(".card-container")
-const loadMoreBtn = document.querySelector(".label");
-const preloader = document.getElementById("preloader");
+const containerCardsEl = document.querySelector(".card-container");
+const searchFormEl = document.querySelector(".exercises-search");
 const queryParams = {
     name: "",
     page: 1,
     maxPage: 0,
-    perpage: 9,
+    limit: 9,
 };
 let currentSearchQuery = "";
-const hiddenClass = "is-hidden";
-function hide(button) {
-    button.classList.add(hiddenClass);
-}
-
-function show(button) {
-    button.classList.remove(hiddenClass);
-}
-
-function enable(button, preloader) {
-    preloader.classList.add(hiddenClass);
-    button.disabled = false;
-}
-
-function disable(button, preloader) {
-    preloader.classList.remove(hiddenClass);
-    button.disabled = true;
-}
-function showLoadingIndicator() {
-    containerCardsEl.innerHTML = '<div class="loader"></div>';
-}
 function noResults() {
-    containerCardsEl.innerHTML = '<div class="no-results-text">Unfortunately, no results were found.You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</div>';
+    containerCardsEl.innerHTML = '<div class="no-results-text">Unfortunately, <span>no results</span> were found.You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</div>';
 }
-function hideLoadingIndicator() {
-    const loadingElement = containerCardsEl.querySelector('.loader');
-    if (loadingElement) {
-        loadingElement.remove();
-    }
-}
-form.addEventListener("submit", handleSearch);
-async function handleSearch(event) {
+containerCardsEl.addEventListener("click", dataSet);
+async function dataSet(event) {
     event.preventDefault();
-    containerCardsEl.innerHTML = "";
-    const form = event.currentTarget;
-    const exercisesCard = form.elements.exercises.value.trim();
-    currentSearchQuery = exercisesCard;
-    queryParams.page = 1;
-    if (exercisesCard === "" || exercisesCard == null) {
-        noResults()
-        hide(loadMoreBtn);
-        return;
-    }
-    showLoadingIndicator()
-    try {
-        const { results, totalPages } = await serchPicture(exercisesCard);
-        if (results && results.length > 0) {
-            queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
-            createexercisesCard(results, containerCardsEl)
-            if (results && results.length > 0 && results.length !== totalPages) {
-                show(loadMoreBtn);
-                loadMoreBtn.removeEventListener("click", handleLoadMore);
-                loadMoreBtn.addEventListener("click", handleLoadMore);
-            } else {
-                hide(loadMoreBtn);
+    const cardElement = event.target.closest('.card-item');
+    if (cardElement) {
+        const nameElement = cardElement.querySelector('.name');
+        const filterElement = cardElement.querySelector('.filter');
+        if (nameElement && filterElement) {
+            const name = nameElement.textContent.trim().replace(/\s/g, '%20');
+            let filter = filterElement.textContent.trim().toLowerCase().replace(/\s/g, '');
+            if (filter === 'bodyparts') {
+                filter = filter.replace(/s$/, '');
             }
-        } else {
-            containerCardsEl.innerHTML = "";
-            noResults()
-            hide(loadMoreBtn);
+            try {
+                const newURL = `${URL}?${filter}=${name}`;
+                const { results, totalPages } = await serchPicture("", 1, newURL);
+                searchFormEl.classList.toggle('hidden');
+                // пошук за ключовим словом -------------------
+                form.addEventListener("submit", handleSearch);
+                // функція для пошуку за ключовим словом -------------------
+                async function handleSearch(event) {
+                    event.preventDefault();
+                    containerCardsEl.innerHTML = "";
+                    const form = event.currentTarget;
+                    const exercisesCard = form.elements.exercises.value.trim();
+                    currentSearchQuery = exercisesCard;
+                    queryParams.page = 1;
+                    if (exercisesCard === "" || exercisesCard == null) {
+                        noResults()
+                        return;
+                    }
+                    try {
+                        const { results, totalPages } = await serchPicture(exercisesCard, 1, newURL);
+                        if (results && results.length > 0) {
+                            queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
+                            createexercisesCard(results, containerCardsEl)
+                            const titles = containerCardsEl.querySelectorAll('.exercises-title');
+                            titles.forEach(function (title) {
+                                if (title.scrollWidth > title.clientWidth) {
+                                    title.classList.add('with-ellipsis');
+                                }
+                            });
+                        } else {
+                            containerCardsEl.innerHTML = "";
+                            noResults()
+                        }
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
+                    finally {
+                        form.reset()
+                    };
+                }
+                queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
+                createexercisesCard(results, containerCardsEl);
+            }
+            catch (err) {
+                console.log(err);
+            }
+            finally {
+                form.reset();
+            }
         }
     }
-    catch (err) {
-        console.log(err);
-    }
-    finally {
-        hideLoadingIndicator();
-        form.reset()
-    };
 }
-function serchPicture(exercisesCard, page = 1) {
+// запит-------------------
+function serchPicture(exercisesCard, page = 1, URL) {
     return axios.get(URL, {
         params: {
-            muscles: "delts",
             keyword: exercisesCard,
-            perpage: 9,
+            limit: 9,
             page,
         }
     }).then((res) => {
         return res.data;
     });
 }
-async function handleLoadMore() {
-    queryParams.page += 1;
-    disable(loadMoreBtn, preloader);
-    try {
-        const { results } = await serchPicture(currentSearchQuery, queryParams.page)
-        createexercisesCard(results, containerCardsEl)
-    } catch (err) {
-        console.log(err);
-    } finally {
-        enable(loadMoreBtn, preloader);
-        if (queryParams.page >= queryParams.maxPage) {
-            hide(loadMoreBtn);
-            iziToast.error({
-                title: "Error",
-                message: `"We're sorry, but you've reached the end of search results."`,
-            })
-            loadMoreBtn.removeEventListener("click", handleLoadMore);
-        } else {
-            show(loadMoreBtn);
-            loadMoreBtn.removeEventListener("click", handleLoadMore);
-            loadMoreBtn.addEventListener("click", handleLoadMore);
-        }
-    }
-}
+// формування розмітки -------------------
 function createexercisesCard(results, containerCardsEl) {
     const markup = results.map(({ rating, name, burnedCalories, bodyPart, target }) => `
     <li class="exercises-item">
