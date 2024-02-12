@@ -1,7 +1,7 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
+const searchFormEl = document.querySelector(".exercises-search");
 const refs = {
   buttons: document.querySelector('.exercises-buttons'),
   musclesButton: document.querySelector('[data-filter="muscles"]'),
@@ -95,6 +95,10 @@ refs.musclesButton.classList.add('active');
 refs.buttons.addEventListener('click', e => {
   selected(e);
   const cardTarget = e.target;
+
+  searchFormEl.classList.add('hidden');
+
+
   if (cardTarget === e.currentTarget) {
     return;
   } else if (cardTarget === refs.musclesButton) {
