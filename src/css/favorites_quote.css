@@ -13,6 +13,7 @@
   flex-wrap: wrap;
   border-radius: 30px;
   text-align: left;
+  height:272px;
 }
 .favorites-container {
   display: flex;
