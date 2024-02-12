@@ -5,15 +5,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
-.hero_img{
+.hero_img {
   border-radius: 30px;
-  background-image: image-set(url('hero_m@1x-min.png') 1x,
-        url('hero_m@2x-min.png') 2x
-      );
+  background-image: image-set(
+    url('hero_m@1x-min.png') 1x,
+    url('hero_m@2x-min.png') 2x
+  );
 }
-.hero_tag{
+.hero_tag {
   position: absolute;
   top: 355px;
   left: 10px;
@@ -24,17 +26,17 @@
   flex-wrap: wrap;
   gap: 4px;
 }
-.tag{
-box-sizing: border-box;
+.tag {
+  box-sizing: border-box;
   border: 1px solid rgba(246, 246, 246, 0.3);
   border-radius: 30px;
   color: rgb(246, 246, 246);
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0px;
-    padding: 4px 10px 4px 10px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0px;
+  /* padding: 4px 10px 4px 10px; */
 }
-.hero-text{
+.hero-text {
   width: 335px;
   height: 365px;
   border-radius: 30px;
@@ -59,23 +61,26 @@ box-sizing: border-box;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
-  color: rgb(27, 27, 27)b;
+  color: rgb(27, 27, 27) b;
 }
 
-@media screen and (min-width: 736px) and (max-width: 1407px){
-.hero_main {
+@media screen and (min-width: 736px) and (max-width: 1407px) {
+  .hero_main {
     width: 736px;
     height: 900px;
     flex-direction: row;
     gap: 0;
+    margin-bottom: 16px;
   }
 
   .hero_img {
     width: 248px;
     height: 900px;
     border-radius: 50px 0px 50px 50px;
-    background-image: image-set(url('hero_t@1x-min.png') 1x,
-          url('img/hero_t@2x-min.png') 2x);
+    background-image: image-set(
+      url('hero_t@1x-min.png') 1x,
+      url('img/hero_t@2x-min.png') 2x
+    );
   }
 
   .hero_tag {
@@ -91,79 +96,78 @@ box-sizing: border-box;
     letter-spacing: 0px;
     padding: 4px 16px 4px 16px;
   }
-    .hero-text {
-      width: 488px;
-      height: 900px;
-      padding: 231px 32px 192px 32px;
-      border-radius: 0px 50px 50px 50px;
-    }
-  
-    .hero_title {
-      font-size: 98px;
-      line-height: 95px;
-      letter-spacing: -0.02em;
-      margin-bottom: 25px;
-    }
-  
-    .hero_p {
-      width: 396px;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -0.01em;
-    }
+  .hero-text {
+    width: 488px;
+    height: 900px;
+    padding: 231px 32px 192px 32px;
+    border-radius: 0px 50px 50px 50px;
+  }
+
+  .hero_title {
+    font-size: 98px;
+    line-height: 95px;
+    letter-spacing: -0.02em;
+    margin-bottom: 25px;
+  }
+
+  .hero_p {
+    width: 396px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+  }
 }
 
- @media screen and (min-width: 1408px){
+@media screen and (min-width: 1408px) {
   .hero_main {
-      width: 1408px;
-      height: 884px;
-      flex-direction: row;
-      gap: 0;
-    }
-  
-    .hero_img {
-      width: 704px;
-      border-radius: 50px 0px 50px 50px;
-        background-image: image-set(url('img/hero_d@1x-min.png') 1x,
-            url('img/hero_d@2x-min.png') 2x);
-    }
-  
-    .hero_tag {
-      top: 780px;
-      left: 48px;
-      width: 196px;
-      gap: 8px;
-    }
-  
-    .tag {
-      font-size: 16px;
-      line-height: 24px;
-      letter-spacing: 0px;
-      padding: 4px 16px 4px 16px;
-    }
-  
-    .hero-text {
-      width: 704px;
-      height: 884px;
-      padding: 225px 33px 242px 32px;
-      border-radius: 0px 50px 50px 50px;
-    }
-  
-    .hero_title {
-      font-size: 120px;
-      line-height: 115px;
-      letter-spacing: -0.02em;
-      margin-bottom: 25px;
-    }
-  
-    .hero_p {
-      width: 528px;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -0.01em;
-    }
- }
+    width: 1408px;
+    height: 884px;
+    flex-direction: row;
+    gap: 0;
+    margin-bottom: 16px;
+  }
 
+  .hero_img {
+    width: 704px;
+    border-radius: 50px 0px 50px 50px;
+    background-image: image-set(
+      url('img/hero_d@1x-min.png') 1x,
+      url('img/hero_d@2x-min.png') 2x
+    );
+  }
 
+  .hero_tag {
+    top: 780px;
+    left: 48px;
+    width: 196px;
+    gap: 8px;
+  }
 
+  .tag {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    padding: 4px 16px 4px 16px;
+  }
 
+  .hero-text {
+    width: 704px;
+    height: 884px;
+    padding: 225px 33px 242px 32px;
+    border-radius: 0px 50px 50px 50px;
+  }
+
+  .hero_title {
+    font-size: 120px;
+    line-height: 115px;
+    letter-spacing: -0.02em;
+    margin-bottom: 25px;
+  }
+
+  .hero_p {
+    width: 528px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+  }
+}

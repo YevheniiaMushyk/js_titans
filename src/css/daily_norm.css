@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 }
 
-.image-container {
+.image_container {
   width: 335px;
   height: 269px;
   overflow: hidden;
@@ -54,10 +54,9 @@
   stroke: #f4f4fd;
 }
 
-.daily-info {  
+.daily-info {
   max-width: 245px;
   margin-left: 16px;
-
 }
 
 .daily-title {
@@ -89,7 +88,7 @@
   .daily-container {
     padding: 64px 96px 64px 64px;
   }
-  .image-container {
+  .image_container {
     width: 736px;
     height: 302px;
   }
@@ -102,7 +101,6 @@
   }
   .daily-title {
     font-size: 24px;
-    
   }
 
   .daily-text {
@@ -116,16 +114,15 @@
 }
 
 @media screen and (min-width: 1408px) {
-
   .daily-container {
-      padding: 64px 64px 64px 64px;
-    }
+    padding: 64px 64px 64px 64px;
+  }
   .daily-section {
     flex-wrap: nowrap;
     flex-direction: row;
   }
 
-  .image-container {
+  .image_container {
     width: 704px;
   }
 

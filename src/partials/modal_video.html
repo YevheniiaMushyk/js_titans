@@ -1,49 +1,7 @@
-<section class="exercises">
-  <div class="container-ex">
-    <h2 class="exercises-name">Exercises</h2>
-    <div class="exercises-ft">
-      <div class="exercises-buttons">
-        <button class="exercises-button-muscles" data-filter="muscles">
-          Muscles
-        </button>
-        <button class="exercises-button-bodypart" data-filter="bodypart">
-          Body Parts
-        </button>
-        <button class="exercises-button-equipment" data-filter="equipment">
-          Equipment
-        </button>
-      </div>
-      <div class="exercises-search">
-        <form class="exercises-search-form">
-          <input placeholder="Search" type="text" class="exercises-input" name="exercises" />
-          <button type="submit" class="exercises-form-btn">
-            <svg class="exercises-start-svg" width="12" height="12" stroke="rgb(27, 27, 27)" fill="#ffffff">
-              <use href="../img/icons.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>
-      </div>
-    </div>
-    <ul class="card-container"></ul>
-    <div id="pagination" class="tui-pagination"></div>
-  </div>
-</section>
-
-<script type="module" src="./js/modal_video.js"></script>
-
-<!-- <button type="button" class="label new-btn is-hidden">
-    <span class="loader label spinner-border spinner-border-sm spinner is-hidden" id="preloader" role="status"
-        aria-hidden="true"></span>
-    <span class="label">Load more</span></button> -->
-
-<!-- <script type="module" src="./js/exercises_sub"></script> -->
-
-
-
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <img class="exercise-gif" src="" alt="Exercise GIF">
+    <img class="exercise-gif" src="" alt="Exercise GIF" />
     <h3 class="exercise-title"></h3>
     <div class="exercise-rating">
       <div class="rating-box">
@@ -56,23 +14,34 @@
     </div>
     <div class="custom-hr"></div>
     <div class="exercise-details">
-      <p class="exercise-peculiarities">Target: <span class="exercise-target"></span></p>
-      <p class="exercise-peculiarities">Body Parts: <span class="exercise-bodyparts"></span></p>
-      <p class="exercise-peculiarities">Equipment: <span class="exercise-equipment"></span></p>
-      <p class="exercise-peculiarities">Popular: <span class="exercise-popular"></span></p>
-      <p class="exercise-peculiarities">Burned Calories: <span class="exercise-calories"></span></p>
+      <p class="exercise-peculiarities">
+        Target: <span class="exercise-target"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Body Parts: <span class="exercise-bodyparts"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Equipment: <span class="exercise-equipment"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Popular: <span class="exercise-popular"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Burned Calories: <span class="exercise-calories"></span>
+      </p>
     </div>
     <div class="custom-hr"></div>
     <div class="exercise-description">
       <p class="exercise-peculiarities-text">Description goes here...</p>
     </div>
     <div class="div-button-favorite">
-    <button class="favorite-button">Add to Favorites
-      <svg class="modal_icon" width="13" height="15"> 
-        <use href="./img/icons.svg#icon-heart"></use> 
-      </svg>
-    </button>
-  </div>
-    <button class="rating-button">Give a rating</button>
+      <button class="favorite-button">
+        Add to Favorites
+        <svg class="modal_icon" width="13" height="15">
+          <use href="./img/icons.svg#icon-heart"></use>
+        </svg>
+      </button>
     </div>
+    <button class="rating-button" id="modal_rating">Give a rating</button>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { modal } from '../js/modal_video.js';
 
 // отримуємо доступ до елементів
 const modalRatingButton = document.getElementById('modal_rating');
@@ -67,6 +68,8 @@ ratingForm.addEventListener('submit', ratingPatch);
 
 function ratingPatch(evt) {
   evt.preventDefault();
+
+  console.log(modal.dataset.id);
 
   const form = evt.currentTarget;
   formEmail = form.elements.email.value;

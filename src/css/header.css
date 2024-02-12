@@ -1,7 +1,12 @@
 .header {
+  position: absolute;
+  top: 32px;
+  left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  z-index: 1000;
+  width: 100%;
 }
 
 .header__logo {
@@ -73,8 +78,8 @@
   }
 
   .header__nav {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    /* margin-top: 32px;
+    margin-bottom: 32px; */
   }
 
   .header__nav-list {
