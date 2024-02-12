@@ -30,9 +30,8 @@ async function fetchQuoteData(url) {
       };
       localStorage.setItem('quoteLocalData', JSON.stringify(quoteData));
       renderQuoteCard(quoteData.author, quoteData.quote);
-    } else {
-      console.log(111);
     }
+    
   } catch (error) {
   refs.quoteAuthor.textContent = 'Angry Developer';
   refs.quoteText.textContent =
