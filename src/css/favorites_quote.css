@@ -15,43 +15,38 @@
 }
 .favorites-container {
   position: relative;
-  /* Заміни margin на pading. марджін це зовнішній відступ*/
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
 }
-.favorites-icon {
-  color: var(--sub_text);
+
+.favorites-icon-svg {
+  stroke: #f4f4fd;
   width: 34px;
   height: 32px;
-  left: 20px;
+  left: 14px;
   right: 281px;
   top: 40px;
   bottom: 200px;
   border-radius: 50%;
-  background-color: rgba(246, 246, 246, 0.1);
+  background: rgba(246, 246, 246, 0.1);
   fill: #f4f4fd;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.favorites-icon-svg {
-  stroke: #f4f4fd;
-}
+
 
 .favorites-icon-quotes {
-  position: absolute;
-  width: 21.6px;
-  height: 18.11px;
+position: absolute;
+width: 28px;
+height: 28px;
+right: 20px;
+top: 40px;
+bottom: 204px;
 
-  right: 12.86%;
-  top: 20%;
-
-  /* margin-left: 250px;
-  margin-right: 20px;
-  margin-bottom: 204px; */
 }
 
 .favorites-info {
@@ -74,7 +69,10 @@
   opacity: 0.6;
   margin-top: 10px;
   margin-bottom: 14px;
+  width: 249px;
+  height: 110px;
 }
+
 .favorites-sub-title {
   color: rgb(246, 246, 246);
   font-size: 16px;
@@ -131,7 +129,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-top: 40px;
 }
 .favorites-icon-svg-second {
   stroke: var(--main_text);
@@ -172,14 +170,15 @@
     margin-top: 64px;
     margin-bottom: 64px;
     margin-left: 80px;
-    margin-right: 96px;
-    max-width: 736px;
+    margin-right: 80px;
+    width: 736px;
     height: 302px;
   }
 
   .favorites-card {
-    border-radius: 50px;
-    margin-bottom: 16px;
+width: 736px;
+height: 302px;
+
   }
   .favorites-info {
     max-width: 526px;
@@ -187,11 +186,13 @@
   .favorites-title {
     color: var(--sub_text);
     letter-spacing: 0.01em;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
-    line-height: 1.4;
-    margin-top: 64px;
-    margin-bottom: 16px;
+    line-height: 32px;
+    width: 192px;
+    height: 32px;
+    color: rgb(246, 246, 246);
+    text-align: left;
   }
   .favorites-text {
     color: var(--sub_text);
@@ -202,6 +203,8 @@
     opacity: 0.6;
     margin-bottom: 25px;
     max-width: 480px;
+    width: 526px;
+    height: 77px;
   }
 
   .favorites-sub-title {
@@ -215,41 +218,32 @@
   }
 
   /* Grey card end */
-  .image-container {
-    min-width: 368px;
-    height: 302px;
-    margin-bottom: 16px;
+.image-container {
+width: 368px;
+height: 302px;
+
+
   }
-  .favorites-card-second {
-    min-width: 368px;
-    height: 302px;
-    margin-bottom: 16px;
-  }
-  .favorites-icon-quotes-svg {
-    width: 48px;
-    height: 48px;
+.favorites-card-second {
+width: 368px;
+height: 302px;
   }
 
-  .favorites-icon {
-    color: var(--sub_text);
-    width: 34px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(246, 246, 246, 0.1);
-    fill: #f4f4fd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 16px;
+  
+  .icon-complex {
+    position: relative;
+    display: block;
+    margin-top: 61px; 
+    margin-right: 16px;
   }
-
   .favorites-icon-quotes {
-    position: absolute;
     width: 37.03px;
     height: 31.04px;
-
     right: 12.85%;
-    top: 20%;
+    top: 0; 
+    bottom: auto; 
+    margin-right: 80px;
+
   }
 }
 
@@ -259,14 +253,55 @@
     flex-direction: row;
   }
 
-  .favorites-container {
-    width: 526px;
-  }
+ .favorites-container {
+
+}
+
 
   .favorites-info {
-    max-width: 526px;
+
   }
-  .favorites-container {
-    margin-right: 64px;
+  
+  
+  .favorites-icon-quotes {
+    width: 37.03px;
+    height: 31.04px;
+    right: 12.85%;
+    top: 0; 
+    bottom: auto; 
+    margin-right: 80px;
+
   }
+  .favorites-card {
+width: 704px;
+height: 302px;
+left: 0;
+top: 0;
+bottom: 0;
+  }
+  .image-container {
+width: 352px;
+height: 302px;
+right: 0;
+top: 0;
+bottom: 0;
+  }
+  .favorites-card-second {
+width: 352px;
+height: 302px;
+top: 0;
+bottom: 0;
+  }
+  .favorites-text {
+position: absolute;
+width: 526px;
+height: 77px;
+text-align: left;
+
+  }
+    
+  
+  
+  
+  
 }
