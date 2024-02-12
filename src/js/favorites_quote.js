@@ -19,6 +19,7 @@ async function fetchQuoteData(url) {
         return;
       }
     }
+
     const response = await axios.get(url);
     const data = response.data;
 
@@ -32,7 +33,8 @@ async function fetchQuoteData(url) {
       renderQuoteCard(quoteData.author, quoteData.quote);
     }
   } catch (error) {
-    iziToast.error(error);
+    iziToast.error('Failed to fetch quote data');
+    console.error(error);
   }
 }
 
@@ -41,8 +43,9 @@ function getCurrentDate() {
   const day = String(date.getDate()).padStart(2, '0');
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
-  return ${day}-${month}-${year};
+  return `${day}-${month}-${year}`;
 }
+
 function renderQuoteCard(author, quote) {
   refs.quoteAuthor.textContent = author;
   refs.quoteText.textContent = quote;
