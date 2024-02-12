@@ -18,7 +18,8 @@
 }
 
 .svg-container-coma {
-  margin-bottom: 16px;
+  position: relative;
+  bottom: 32px;
 }
 
 .quote-card-label {
@@ -29,7 +30,6 @@
 
 .quote-card-top {
   display: flex;
-  align-items: center;
 }
 
 .quote-card-text {
@@ -80,7 +80,7 @@
     color: #f6f6f6;
 
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 28px;
 
     margin-right: 58px;
@@ -92,6 +92,10 @@
 
   .svg-container-man {
     margin-right: 12px;
+  }
+
+  .svg-container-coma {
+    position: inherit;
   }
 
   .quote-text {
@@ -145,12 +149,15 @@
 
   .quote-card-top {
     display: flex;
-    align-items: center;
     height: 32px;
   }
 
   .svg-container-man {
     margin-right: 16px;
+  }
+
+  .svg-container-coma {
+    bottom: 24px;
   }
 
   .quote-text {

@@ -31,9 +31,15 @@ async function fetchQuoteData(url) {
       localStorage.setItem('quoteLocalData', JSON.stringify(quoteData));
       renderQuoteCard(quoteData.author, quoteData.quote);
     }
+    
   } catch (error) {
-    iziToast.error(error);
-  }
+  refs.quoteAuthor.textContent = 'Angry Developer';
+  refs.quoteText.textContent =
+    'Internet access is required to receive a quote.';
+iziToast.error({
+  title: 'Error',
+  message: 'No internet connection',
+});  }
 }
 
 function getCurrentDate() {
