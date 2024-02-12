@@ -48,17 +48,25 @@
   color: var(--sub_text);
   background-color: var(--button_fon);
 }
-.card-cont-ret {
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 20px;
+  min-width: 320px;
+}
+/* .card-cont-ret {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  row-gap: 40px;
   margin-bottom: 20px;
-}
+} */
 
 .card-item {
-  width: 313px;
-  height: 250px;
+  width: 295px;
+  /* height: 250px; */
   overflow: hidden;
   position: relative;
   border-radius: 12px;
@@ -138,6 +146,9 @@
 }
 
 @media screen and (max-width: 735px) {
+  .exercises {
+    min-height: 320px;
+  }
   .container-ex {
     min-width: 320px;
     max-width: 335px;
@@ -182,15 +193,19 @@
     padding: 10px 20px;
     font-size: 16px;
   }
-  .card-cont-ret {
+  /* .card-cont-ret {
     flex-direction: row;
-    justify-content: space-between;
-    gap: 14px !important;
+    justify-content: flex-start;
+    gap: 14px;
     margin-bottom: 32px;
-  }
+  } */
   .card-item {
-    width: 313px;
-    height: 250px;
+    flex: 0 0 calc((100% - 14px) / 2);
+    /* height: 250px; */
+  }
+
+  .card-container {
+    row-gap: 14px;
   }
 }
 @media screen and (min-width: 1408px) {
@@ -203,8 +218,12 @@
   .exercises-buttons {
     gap: 8px;
   }
+
+  .card-item {
+    flex: 0 0 calc((100% - 60px) / 4);
+    /* height: 250px; */
+  }
   .card-container {
-    column-gap: 14px;
-    row-gap: 14px;
+    row-gap: 40px;
   }
 }
