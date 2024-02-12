@@ -54,9 +54,10 @@
   stroke: #f4f4fd;
 }
 
-.daily-info {
+.daily-info {  
   max-width: 245px;
   margin-left: 16px;
+
 }
 
 .daily-title {
