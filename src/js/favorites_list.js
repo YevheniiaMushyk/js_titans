@@ -45,6 +45,9 @@ function addNewWorkoutById(workoutId) {
   }
 }
 
+fetchFavourites();
+console.log(response.data);
+
 // addNewWorkoutById();
 
 const exampleWorkoutId1 = '64f389465ae26083f39b17a2';
