@@ -1,4 +1,4 @@
-import"./assets/modal_video-1c3175ac.js";import{a as u,i as h}from"./assets/vendor-8cce9181.js";const v=document.querySelector(".favheader__button"),b=document.querySelector(".favmodal__button_close"),l=document.querySelector(".favmodal");v.addEventListener("click",()=>{l.showModal()});b.addEventListener("click",()=>{l.close()});const c={quoteText:document.querySelector(".favorites-text"),quoteAuthor:document.querySelector(".favorites-sub-title")},k="https://energyflow.b.goit.study/api/quote";async function y(e){try{const t=localStorage.getItem("quoteLocalData");if(t){const r=JSON.parse(t),_=n();if(r.date===_){i(r.author,r.quote);return}}const o=(await u.get(e)).data;if(o){const r={quote:o.quote,author:o.author,date:n()};localStorage.setItem("quoteLocalData",JSON.stringify(r)),i(r.author,r.quote)}}catch(t){h.error("Failed to fetch quote data"),console.error(t)}}function n(){const e=new Date,t=String(e.getDate()).padStart(2,"0"),s=String(e.getMonth()+1).padStart(2,"0"),o=e.getFullYear();return`${t}-${s}-${o}`}function i(e,t){c.quoteAuthor.textContent=e,c.quoteText.textContent=t}y(k);const I="https://energyflow.b.goit.study/api/exercises/",f=document.querySelector(".workouts-list");function m(e){return u.get(`${I}/${e}`)}let p=!0;const d=JSON.parse(localStorage.getItem("workoutId"))||[];d.length>0?d.forEach(e=>{m(e).then(t=>{const s=t.data;g(s)}).catch(t=>{console.error(t)})}):x();function a(e){const t=JSON.parse(localStorage.getItem("workoutId"))||[];t.includes(e)||m(e).then(s=>{const o=s.data;g(o),t.push(e),localStorage.setItem("workoutId",JSON.stringify(t)),p=!1}).catch(s=>{console.error(s)})}fetchFavourites();console.log(response.data);const S="64f389465ae26083f39b17a2",w="64f389465ae26083f39b17a5",q="64f389465ae26083f39b17a6",W="64f389465ae26083f39b19d8",L="64f389465ae26083f39b1b1a",$="64f389465ae26083f39b1996",C="64f389465ae26083f39b180e",M="64f389465ae26083f39b198b",O="64f389465ae26083f39b19b3",D="64f389465ae26083f39b1987";a(S);a(w);a(q);a(W);a(L);a($);a(C);a(M);a(O);a(D);function g(e){const t=T(e);f.insertAdjacentHTML("beforeend",t),E(e)}function E(e){document.querySelectorAll(".workout-card__remove-btn").forEach(s=>{s.getAttribute("data-workout-id")===e._id&&s.addEventListener("click",()=>{N(s,e._id)})})}function N(e,t){e.closest(".exercises-item").remove();const o=(JSON.parse(localStorage.getItem("workoutId"))||[]).filter(r=>r!==t);localStorage.setItem("workoutId",JSON.stringify(o)),o.length===0&&(localStorage.removeItem("workoutId"),x())}function T(e){return`
+import"./assets/loader-6257e73e.js";import{a as i}from"./assets/vendor-8cce9181.js";const n=document.querySelector(".favheader__button"),d=document.querySelector(".favmodal__button_close"),c=document.querySelector(".favmodal");n.addEventListener("click",()=>{c.showModal()});d.addEventListener("click",()=>{c.close()});const l="https://energyflow.b.goit.study/api/exercises/",u=document.querySelector(".workouts-list");function _(e){return i.get(`${l}/${e}`)}const r=JSON.parse(localStorage.getItem("workoutId"))||[];r.length>0&&r.forEach(e=>{_(e).then(s=>{const t=s.data;v(t)}).catch(s=>{console.error(s)})});function v(e){const s=g(e);u.insertAdjacentHTML("beforeend",s),m(e)}function m(e){document.querySelectorAll(".workout-card__remove-btn").forEach(t=>{t.getAttribute("data-workout-id")===e._id&&t.addEventListener("click",()=>{x(t,e._id)})})}function x(e,s){e.closest(".exercises-item").remove();const o=(JSON.parse(localStorage.getItem("workoutId"))||[]).filter(a=>a!==s);localStorage.setItem("workoutId",JSON.stringify(o)),o.length===0&&localStorage.removeItem("workoutId")}function g(e){return`
     <li class="exercises-item">
       <div class="exercises-sub-title">
         <div class="exercises__workout-rating">
@@ -39,17 +39,5 @@ import"./assets/modal_video-1c3175ac.js";import{a as u,i as h}from"./assets/vend
         </p>
       </div>
     </li>
-  `}function x(){p||(f.innerHTML=`
-    <div class="empty-list">
-      <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
-        alt="dumbbell"
-        width="85"
-        height="52"
-      />
-      <p class="empty-message">
-        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-      </p>
-    </div>`)}
+  `}
 //# sourceMappingURL=commonHelpers.js.map

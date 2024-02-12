@@ -18,13 +18,13 @@
     />
     
     <script type="module" crossorigin src="/js_titans/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/js_titans/assets/loader-6257e73e.js">
     <link rel="modulepreload" crossorigin href="/js_titans/assets/vendor-8cce9181.js">
-    <link rel="modulepreload" crossorigin href="/js_titans/assets/modal_video-1c3175ac.js">
-    <link rel="stylesheet" href="/js_titans/assets/modal_video-58a46a2c.css">
+    <link rel="stylesheet" href="/js_titans/assets/loader-833898b3.css">
     <link rel="stylesheet" href="/js_titans/assets/vendor-e5212ee8.css">
   </head>
   <body>
-    <div class="wrap_bg">
+    <div class="wrap_bg container">
       <header class="header container">
   <a class="header__logo" href="./index.html" target="_blank">energy.flow</a>
   <nav class="header__nav">
@@ -79,18 +79,35 @@
   </button>
 </header>
 
-<button class="give_rating" id="modal_rating" type="button">
-  give a rating
-</button>
 
 
 
-
-      <section class="hero container">
+      <section class="container">
   <div class="hero">
     <div class="hero_main">
       <div class="hero_img_container">
-        <img class="hero_img" src="../img/hero_d@2x-min.png" alt="hero" />
+        <img class="hero_img" src="/js_titans/assets/hero_d@2x-min-2053b8de.png" alt="hero" />
+        <!-- <picture class="image_container">
+          <source
+            media="(max-width: 735px)"
+            srcset="./img/daily_m@1x-min.png, ./img/daily_m@2x-min.png"
+          />
+          <source
+            media="(min-width: 736px) and (max-width: 1407px)"
+            srcset="./img/daily_t@1x-min.png, ./img/daily_t@2x-min.png"
+          />
+          <source
+            media="(min-width: 1408px)"
+            srcset="./img/daily_d@1x-min.png, ./img/daily_d@2x-min.png"
+          />
+          <img
+            class="daily-img"
+            src="./img/daily_d@1x-min.png"
+            alt="model"
+            width="335"
+            height="269"
+          />
+        </picture> -->
         <div class="hero_tag">
           <div class="tag">#Sport</div>
           <div class="tag">#Healthy</div>
@@ -110,6 +127,7 @@
     </div>
   </div>
 </section>
+
     </div>
 
     <section class="quote-container">
@@ -219,7 +237,7 @@
 
 
     <section class="daily-section">
-  <picture class="image-container">
+  <picture class="image_container">
     <source
       media="(max-width: 735px)"
       srcset="/js_titans/assets/daily_m@1x-min-6126b614.png , /js_titans/assets/daily_m@2x-min-73cf7438.png "
@@ -348,52 +366,10 @@
     <span id="loader" class="loader loader_hidden"></span>
 
 
-    <section class="exercises">
-  <div class="container-ex">
-    <h2 class="exercises-name">Exercises</h2>
-    <div class="exercises-ft">
-      <div class="exercises-buttons">
-        <button class="exercises-button-muscles" data-filter="muscles">
-          Muscles
-        </button>
-        <button class="exercises-button-bodypart" data-filter="bodypart">
-          Body Parts
-        </button>
-        <button class="exercises-button-equipment" data-filter="equipment">
-          Equipment
-        </button>
-      </div>
-      <div class="exercises-search">
-        <form class="exercises-search-form">
-          <input placeholder="Search" type="text" class="exercises-input" name="exercises" />
-          <button type="submit" class="exercises-form-btn">
-            <svg class="exercises-start-svg" width="12" height="12" stroke="rgb(27, 27, 27)" fill="#ffffff">
-              <use href="../img/icons.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>
-      </div>
-    </div>
-    <ul class="card-container"></ul>
-    <div id="pagination" class="tui-pagination"></div>
-  </div>
-</section>
-
-
-
-<!-- <button type="button" class="label new-btn is-hidden">
-    <span class="loader label spinner-border spinner-border-sm spinner is-hidden" id="preloader" role="status"
-        aria-hidden="true"></span>
-    <span class="label">Load more</span></button> -->
-
-<!-- <script type="module" src="./js/exercises_sub"></script> -->
-
-
-
-<div id="modal" class="modal">
+    <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <img class="exercise-gif" src="" alt="Exercise GIF">
+    <img class="exercise-gif" src="" alt="Exercise GIF" />
     <h3 class="exercise-title"></h3>
     <div class="exercise-rating">
       <div class="rating-box">
@@ -406,25 +382,36 @@
     </div>
     <div class="custom-hr"></div>
     <div class="exercise-details">
-      <p class="exercise-peculiarities">Target: <span class="exercise-target"></span></p>
-      <p class="exercise-peculiarities">Body Parts: <span class="exercise-bodyparts"></span></p>
-      <p class="exercise-peculiarities">Equipment: <span class="exercise-equipment"></span></p>
-      <p class="exercise-peculiarities">Popular: <span class="exercise-popular"></span></p>
-      <p class="exercise-peculiarities">Burned Calories: <span class="exercise-calories"></span></p>
+      <p class="exercise-peculiarities">
+        Target: <span class="exercise-target"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Body Parts: <span class="exercise-bodyparts"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Equipment: <span class="exercise-equipment"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Popular: <span class="exercise-popular"></span>
+      </p>
+      <p class="exercise-peculiarities">
+        Burned Calories: <span class="exercise-calories"></span>
+      </p>
     </div>
     <div class="custom-hr"></div>
     <div class="exercise-description">
       <p class="exercise-peculiarities-text">Description goes here...</p>
     </div>
     <div class="div-button-favorite">
-    <button class="favorite-button">Add to Favorites
-      <svg class="modal_icon" width="13" height="15"> 
-        <use href="/js_titans/assets/icons-1a2706a7.svg#icon-heart"></use> 
-      </svg>
-    </button>
-  </div>
-    <button class="rating-button">Give a rating</button>
+      <button class="favorite-button">
+        Add to Favorites
+        <svg class="modal_icon" width="13" height="15">
+          <use href="/js_titans/assets/icons-1a2706a7.svg#icon-heart"></use>
+        </svg>
+      </button>
     </div>
+    <button class="rating-button" id="modal_rating">Give a rating</button>
+  </div>
 </div>
 
     <dialog class="modal_rating">
