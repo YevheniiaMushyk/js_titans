@@ -1,0 +1,53 @@
+.loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loader_hidden {
+  visibility: hidden;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px var(--button_fon_gray) inset;
+}
+.loader:after {
+  box-shadow: 0 2px 0 var(--button_fon) inset;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .loader {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media screen and (min-width: 736px) {
+  .loader {
+    width: 50px;
+    height: 50px;
+  }
+}

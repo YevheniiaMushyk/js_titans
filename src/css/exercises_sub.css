@@ -1,0 +1,244 @@
+/* ===exercises-body-parts-mob===*/
+.exercises-item {
+    /* max-width: 295px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    padding: 16px;
+    border-radius: 15px;
+    background: rgb(255, 255, 255);
+    max-width: 295px;
+}
+
+.container-ex {
+    background: rgb(232, 232, 232);
+    border-radius: 22px;
+}
+
+.hidden {
+    display: none;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* .exercises-item__link {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: rgb(255, 255, 255);
+  transition: all 250ms;
+} */
+
+.exercises-item__link:hover {
+    transform: scale(1.04);
+}
+
+.exercises-sub-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 79px;
+    margin-bottom: 25px;
+}
+
+.exercises__workout-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.exercises-workout {
+    padding: 5px 8px;
+    text-transform: uppercase;
+    border-radius: 15px;
+    background: rgb(126, 132, 127);
+    color: rgb(246, 246, 246);
+    font-size: 12px;
+    font-weight: 500;
+    /*line-height: 1.33;*/
+}
+
+.exercises-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.exercises-rating__text {
+    color: rgb(27, 27, 27);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.exercises-rating__svg {}
+
+.exercises-start {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+
+.exercises-start__text {
+    color: rgb(27, 27, 27);
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.exercises-start__svg {
+    fill: #ffffff;
+    stroke: rgb(27, 27, 27);
+    width: 11.38px;
+    height: 11.38px;
+}
+
+.exercises-title {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.exercises-title.with-ellipsis::after {
+    content: '...';
+}
+
+.exercises-title__svg {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.exercises-title-text {
+    color: rgb(27, 27, 27);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.exercises-text {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.exercises-text__content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.exercises-text__static {
+    color: rgba(27, 27, 27, 0.4);
+}
+
+.exercises-text__dynamic {
+    color: rgb(27, 27, 27);
+}
+
+.exercises-search {
+    flex-basis: 295px;
+}
+
+.exercises-search-form {
+    position: relative;
+}
+
+.exercises-input {
+    min-width: 295px;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 30px;
+    background: rgb(246, 246, 246);
+    padding: 12px 32px 12px 14px;
+}
+
+.exercises-input:focus,
+.exercises-input:active {
+    background: rgb(246, 246, 246);
+}
+
+.exercises-form-btn {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 12px;
+    right: 14px;
+    background: rgb(246, 246, 246);
+}
+
+.exercises-start-svg {
+    fill: #ffffff;
+    stroke: rgb(27, 27, 27);
+}
+
+.no-results-text {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -1%;
+    text-align: center;
+}
+
+.no-results-text span {
+    color: rgb(126, 132, 127);
+}
+
+/* ===exercises-body-parts-tab===*/
+@media screen and (min-width: 736px) {
+    .exercises-item {
+        padding: 16px;
+        border-radius: 15px;
+        background: rgb(255, 255, 255);
+        max-width: 313px;
+    }
+
+    .exercises-search {
+        flex-basis: auto;
+    }
+
+    .exercises-input {
+        min-width: 0;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 12px 32px 12px 14px;
+    }
+
+    .exercises-form-btn {
+        top: 16px;
+        right: 14px;
+    }
+}
+
+@media screen and (max-width: 1408px) {
+    .exercises-item {
+        flex-basis: calc((100% - 20px) / 2);
+    }
+}
+
+/* ===exercises-body-parts-desk===*/
+@media screen and (min-width: 1408px) {
+    .exercises-item {
+        max-width: 424px;
+        flex-basis: calc((100% - 40px) / 2);
+    }
+}
