@@ -1,4 +1,4 @@
-.modal_rating {
+.modal_rating_window {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -144,7 +144,7 @@ input:checked ~ label {
 }
 
 @media screen and (max-width: 735px) {
-  .modal_rating {
+  .modal_rating_window {
     height: 357px;
     width: 335px;
   }
@@ -189,7 +189,7 @@ input:checked ~ label {
 }
 
 @media screen and (min-width: 736px) {
-  .modal_rating {
+  .modal_rating_window {
     height: 432px;
     width: 450px;
   }
@@ -231,4 +231,16 @@ input:checked ~ label {
     font-size: 16px;
     letter-spacing: 1.5;
   }
+}
+
+/* Клас для закриття/відкриття вікна з відео */
+.disactive_video_window {
+  visibility: hidden;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
 }

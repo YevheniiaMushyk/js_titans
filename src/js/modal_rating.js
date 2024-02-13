@@ -4,8 +4,9 @@ import { modal } from '../js/modal_video.js';
 
 // отримуємо доступ до елементів
 const modalRatingButton = document.getElementById('modal_rating');
+const modalVideoWindow = document.getElementById('modal');
 const modalRatingClose = document.querySelector('.modal_rating_close');
-const modalRating = document.querySelector('.modal_rating');
+const modalRating = document.querySelector('.modal_rating_window');
 const stars = document.querySelectorAll('.fa-solid');
 const digit = document.querySelector('.modal_rating_digit');
 const ratingForm = document.querySelector('.modal_rating_form');
@@ -17,12 +18,11 @@ let formComent = '';
 let starRating = 0;
 let idCardRating = '';
 
-// const id = '64f389465ae26083f39b19d8';
-
 // правила відкриття та закриття вікна
 modalRatingButton.addEventListener('click', () => {
   initDigit = 0;
   digit.textContent = `${initDigit}.0`;
+  modalVideoWindow.classList.add('disactive_video_window');
   modalRating.showModal();
 });
 
@@ -31,6 +31,7 @@ modalRatingClose.addEventListener('click', () => {
   digit.textContent = `${initDigit}.0`;
   ratingForm.reset();
   modalRating.close();
+  modalVideoWindow.classList.remove('disactive_video_window');
 });
 
 modalRating.addEventListener('click', e => {
@@ -39,6 +40,7 @@ modalRating.addEventListener('click', e => {
     digit.textContent = `${initDigit}.0`;
     ratingForm.reset();
     modalRating.close();
+    modalVideoWindow.classList.remove('disactive_video_window');
   }
 });
 
@@ -84,6 +86,7 @@ function ratingPatch(evt) {
     patchRating()
       .then(() => {
         modalRating.close();
+        modalVideoWindow.classList.remove('disactive_video_window');
         iziToast.info({
           message: 'Thank you for your feedback',
           position: 'topCenter',
@@ -104,7 +107,6 @@ function ratingPatch(evt) {
 }
 
 function patchRating() {
-  console.log(modal.dataset.id);
   let patchToUpdate = {};
   patchToUpdate.rate = parseInt(starRating);
   patchToUpdate.email = formEmail;
