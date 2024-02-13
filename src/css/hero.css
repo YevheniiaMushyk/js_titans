@@ -1,3 +1,10 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .hero_main {
   position: relative;
   width: 335px;
@@ -5,8 +12,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 400px;
-  margin-top: 20px;
 }
 
 .hero_img {
@@ -62,13 +67,18 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439px) {
-  .hero_main {
-    width: 736px;
-    height: 900px;
-    flex-direction: row;
-    gap: 0;
+  .hero {
     margin-bottom: 16px;
-    margin-top: 16px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  .hero_main {
+    width: 248px;
+    height: 900px;
+
+    /* margin-bottom: 16px;
+    margin-top: 16px; */
   }
 
   .hero_img {
@@ -112,13 +122,16 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .hero_main {
-    width: 1408px;
-    height: 884px;
-    flex-direction: row;
-    gap: 0;
+  .hero {
     margin-bottom: 16px;
     margin-top: 16px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .hero_main {
+    width: 704px;
+    height: 884px;
+    gap: 0;
   }
 
   .hero_img {
@@ -130,7 +143,6 @@
     bottom: 32px;
     left: 48px;
     width: 196px;
-
   }
 
   .tag {
