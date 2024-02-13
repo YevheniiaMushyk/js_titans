@@ -17,11 +17,11 @@
 }
 .hero_tag {
   position: absolute;
-  top: 355px;
+  bottom: 20px;
   left: 10px;
   width: 141px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 4px;
@@ -84,7 +84,7 @@
   }
 
   .hero_tag {
-    top: 764px;
+    bottom: 64px;
     left: 20px;
     width: 196px;
     gap: 8px;
@@ -137,7 +137,7 @@
   }
 
   .hero_tag {
-    top: 780px;
+    bottom: 32px;
     left: 48px;
     width: 196px;
     gap: 8px;
