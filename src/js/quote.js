@@ -1,5 +1,8 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
+import { loader, activeLoader, disactiveLoader } from './loader';
+
+
 
 const refs = {
   quoteText: document.querySelector('.quote-card-text'),
@@ -10,6 +13,8 @@ const BASE_URL = 'https://energyflow.b.goit.study/api/quote';
 
 async function fetchQuoteData(url) {
   try {
+    activeLoader(loader);
+
     const savedLocalData = localStorage.getItem('quoteLocalData');
     if (savedLocalData) {
       const parsedLocalData = JSON.parse(savedLocalData);
@@ -39,7 +44,7 @@ async function fetchQuoteData(url) {
 iziToast.error({
   title: 'Error',
   message: 'No internet connection',
-});  }
+})  } 
 }
 
 function getCurrentDate() {
@@ -50,6 +55,8 @@ function getCurrentDate() {
   return `${day}-${month}-${year}`;
 }
 function renderQuoteCard(author, quote) {
+  disactiveLoader(loader);
+
   refs.quoteAuthor.textContent = author;
   refs.quoteText.textContent = quote;
 }

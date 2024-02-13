@@ -3,12 +3,12 @@ const loader = document.getElementById('loader');
 
 //функія для активації loader
 function activeLoader(loader) {
-  loader.classList.remove('loader_hidden');
+  loader.style.display = 'block';
 }
 
 //функція для деактивації loader
 function disactiveLoader(loader) {
-  loader.classList.add('loader_hidden');
+  loader.style.display = 'none';
 }
 
 // список експортованих змінних

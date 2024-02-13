@@ -2,6 +2,10 @@ import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+///////////////////////////////////////////////////////////////////////////////////////////
+import { loader, activeLoader, disactiveLoader } from './loader';
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 // import { loader, activeLoader, disactiveLoader } from '../js/loader';
 const searchFormEl = document.querySelector('.exercises-search');
 // const exercisesName = document.querySelector(".exercises-name");
@@ -27,8 +31,8 @@ const params = {
 };
 
 async function getData() {
-  // activeLoader(loader);
   makeHeightSec('.exercises-card-container', 'add');
+
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
@@ -64,11 +68,16 @@ function createMarkup(results) {
     const markup = markupArray.join('');
     refs.cardContainer.innerHTML = markup;
     makeHeightSec('.exercises-card-container', 'add');
-    // disactiveLoader(loader);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    disactiveLoader(loader);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
   });
 }
 
 function onSearch() {
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  activeLoader(loader);
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getData()
     .then(data => {
       const { results, page, totalPages } = data;
@@ -105,7 +114,7 @@ refs.buttons.addEventListener('click', e => {
 
   searchFormEl.classList.add('hidden');
 
-//   exercisesName.innerHTML = `Exercises`;
+  //   exercisesName.innerHTML = `Exercises`;
 
   if (cardTarget === e.currentTarget) {
     return;
@@ -146,6 +155,7 @@ function pagesPagin(page, totalPages) {
 }
 async function onPagination(e) {
   const buttons = document.querySelectorAll('.pag-btn');
+
   buttons.forEach(button => {
     button.classList.remove('active');
   });
@@ -153,6 +163,9 @@ async function onPagination(e) {
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
   try {
+    /////////////////////////////////////////////////////////////////////////////////////
+    activeLoader(loader);
+    ///////////////////////////////////////////////////////////////////////////////////////////
     const { results } = await getData();
     createMarkup(results);
   } catch (error) {
