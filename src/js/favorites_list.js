@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { openExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
@@ -9,7 +10,8 @@ function fetchWorkoutById(workoutId) {
 
 let isFirstLoad = true;
 
-const storedWorkoutIds = JSON.parse(localStorage.getItem('workoutId')) || [];
+const storedWorkoutIds =
+  JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
 
 if (storedWorkoutIds.length > 0) {
   storedWorkoutIds.forEach(workoutId => {
@@ -23,11 +25,13 @@ if (storedWorkoutIds.length > 0) {
       });
   });
 } else {
+  isFirstLoad = false;
   showEmptyMessage();
 }
 
 function addNewWorkoutById(workoutId) {
-  const storedWorkoutIds = JSON.parse(localStorage.getItem('workoutId')) || [];
+  const storedWorkoutIds =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
   if (!storedWorkoutIds.includes(workoutId)) {
     fetchWorkoutById(workoutId)
       .then(response => {
@@ -35,7 +39,10 @@ function addNewWorkoutById(workoutId) {
         addWorkoutCardToDOM(workoutData);
 
         storedWorkoutIds.push(workoutId);
-        localStorage.setItem('workoutId', JSON.stringify(storedWorkoutIds));
+        localStorage.setItem(
+          'ENERGY_FLOW_FAVORITES_KEY',
+          JSON.stringify(storedWorkoutIds)
+        );
 
         isFirstLoad = false;
       })
@@ -45,29 +52,27 @@ function addNewWorkoutById(workoutId) {
   }
 }
 
-// addNewWorkoutById();
+const startButtons = document.querySelectorAll('.exercises-item__button');
+startButtons.forEach(startButton => {
+  startButton.addEventListener('click', event => {
+    openExerciseModal(event);
+  });
+});
+// const startButtons = document.querySelectorAll('.exercises-item__button');
+// startButtons.forEach(startButton => {
+//   startButton.addEventListener('click', () => {
+//     openExerciseModal();
+//   });
+// });
 
-// const exampleWorkoutId1 = '64f389465ae26083f39b17a2';
-// const exampleWorkoutId2 = '64f389465ae26083f39b17a5';
-// const exampleWorkoutId3 = '64f389465ae26083f39b17a6';
-// const exampleWorkoutId4 = '64f389465ae26083f39b19d8';
-// const exampleWorkoutId5 = '64f389465ae26083f39b1b1a';
-// const exampleWorkoutId6 = '64f389465ae26083f39b1996';
-// const exampleWorkoutId7 = '64f389465ae26083f39b180e';
-// const exampleWorkoutId8 = '64f389465ae26083f39b198b';
-// const exampleWorkoutId9 = '64f389465ae26083f39b19b3';
-// const exampleWorkoutId10 = '64f389465ae26083f39b1987';
-
-// addNewWorkoutById(exampleWorkoutId1);
-// addNewWorkoutById(exampleWorkoutId2);
-// addNewWorkoutById(exampleWorkoutId3);
-// addNewWorkoutById(exampleWorkoutId4);
-// addNewWorkoutById(exampleWorkoutId5);
-// addNewWorkoutById(exampleWorkoutId6);
-// addNewWorkoutById(exampleWorkoutId7);
-// addNewWorkoutById(exampleWorkoutId8);
-// addNewWorkoutById(exampleWorkoutId9);
-// addNewWorkoutById(exampleWorkoutId10);
+// const startButtons = document.querySelectorAll('.exercises-item__button');
+// startButtons.forEach(startButton => {
+//   startButton.addEventListener('click', () => {
+//     const workoutId = startButton.dataset.workoutId;
+//     console.log('Clicked on Start button with workoutId:', workoutId);
+//     openExerciseModal(workoutId);
+//   });
+// });
 
 function addWorkoutCardToDOM(workoutData) {
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
@@ -89,14 +94,24 @@ function addRemoveButtonEventListener(workoutData) {
 function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises-item').remove();
 
-  const storedWorkoutIds = JSON.parse(localStorage.getItem('workoutId')) || [];
+  const storedWorkoutIds =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
   const updatedStoredWorkoutIds = storedWorkoutIds.filter(
     id => id !== workoutId
   );
-  localStorage.setItem('workoutId', JSON.stringify(updatedStoredWorkoutIds));
+
+  localStorage.setItem(
+    'ENERGY_FLOW_FAVORITES_KEY',
+    JSON.stringify(updatedStoredWorkoutIds)
+  );
+
+  localStorage.removeItem('workoutId');
 
   if (updatedStoredWorkoutIds.length === 0) {
-    localStorage.removeItem('workoutId');
+    isFirstLoad = false;
+  }
+
+  if (updatedStoredWorkoutIds.length === 0) {
     showEmptyMessage();
   }
 }
@@ -113,14 +128,19 @@ function createWorkoutCardMarkup(workoutData) {
             </svg>
           </button>
         </div>
-        <a href="./modal_video.js" class="exercises-item__link">
-          <div class="exercises-start">
-            <span class="exercises-start__text">Start</span>
-            <svg class="exercises-start__svg" width="13" height="13" stroke="rgb(27, 27, 27)">
-              <use href="./img/icons.svg#icon-arrow"></use>
-            </svg>
-          </div>
-        </a>
+     <button class="exercises-item__button" data-workout-id="${workoutData._id}">
+  <div class="exercises-start">
+    <span class="exercises-start__text">Start</span>
+    <svg
+      class="exercises-start__svg"
+      width="13"
+      height="13"
+      stroke="rgb(27, 27, 27)"
+    >
+      <use href="./img/icons.svg#icon-arrow"></use>
+    </svg>
+  </div>
+</button>
       </div>
       <div class="exercises-title">
         <svg class="exercises-title__svg" width="24" height="24">
