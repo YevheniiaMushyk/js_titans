@@ -25,8 +25,8 @@ const params = {
 };
 
 async function getData() {
-  heightSec('.exercises-card-container', 'set');
   // activeLoader(loader);
+  makeHeightSec('.exercises-card-container', 'add');
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
@@ -61,8 +61,8 @@ function createMarkup(results) {
   Promise.all(promises).then(markupArray => {
     const markup = markupArray.join('');
     refs.cardContainer.innerHTML = markup;
+    makeHeightSec('.exercises-card-container', 'add');
     // disactiveLoader(loader);
-    heightSec('.exercises-card-container', 'set');
   });
 }
 
@@ -71,7 +71,7 @@ function onSearch() {
     .then(data => {
       const { results, page, totalPages } = data;
       params.totalPages = totalPages;
-      heightSec('.exercises-card-container', 'set');
+      makeHeightSec('.exercises-card-container', 'del');
       createMarkup(results);
       if (totalPages > 1) {
         const pages = pagesPagin(page, totalPages);
@@ -156,16 +156,16 @@ async function onPagination(e) {
   }
 }
 
-function heightSec(selector, action) {
-  const section = document.querySelector(selector);
-  const rect = section.getBoundingClientRect();
-  if (rect.height > 100 && action === 'create') {
-    section.setAttribute('style', 'height:' + rect.height + 'px');
-    section.style.height = rect.height + 'px';
+function makeHeightSec(selector, act) {
+  const block = document.querySelector(selector);
+  const rect = block.getBoundingClientRect();
+  if (rect.height > 100 && act === 'add') {
+    block.setAttribute('style', 'height:' + rect.height + 'px');
+    block.style.height = rect.height + 'px';
   }
-  if (action === 'uncreate') {
-    section.removeAttribute('style');
-    section.style.height = 'auto';
+  if (act === 'del') {
+    block.removeAttribute('style');
+    block.style.height = 'auto';
   }
 }
 
