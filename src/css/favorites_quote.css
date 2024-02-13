@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .favorites-card {
@@ -13,7 +14,7 @@
   flex-wrap: wrap;
   border-radius: 30px;
   text-align: left;
-  height:272px;
+  height: 272px;
 }
 .favorites-container {
   display: flex;
@@ -77,6 +78,14 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: left;
+}
+
+.doubl_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .image-container {
   width: 335px;
@@ -154,6 +163,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 16px;
   }
 
   .favorites-container {
@@ -164,6 +174,7 @@
   .favorites-card {
     width: 736px;
     height: 302px;
+    border-radius: 50px;
   }
 
   .favorites-title {
@@ -172,8 +183,7 @@
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
-    width: 192px;
-    height: 32px;
+
     color: rgb(246, 246, 246);
     text-align: left;
   }
@@ -184,6 +194,11 @@
     width: 526px;
   }
 
+  .doubl_div {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
   /* Grey card end */
   .image-container {
     width: 368px;
@@ -192,6 +207,7 @@
   .favorites-card-second {
     width: 368px;
     height: 302px;
+    border-radius: 50px;
   }
 
   .icon-complex {
@@ -208,17 +224,13 @@
     width: 38px;
     height: 32px;
   }
-  .favorites-icon-svg {
- 
-  }
-  
-  
 }
 
 @media screen and (min-width: 1408px) {
   .favorites-section {
     flex-wrap: nowrap;
     flex-direction: row;
+    margin-bottom: 16px;
   }
 
   .favorites-container {
@@ -243,7 +255,14 @@
     left: 0;
     top: 0;
     bottom: 0;
+    border-radius: 50px;
   }
+
+  .doubl_div {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
   .image-container {
     width: 352px;
     height: 302px;
@@ -254,6 +273,7 @@
   .favorites-card-second {
     width: 352px;
     height: 302px;
+    border-radius: 50px;
   }
   .favorites-text {
     text-align: left;
