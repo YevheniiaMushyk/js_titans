@@ -221,11 +221,13 @@
   }
 
   .exercise-gif {
+    margin-top: 40px;
     width: 270px;
     height: 259px;
   }
 
   .exercise-title {
+    margin-top: 40px;
     margin-bottom: 8px;
   }
 
