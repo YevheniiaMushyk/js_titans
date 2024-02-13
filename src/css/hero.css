@@ -11,10 +11,6 @@
 
 .hero_img {
   border-radius: 30px;
-  background-image: image-set(
-    url('hero_m@1x-min.png') 1x,
-    url('hero_m@2x-min.png') 2x
-  );
 }
 .hero_tag {
   position: absolute;
@@ -35,7 +31,7 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0px;
-  /* padding: 4px 10px 4px 10px; */
+  padding: 4px 10px 4px 10px;
 }
 .hero-text {
   width: 335px;
@@ -79,17 +75,12 @@
     width: 248px;
     height: 900px;
     border-radius: 50px 0px 50px 50px;
-    background-image: image-set(
-      url('hero_t@1x-min.png') 1x,
-      url('img/hero_t@2x-min.png') 2x
-    );
   }
 
   .hero_tag {
     bottom: 64px;
     left: 20px;
     width: 196px;
-    gap: 8px;
   }
 
   .tag {
@@ -133,17 +124,13 @@
   .hero_img {
     width: 704px;
     border-radius: 50px 0px 50px 50px;
-    background-image: image-set(
-      url('img/hero_d@1x-min.png') 1x,
-      url('img/hero_d@2x-min.png') 2x
-    );
   }
 
   .hero_tag {
     bottom: 32px;
     left: 48px;
     width: 196px;
-    gap: 8px;
+
   }
 
   .tag {
