@@ -10,6 +10,7 @@
     border-radius: 15px;
     background: rgb(255, 255, 255);
     max-width: 295px;
+    overflow: hidden;
 }
 
 .container-ex {
@@ -109,7 +110,6 @@
     align-items: center;
     justify-content: start;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
     gap: 16px;
     margin-bottom: 16px;
@@ -231,7 +231,7 @@
 
 @media screen and (max-width: 1408px) {
     .exercises-item {
-        flex-basis: calc((100% - 20px) / 2);
+        /* flex-basis: calc((100% - 20px) / 2); */
     }
 }
 
@@ -239,6 +239,9 @@
 @media screen and (min-width: 1408px) {
     .exercises-item {
         max-width: 424px;
-        flex-basis: calc((100% - 40px) / 2);
+    }
+
+    .exercises-input {
+        min-width: 273px;
     }
 }
