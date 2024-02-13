@@ -10,6 +10,14 @@
   margin-bottom: 20px;
 }
 
+.exercises-name span {
+  color: rgba(27, 27, 27, 0.5);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -2%;
+}
+
 .container-ex {
   background-color: var(--main_background);
   padding: 40px 20px 40px;
@@ -154,10 +162,12 @@
   display: none !important;
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767.9px) {
   .exercises {
     min-height: 320px;
+    margin-bottom: 16px;
   }
+
   .container-ex {
     min-width: 320px;
     max-width: 335px;
@@ -165,29 +175,41 @@
   }
 }
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
   .exercises {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 736px;
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 16px;
+    margin-bottom: 16px;
   }
+
   .container-ex {
     padding: 66px 48px 32px;
     border-radius: 50px !important;
   }
+
   .exercises-name {
     font-size: 44px;
     line-height: 109%;
     margin-bottom: 32px;
   }
+
+  .exercises-name span {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
   .exercises-ft {
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 32px;
   }
 
   .exercises-buttons {
     gap: 8px;
   }
+
   .exercises-button-muscles {
     width: 101px;
     height: 44px;
@@ -217,11 +239,12 @@
   }
 }
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .exercises {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1408px;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 16px;
+    margin-bottom: 16px;
   }
 
   .exercises-buttons {
@@ -232,6 +255,7 @@
     flex: 0 0 calc((100% - 60px) / 4);
     /* height: 250px; */
   }
+
   .exercises-card-container {
     row-gap: 40px;
     column-gap: 20px;
