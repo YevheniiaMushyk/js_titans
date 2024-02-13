@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 .modal_rating::backdrop {
-  background-color: rgba(27, 27, 27, 0.6);
+  background-color: #1b1b1b99;
 }
 .modal_rating__container {
   position: relative;
