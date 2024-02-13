@@ -2,14 +2,22 @@
   position: absolute;
   top: 32px;
   left: 0;
+
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   z-index: 1000;
   width: 100%;
 }
 
-.header__logo {
+.favheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header__logo,
+.favheader__logo {
   display: block;
   font-weight: 700;
   letter-spacing: -2%;
@@ -18,6 +26,22 @@
 .header__icons {
   display: flex;
   column-gap: 12px;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.header__logo,
+.favheader__logo {
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.header__logo:hover,
+.header__logo:focus,
+.favheader__logo:hover,
+.favheader__logo:focus {
+  transform: scale(1.1);
 }
 
 .header__icon_link .header__icon_svg {
@@ -35,18 +59,9 @@
   stroke: var(--button_fon_hover);
 }
 
-.header__logo {
-  transition-duration: 250ms;
-  transition-timing-function: ease;
-}
-
-.header__logo:hover,
-.header__logo:focus {
-  transform: scale(1.1);
-}
-
 @media screen and (max-width: 735px) {
   .header__nav,
+  .favheader__nav,
   .header__icons {
     display: none;
   }
@@ -55,8 +70,16 @@
     display: block;
     font-size: 16px;
     line-height: 1.125;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+  }
+
+  .favheader__logo {
+    display: block;
+    font-size: 16px;
+    line-height: 1.125;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 38px;
   }
 
   .header__button,
@@ -65,6 +88,12 @@
     width: 32px;
     height: 16px;
   }
+
+  .header__button_svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 736px) {
@@ -72,14 +101,15 @@
   .favheader__button {
     display: none;
   }
-  .header__logo {
+  .header__logo,
+  .favheader__logo {
     font-size: 28px;
     line-height: 1.75;
   }
 
-  .header__nav {
-    /* margin-top: 32px;
-    margin-bottom: 32px; */
+  .favheader__nav {
+    margin-top: 32px;
+    margin-bottom: 80px;
   }
 
   .header__nav-list {
@@ -128,5 +158,16 @@
   .header__icon_link:hover {
     border-color: var(--button_fon_hover);
     transform: scale(1.2);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 0 48px;
+  }
+
+  .favheader__nav {
+    margin-top: 32px;
+    margin-bottom: 64px;
   }
 }

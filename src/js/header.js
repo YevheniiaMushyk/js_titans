@@ -1,11 +1,11 @@
 const burger = document.querySelector('.header__button');
 const modal__button_close = document.querySelector('.modal__button_close');
-const modal = document.querySelector('.modal');
+const header_modal = document.getElementById('header_modal');
 
 burger.addEventListener('click', () => {
-  modal.showModal();
+  header_modal.showModal();
 });
 
 modal__button_close.addEventListener('click', () => {
-  modal.close();
+  header_modal.close();
 });

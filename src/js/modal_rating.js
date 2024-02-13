@@ -15,8 +15,9 @@ let initDigit = 0;
 let formEmail = '';
 let formComent = '';
 let starRating = 0;
+let idCardRating = '';
 
-const id = '64f389465ae26083f39b19d8';
+// const id = '64f389465ae26083f39b19d8';
 
 // правила відкриття та закриття вікна
 modalRatingButton.addEventListener('click', () => {
@@ -69,8 +70,6 @@ ratingForm.addEventListener('submit', ratingPatch);
 function ratingPatch(evt) {
   evt.preventDefault();
 
-  console.log(modal.dataset.id);
-
   const form = evt.currentTarget;
   formEmail = form.elements.email.value;
   formComent = form.elements.coment.value;
@@ -105,10 +104,12 @@ function ratingPatch(evt) {
 }
 
 function patchRating() {
+  console.log(modal.dataset.id);
   let patchToUpdate = {};
   patchToUpdate.rate = parseInt(starRating);
   patchToUpdate.email = formEmail;
   patchToUpdate.review = formComent;
+  idCardRating = modal.dataset.id;
 
   const options = {
     method: 'PATCH',
@@ -119,7 +120,7 @@ function patchRating() {
   };
 
   return fetch(
-    `https://energyflow.b.goit.study/api/exercises/${id}/rating`,
+    `https://energyflow.b.goit.study/api/exercises/${idCardRating}/rating`,
     options
   ).then(response => {
     if (!response.ok) {
