@@ -52,7 +52,7 @@ import{o as p}from"./assets/loader-04669fbd.js";import{a as u,i as f}from"./asse
         alt="dumbbell"
         width="85"
         height="52"
-      />
+      />      
       <p class="empty-message">
         It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
       </p>
