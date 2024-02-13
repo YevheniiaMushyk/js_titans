@@ -18,6 +18,11 @@
   width: 80%;
   border-radius: 20px;
 background: rgb(246, 246, 246);
+position: absolute;
+  max-width: 335px;
+  max-height: 999px;
+  left: 20px;
+right: 20px;
 }
 
 .close {
@@ -34,14 +39,6 @@ background: rgb(246, 246, 246);
   cursor: pointer;
 }
 
-
-.modal-content {
-  position: absolute;
-  max-width: 335px;
-  max-height: 824px;
-  left: 20px;
-right: 20px;
-}
 
 .exercise-gif {
   display: block;
@@ -63,19 +60,31 @@ background: rgba(27, 27, 27, 0.2),url(image);
   margin-bottom: 10px;
 }
 
+.exercise-rating {
+  margin-bottom: 20px;
+}
+
 .exercise-details {
   display: flex;
   max-width: 295px;
 max-height: 100px;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
-.custom-hr {
+.custom-hr-bot {
   height: 2px;
   width: 100%;
   border-bottom: 1px solid rgba(27, 27, 27, 0.2);
+  margin-bottom: 10px;
+}
+
+.custom-hr-top {
+  height: 2px;
+  width: 100%;
+  border-bottom: 1px solid rgba(27, 27, 27, 0.2);
+  margin-bottom: 10px;
 }
 
 .exercise-peculiarities {
@@ -94,6 +103,7 @@ max-height: 100px;
   line-height: 18px;
   letter-spacing: 0px;
   text-align: left;
+  overflow-x: scroll;
  
 }
 
@@ -162,6 +172,7 @@ text-align: left;
 border-radius: 30px;
 background: rgb(126, 132, 127);
 margin-bottom: 10px;
+color: rgb(246, 246, 246);
 }
 
 .rating-button {
@@ -174,11 +185,23 @@ border: 1px solid rgb(27, 27, 27);
 border-radius: 30px;
 }
 
-/* зірочки */
+
+
+.rating-number {
+color: rgb(27, 27, 27);
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0px;
+text-align: left;
+}
 
 .rating-box {
   display: flex;
+  gap: 2px;
 }
+
+/* зірочки */
 
 .gray-star {
  position: relative;
@@ -198,4 +221,66 @@ border-radius: 30px;
 }
 
 
+@media screen and (min-width: 736px) {
+  .modal-content {
+    display: flex;
+    gap: 24px;
+    max-width: 736px;
+    max-height: 999px;
+  }
 
+  .exercise-gif {
+    width: 270px;
+    height: 259px;
+  }
+
+  .exercise-title {
+    margin-bottom: 8px;
+  }
+
+  .exercise-rating {
+    margin-bottom: 16px
+  }
+
+.custom-hr-top {
+  margin-bottom: 8px;
+}
+
+.exercise-details {
+  max-width: 342px;
+  margin-bottom: 8px;
+}
+
+.custom-hr-bot {
+  margin-bottom: 16px;
+}
+
+.exercise-description {
+  margin-bottom: 32px;
+  width: 342px;
+}
+
+.div-button-favorite {
+  margin-top: 0;
+}
+
+.buttons-style {
+  display: flex;
+  gap: 8px;
+}
+
+.div-button-favorite {
+  width: 194px;
+}
+
+.rating-button {
+  width: 140px;
+}
+
+.close {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+}
+
+}
