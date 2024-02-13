@@ -2,6 +2,7 @@
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+import { openExerciseModal } from '../js/modal_video.js';
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
 export const form = document.querySelector('.exercises-search-form');
 export const containerCardsEl = document.querySelector(
@@ -131,10 +132,10 @@ function createexercisesCard(results, containerCardsEl) {
                             <use href="../img/icons.svg#icon-star_yellow"></use>
                         </svg></span>
                 </div>
-                <a href="#" class="exercises-start"><span class="exercises-start__text">Start</span><svg
+                <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
                         class="exercises-start__svg" width="13" height="13">
                         <use href="../img/icons.svg#icon-arrow"></use>
-                    </svg></a>
+                    </svg></div>
             </div>
             <div class="exercises-title">
                 <svg class="exercises-title__svg" width="24" height="24">
@@ -154,4 +155,6 @@ function createexercisesCard(results, containerCardsEl) {
     )
     .join('');
   containerCardsEl.innerHTML = markup;
+  document.querySelectorAll(".exercises-start")
+  .forEach(el => el.addEventListener("click", openExerciseModal))
 }
