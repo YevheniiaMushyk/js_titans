@@ -1,4 +1,4 @@
-.modal,
+.header_modal,
 .favmodal {
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@
   border-radius: 30px;
   overflow: hidden;
 }
-.modal::backdrop,
+.header_modal::backdrop,
 .favmodal::backdrop {
   background-color: rgba(18, 18, 18, 0.4);
 }
