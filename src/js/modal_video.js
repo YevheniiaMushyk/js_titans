@@ -166,7 +166,7 @@ function fillModalWithData(exerciseData) {
     drawFavoritesBtnText(exerciseData._id); 
 } 
 
-// Функція для зроблення першої букви великою
+// Функція великої першої букви
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
