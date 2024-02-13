@@ -156,7 +156,7 @@
   width: 132px;
 }
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
   .favorites-section {
     display: flex;
     flex-direction: row;
@@ -226,7 +226,7 @@
   }
 }
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .favorites-section {
     flex-wrap: nowrap;
     flex-direction: row;

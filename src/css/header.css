@@ -59,7 +59,12 @@
   stroke: var(--button_fon_hover);
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767px) {
+  .header,
+  .favheader {
+    padding: 0 40px;
+  }
+
   .header__nav,
   .favheader__nav,
   .header__icons {
@@ -96,7 +101,12 @@
   }
 }
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
+  .header,
+  .favheader {
+    padding: 0 48px;
+  }
+
   .header__button,
   .favheader__button {
     display: none;
@@ -162,8 +172,9 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .header {
-    padding: 0 48px;
+  .header,
+  .favheader {
+    padding: 0 64px;
   }
 
   .favheader__nav {

@@ -151,13 +151,13 @@
 
 /* MEDIA */
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767px) {
   .footer-container {
     min-width: 320px;
     max-width: 335px;
   }
 }
-@media only screen and (max-width: 735px) and (min-resolution: 192dpi) {
+@media only screen and (max-width: 767px) and (min-resolution: 192dpi) {
   .footer-container {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -166,7 +166,7 @@
       url(../img/footer_m@2x-min.png);
   }
 }
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
   footer {
     padding: 0 16px 16px;
   }
@@ -241,7 +241,7 @@
     margin: 0;
   }
 }
-@media only screen and (min-width: 736px) and (min-resolution: 192dpi) {
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .footer-container {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -250,7 +250,7 @@
       url(../img/footer_t@2x-min.png);
   }
 }
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .footer-container {
     max-width: 1408px;
     padding: 64px 48px 0;
@@ -281,7 +281,7 @@
     padding-bottom: 26px;
   }
 }
-@media only screen and (min-width: 1408px) and (min-resolution: 192dpi) {
+@media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
   .footer-container {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),

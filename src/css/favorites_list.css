@@ -1,6 +1,6 @@
 /* Mobile Emty*/
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767px) {
   .favorites_container {
     width: 335px;
     height: 100%;
@@ -56,13 +56,13 @@
 
 /* Tablet Empty*/
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
   .favorites_container {
     width: 736px;
     height: 928px;
     background: #e8e8e8;
-    border-radius: 30px;
-    border-radius: 30px;
+    border-radius: 50px;
+
     margin: 0 auto;
     margin-bottom: 20px;
 
@@ -120,7 +120,7 @@
 
 /*Desktop Empty*/
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .favorites_container {
     border-radius: 50px;
     width: 1408px;
@@ -178,7 +178,7 @@
 
 /* Mobile Card*/
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767px) {
   .workouts-list {
     display: flex;
     flex-direction: column;
@@ -324,7 +324,7 @@
 
 /* Tablet Card*/
 
-@media screen and (min-width: 736px) and (max-width: 1407px) {
+@media screen and (min-width: 768px) and (max-width: 1439px) {
   .workouts-list {
     display: flex;
     justify-content: center;
@@ -478,7 +478,7 @@
 
 /* Desktop Card*/
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .workouts-list {
     display: flex;
     align-items: center;

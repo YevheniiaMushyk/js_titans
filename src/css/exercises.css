@@ -57,8 +57,6 @@
   background-color: var(--button_fon);
 }
 
-
-
 .exercises-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -69,8 +67,6 @@
 }
 
 .card-item {
-  width: 295px;
-  /* height: 250px; */
   overflow: hidden;
   position: relative;
   border-radius: 12px;
@@ -88,9 +84,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(16, 16, 16, 0.7),
-      rgba(16, 16, 16, 0.7)),
+      rgba(16, 16, 16, 0.7)
+    ),
     linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3));
   position: absolute;
   inset: 0;
@@ -113,7 +111,6 @@
     color: var(--sub_text);
   }
 }
-
 
 /* -----------------pagination --------------  */
 
@@ -153,10 +150,12 @@
   display: none !important;
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 767.9px) {
   .exercises {
     min-height: 320px;
+    margin-bottom: 16px;
   }
+
   .container-ex {
     min-width: 320px;
     max-width: 335px;
@@ -164,11 +163,12 @@
   }
 }
 
-@media screen and (min-width: 736px) {
+@media screen and (min-width: 768px) {
   .exercises {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 736px;
+    margin: 0 auto;
+    max-width: 768px;
+    padding: 0 16px;
+    margin-bottom: 16px;
   }
   .container-ex {
     padding: 66px 48px 32px;
@@ -192,15 +192,12 @@
     height: 44px;
   }
 
-
   .exercises-button-muscles,
   .exercises-button-bodypart,
   .exercises-button-equipment {
     width: 121px;
     height: 44px;
   }
-
- 
 
   .exercises-button-muscles,
   .exercises-button-bodypart,
@@ -219,11 +216,12 @@
   }
 }
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .exercises {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1408px;
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 16px;
+    margin-bottom: 16px;
   }
 
   .exercises-buttons {
