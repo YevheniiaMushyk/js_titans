@@ -19,8 +19,8 @@
     
     <script type="module" crossorigin src="/js_titans/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/js_titans/assets/vendor-8cce9181.js">
-    <link rel="modulepreload" crossorigin href="/js_titans/assets/loader-35551cac.js">
-    <link rel="stylesheet" href="/js_titans/assets/loader-a84da5de.css">
+    <link rel="modulepreload" crossorigin href="/js_titans/assets/loader-27286289.js">
+    <link rel="stylesheet" href="/js_titans/assets/loader-c24b7573.css">
     <link rel="stylesheet" href="/js_titans/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -361,6 +361,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <img class="exercise-gif" src="#" alt="Exercise GIF" />
+    <div class="flex-container-modal">
     <h3 class="exercise-title"></h3>
 
     <div class="exercise-rating">
@@ -428,7 +429,7 @@
         </div>
       </div>
     </div>
-    <div class="custom-hr"></div>
+    <div class="custom-hr-top"></div>
     <div class="exercise-details">
       <p class="exercise-peculiarities">
         Target: <span class="exercise-target"></span>
@@ -446,10 +447,11 @@
         Burned Calories: <span class="exercise-calories"></span>
       </p>
     </div>
-    <div class="custom-hr"></div>
+    <div class="custom-hr-bot"></div>
     <div class="exercise-description">
       <p class="exercise-peculiarities-text">Description goes here...</p>
     </div>
+    <div class="buttons-style">
     <div class="div-button-favorite">
       <button class="favorite-button">
         Add to Favorites
@@ -457,9 +459,12 @@
           <use href="/js_titans/assets/icons-562a76bf.svg#icon-heart"></use>
         </svg>
       </button>
+      
     </div>
     <button class="rating-button" id="modal_rating">Give a rating</button>
   </div>
+  </div>
+</div>
 </div>
 
     <dialog class="modal_rating_window">
