@@ -7,7 +7,8 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: #1b1b1b99;
+  background: rgba(27, 27, 27, 0.6); 
+
 }
 
 .modal-content {
@@ -105,6 +106,12 @@
   overflow-x: scroll;
 }
 
+.modal_icon {
+  width: 18px;
+  height: 18px;
+}
+
+
 .exercise-target {
   color: rgb(27, 27, 27);
 
@@ -164,6 +171,13 @@
 }
 
 .favorite-button {
+
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+
   width: 100%;
   height: 48px;
   border-radius: 30px;
@@ -248,14 +262,17 @@
     margin-bottom: 16px;
   }
 
+.div-button-favorite {
+  margin-top: 0;
+  width: 194px;
+}
+
   .exercise-description {
     margin-bottom: 32px;
     width: 342px;
   }
 
-  .div-button-favorite {
-    margin-top: 0;
-  }
+
 
   .buttons-style {
     display: flex;
@@ -265,6 +282,7 @@
   .div-button-favorite {
     width: 194px;
   }
+
 
   .rating-button {
     width: 140px;
