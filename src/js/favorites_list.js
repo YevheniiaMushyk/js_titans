@@ -45,32 +45,29 @@ function addNewWorkoutById(workoutId) {
   }
 }
 
-fetchFavourites();
-console.log(response.data);
-
 // addNewWorkoutById();
 
-const exampleWorkoutId1 = '64f389465ae26083f39b17a2';
-const exampleWorkoutId2 = '64f389465ae26083f39b17a5';
-const exampleWorkoutId3 = '64f389465ae26083f39b17a6';
-const exampleWorkoutId4 = '64f389465ae26083f39b19d8';
-const exampleWorkoutId5 = '64f389465ae26083f39b1b1a';
-const exampleWorkoutId6 = '64f389465ae26083f39b1996';
-const exampleWorkoutId7 = '64f389465ae26083f39b180e';
-const exampleWorkoutId8 = '64f389465ae26083f39b198b';
-const exampleWorkoutId9 = '64f389465ae26083f39b19b3';
-const exampleWorkoutId10 = '64f389465ae26083f39b1987';
+// const exampleWorkoutId1 = '64f389465ae26083f39b17a2';
+// const exampleWorkoutId2 = '64f389465ae26083f39b17a5';
+// const exampleWorkoutId3 = '64f389465ae26083f39b17a6';
+// const exampleWorkoutId4 = '64f389465ae26083f39b19d8';
+// const exampleWorkoutId5 = '64f389465ae26083f39b1b1a';
+// const exampleWorkoutId6 = '64f389465ae26083f39b1996';
+// const exampleWorkoutId7 = '64f389465ae26083f39b180e';
+// const exampleWorkoutId8 = '64f389465ae26083f39b198b';
+// const exampleWorkoutId9 = '64f389465ae26083f39b19b3';
+// const exampleWorkoutId10 = '64f389465ae26083f39b1987';
 
-addNewWorkoutById(exampleWorkoutId1);
-addNewWorkoutById(exampleWorkoutId2);
-addNewWorkoutById(exampleWorkoutId3);
-addNewWorkoutById(exampleWorkoutId4);
-addNewWorkoutById(exampleWorkoutId5);
-addNewWorkoutById(exampleWorkoutId6);
-addNewWorkoutById(exampleWorkoutId7);
-addNewWorkoutById(exampleWorkoutId8);
-addNewWorkoutById(exampleWorkoutId9);
-addNewWorkoutById(exampleWorkoutId10);
+// addNewWorkoutById(exampleWorkoutId1);
+// addNewWorkoutById(exampleWorkoutId2);
+// addNewWorkoutById(exampleWorkoutId3);
+// addNewWorkoutById(exampleWorkoutId4);
+// addNewWorkoutById(exampleWorkoutId5);
+// addNewWorkoutById(exampleWorkoutId6);
+// addNewWorkoutById(exampleWorkoutId7);
+// addNewWorkoutById(exampleWorkoutId8);
+// addNewWorkoutById(exampleWorkoutId9);
+// addNewWorkoutById(exampleWorkoutId10);
 
 function addWorkoutCardToDOM(workoutData) {
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);

@@ -2,9 +2,12 @@
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+import { openExerciseModal } from '../js/modal_video.js';
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
-const form = document.querySelector('.exercises-search-form');
-const containerCardsEl = document.querySelector('.exercises-card-container');
+export const form = document.querySelector('.exercises-search-form');
+export const containerCardsEl = document.querySelector(
+  '.exercises-card-container'
+);
 const searchFormEl = document.querySelector('.exercises-search');
 const exercisesName = document.querySelector(".exercises-name");
 const queryParams = {
@@ -105,10 +108,21 @@ function serchPicture(exercisesCard, page = 1, URL) {
 }
 // формування розмітки -------------------
 function createexercisesCard(results, containerCardsEl) {
-    const markup = results
-        .map(
-            ({ rating, name, burnedCalories, bodyPart, target }) => `
-    <li class="exercises-item">
+  const markup = results
+    .map(
+      ({
+        rating,
+        name,
+        burnedCalories,
+        bodyPart,
+        target,
+        gifUrl,
+        description,
+        equipment,
+        popularity,
+        _id,
+      }) => `
+    <li class="exercises-item" data-gifUrl=${gifUrl} data-description="${description}" data-equipment=${equipment} data-popularity=${popularity} data-id=${_id}>
             <div class="exercises-sub-title">
                 <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(
@@ -120,10 +134,10 @@ function createexercisesCard(results, containerCardsEl) {
                             <use href="../img/icons.svg#icon-star_yellow"></use>
                         </svg></span>
                 </div>
-                <a href="#" class="exercises-start"><span class="exercises-start__text">Start</span><svg
+                <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
                         class="exercises-start__svg" width="13" height="13">
                         <use href="../img/icons.svg#icon-arrow"></use>
-                    </svg></a>
+                    </svg></div>
             </div>
             <div class="exercises-title">
                 <svg class="exercises-title__svg" width="24" height="24">
@@ -140,7 +154,10 @@ function createexercisesCard(results, containerCardsEl) {
                     <span class="exercises-text__dynamic">${target}</span></p>
             </div>
     </li>`
-        )
-        .join('');
-    containerCardsEl.innerHTML = markup;
+          )
+    .join('');
+  containerCardsEl.innerHTML = markup;
+  document.querySelectorAll(".exercises-start")
+  .forEach(el => el.addEventListener("click", openExerciseModal))
+
 }

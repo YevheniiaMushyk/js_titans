@@ -1,7 +1,7 @@
 /* Mobile Emty*/
 
 @media screen and (max-width: 735px) {
-  .favorites-container {
+  .favorites_container {
     width: 335px;
     height: 100%;
     /* height: 450px; */
@@ -57,7 +57,7 @@
 /* Tablet Empty*/
 
 @media screen and (min-width: 736px) {
-  .favorites-container {
+  .favorites_container {
     width: 736px;
     height: 928px;
     background: #e8e8e8;
@@ -121,7 +121,7 @@
 /*Desktop Empty*/
 
 @media screen and (min-width: 1408px) {
-  .favorites-container {
+  .favorites_container {
     border-radius: 50px;
     width: 1408px;
     height: 687px;

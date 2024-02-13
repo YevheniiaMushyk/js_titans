@@ -90,26 +90,29 @@ body::-webkit-scrollbar-thumb {
 }
 .container {
   margin: 0 auto;
-  height: 100%;
+}
+
+.wrap_bg {
+  position: relative;
 }
 
 @media screen and (max-width: 735px) {
   .container {
     min-width: 320px;
-    max-width: 335px;
+    max-width: 375px;
     padding: 0 20px;
   }
 }
 @media screen and (min-width: 736px) and (max-width: 1407px) {
   .container {
-    max-width: 736px;
-    padding: 0 48px;
+    max-width: 768px;
+    padding: 0 16px;
   }
 }
 
-@media screen and (min-width: 1408px) {
+@media screen and (min-width: 1440px) {
   .container {
-    max-width: 1408px;
-    padding: 0 48px;
+    max-width: 1440px;
+    padding: 0 16px;
   }
 }
