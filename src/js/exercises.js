@@ -68,16 +68,18 @@ function createMarkup(results) {
     const markup = markupArray.join('');
     refs.cardContainer.innerHTML = markup;
     makeHeightSec('.exercises-card-container', 'add');
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
     disactiveLoader(loader);
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    refs.cardContainer.insertAdjacentHTML(
+      'beforeend',
+      '<div id="pagination" class="tui-pagination"></div>'
+    );
   });
 }
 
 function onSearch() {
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
   activeLoader(loader);
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getData()
     .then(data => {
       const { results, page, totalPages } = data;
@@ -118,6 +120,7 @@ refs.buttons.addEventListener('click', e => {
   const paginationContainer = document.querySelector('.pagination-container');
   paginationContainer.innerHTML = '';
   paginationContainer.classList.add('hidden');
+  //   exercisesName.innerHTML = `Exercises`;
 
   if (cardTarget === e.currentTarget) {
     return;
@@ -166,9 +169,7 @@ async function onPagination(e) {
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
   try {
-    /////////////////////////////////////////////////////////////////////////////////////
     activeLoader(loader);
-    ///////////////////////////////////////////////////////////////////////////////////////////
     const { results } = await getData();
     createMarkup(results);
   } catch (error) {
