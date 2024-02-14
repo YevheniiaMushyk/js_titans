@@ -5,7 +5,7 @@ const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
 
 // Функція для додавання нової карточки вправи за ідентифікатором
-function fetchWorkoutById(workoutId) {
+export function fetchWorkoutById(workoutId) {
   return axios.get(`${API_URL}/${workoutId}`);
 }
 
@@ -94,7 +94,7 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   );
 
   // Видалення іншого значення з localStorage, якщо це необхідно
-  localStorage.removeItem('workoutId');
+  localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
 
   // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
@@ -174,7 +174,7 @@ function createWorkoutCardMarkup(workoutData) {
   return workoutCardMarkup;
 }
 
-function showEmptyMessage() {
+export function showEmptyMessage() {
   if (!isFirstLoad) {
     list.innerHTML = `
     <div class="empty-list">
@@ -190,4 +190,21 @@ function showEmptyMessage() {
       </p>
     </div>`;
   }
+}
+
+// Функція для видалення карточки вправи зі сторінки після закриття модального вікна
+export function removeWorkoutCardVideoWin(workoutId) {
+  const storedWorkoutIdsFav =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+  const updatedLocalStoredFav = storedWorkoutIdsFav.filter(
+    id => id !== workoutId
+  );
+
+  // Оновлення storedWorkoutIds після видалення
+  localStorage.setItem(
+    'ENERGY_FLOW_FAVORITES_KEY',
+    JSON.stringify(updatedLocalStoredFav)
+  );
+
+  fetchWorkoutById(workoutId);
 }

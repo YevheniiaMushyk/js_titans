@@ -2,6 +2,11 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+import {
+  fetchWorkoutById,
+  showEmptyMessage,
+  removeWorkoutCardVideoWin,
+} from '../js/favorites_list.js';
 const URL = 'https://energyflow.b.goit.study/api/exercises/';
 
 // Отримуємо необхідні елементи модального вікна
@@ -114,6 +119,7 @@ export function deleteFavorites(id) {
     FAVORITES_KEY_LOCAL_STORAGE,
     JSON.stringify(updFavorites)
   );
+  removeWorkoutCardVideoWin(id);
 }
 
 favoriteButton.addEventListener('click', event => {
