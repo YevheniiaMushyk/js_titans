@@ -96,10 +96,12 @@ refs.musclesButton.classList.add('active');
 refs.buttons.addEventListener('click', e => {
   selected(e);
   const cardTarget = e.target;
-
+  refs.pagination.classList.remove('hidden');
   searchFormEl.classList.add('hidden');
   exercisesName.innerHTML = `Exercises`;
-
+  const paginationContainer = document.querySelector('.pagination-container');
+  paginationContainer.innerHTML = '';
+  paginationContainer.classList.add('hidden');
   if (cardTarget === e.currentTarget) {
     return;
   } else if (cardTarget === refs.musclesButton) {
