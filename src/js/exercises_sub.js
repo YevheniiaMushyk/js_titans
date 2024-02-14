@@ -38,9 +38,9 @@ async function dataSet(event) {
     const cardElement = event.target.closest('.card-item');
     pagination.classList.add('hidden');
     if (cardElement) {
-      ////////////////////////////////////////////////////
-    activeLoader(loader);
-    ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////
+        activeLoader(loader);
+        ////////////////////////////////////////////////////////
         const nameElement = cardElement.querySelector('.name');
         const filterElement = cardElement.querySelector('.filter');
         if (nameElement && filterElement) {
@@ -88,8 +88,8 @@ async function dataSet(event) {
                     const clickedPage = parseInt(event.target.dataset.page);
                     if (currentPage !== clickedPage) {
                       ///////////////////////////////////////////////////////////////////////////////////////////////////
-          activeLoader(loader);
-          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                      activeLoader(loader);
+                      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         document.querySelectorAll('.pagination-btn').forEach(btn => btn.classList.remove('active'));
                         currentPage = clickedPage;
                         event.target.classList.add('active');
@@ -114,9 +114,9 @@ async function dataSet(event) {
                 form.addEventListener('submit', handleSearch);
                 // функція для пошуку за ключовим словом -------------------
                 async function handleSearch(event) {
-                  ///////////////////////////////////////////////////////////////////////////////////////////////////
-          activeLoader(loader);
-          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////
+                    activeLoader(loader);
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     event.preventDefault();
                     containerCardsEl.innerHTML = '';
                     paginationContainer.innerHTML = '';
@@ -152,10 +152,9 @@ async function dataSet(event) {
                         console.log(err);
                     } finally {
                         form.reset();
-                    }
-
+                  }
                 }
-              });
+              };
             } else {
               containerCardsEl.innerHTML = '';
               noResults();
