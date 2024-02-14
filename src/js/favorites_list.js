@@ -119,9 +119,9 @@ function createWorkoutCardMarkup(workoutData) {
     } data-description="${workoutData.description}" data-equipment=${
     workoutData.equipment
   } data-popularity=${workoutData.popularity} data-id=${workoutData._id}>
-      <div class="exercises-sub-title">
-        <div class="exercises__workout-rating">
-          <p class="exercises-workout">workout</p>
+      <div class="exercises_sub_title">
+        <div class="exercises__workout_rating">
+          <p class="exercises_workout">workout</p>
           <button class="workout-card__remove-btn" data-workout-id="${
             workoutData._id
           }">
@@ -136,9 +136,9 @@ function createWorkoutCardMarkup(workoutData) {
   <button class="exercises-start-button" data-workout-data="${JSON.stringify(
     workoutData
   )}">
-    <span class="exercises-start__text">Start</span>
+    <span class="exercises_start__text">Start</span>
     <svg
-      class="exercises-start__svg"
+      class="exercises_start__svg"
       width="13"
       height="13"
       stroke="rgb(27, 27, 27)"
@@ -148,25 +148,25 @@ function createWorkoutCardMarkup(workoutData) {
   </div>
 
       </div>
-      <div class="exercises-title">
-        <svg class="exercises-title__svg" width="24" height="24">
+      <div class="exercises_title">
+        <svg class="exercises_title__svg" width="24" height="24">
           <use href="./img/icons.svg#icon-fav_run_man"></use>
         </svg>
         <span class="exercises_title_text">${workoutData.name}</span>
       </div>
-      <div class="exercises-text">
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Burned calories:</span>
+      <div class="exercises_text">
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Burned calories:</span>
           <span class="exercises_text__dynamic">${
             workoutData.burnedCalories
           } / 3 min</span>
         </p>
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Body part:</span>
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Body part:</span>
           <span class="exercises_text__dynamic">${workoutData.bodyPart}</span>
         </p>
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Target:</span>
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Target:</span>
           <span class="exercises_text__dynamic">${workoutData.target}</span>
         </p>
       </div>

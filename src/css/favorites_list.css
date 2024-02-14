@@ -220,7 +220,7 @@
     transform: scale(1.04);
   }
 
-  .exercises-sub-title {
+  .exercises_sub_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -228,7 +228,7 @@
     margin-bottom: 15px;
   }
 
-  .exercises__workout-rating {
+  .exercises__workout_rating {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -242,7 +242,7 @@
     fill: #ffffff;
   }
 
-  .exercises-workout {
+  .exercises_workout {
     padding: 5px 8px;
     text-transform: uppercase;
     border-radius: 15px;
@@ -252,18 +252,18 @@
     font-weight: 500;
   }
 
-  .exercises-rating {
+  /* .exercises-rating {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2px;
-  }
+  } */
 
-  .exercises-rating__text {
+  /* .exercises_rating__text {
     color: rgb(27, 27, 27);
     font-size: 12px;
     line-height: 1.5;
-  }
+  } */
 
   .exercises_start {
     display: flex;
@@ -278,20 +278,20 @@
     background-color: #ffffff;
   }
 
-  .exercises-start__text {
+  .exercises_start__text {
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
-  .exercises-start__svg {
+  .exercises_start__svg {
     stroke: rgb(27, 27, 27);
     /* fill: #ffffff; */
     width: 11.38px;
     height: 11.38px;
   }
 
-  .exercises-title {
+  .exercises_title {
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
@@ -307,7 +307,7 @@
     white-space: pre-wrap;
   }
 
-  .exercises-text {
+  .exercises_text {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -316,7 +316,7 @@
     /* margin-bottom: 10px; */
   }
 
-  .exercises-text__content {
+  .exercises_text__content {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -324,11 +324,11 @@
     line-height: 1.5;
   }
 
-  .exercises-text__static {
+  .exercises_text__static {
     color: rgba(27, 27, 27, 0.4);
   }
 
-  .exercises-text__dynamic {
+  .exercises_text__dynamic {
     color: rgb(27, 27, 27);
   }
 }
@@ -360,7 +360,7 @@
     transition: all 250ms;
   }
 
-  .card-container {
+  /* .card-container {
     background: rgb(232, 232, 232);
     display: flex;
     flex-direction: column;
@@ -368,7 +368,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-  }
+  } */
 
   /* .exercises-item__link {
     padding: 10px;
@@ -385,7 +385,7 @@
     transform: scale(1.04);
   }
 
-  .exercises-sub-title {
+  .exercises_sub_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -393,7 +393,7 @@
     margin-bottom: 15px;
   }
 
-  .exercises__workout-rating {
+  .exercises__workout_rating {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -407,7 +407,7 @@
     fill: #ffffff;
   }
 
-  .exercises-workout {
+  .exercises_workout {
     padding: 5px 8px;
     text-transform: uppercase;
     border-radius: 15px;
@@ -417,18 +417,18 @@
     font-weight: 500;
   }
 
-  .exercises-rating {
+  /* .exercises-rating {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2px;
-  }
+  } */
 
-  .exercises-rating__text {
+  /* .exercises_rating__text {
     color: rgb(27, 27, 27);
     font-size: 12px;
     line-height: 1.5;
-  }
+  } */
 
   .exercises_start {
     display: flex;
@@ -442,18 +442,18 @@
     background-color: #ffffff;
   }
 
-  .exercises-start__text {
+  .exercises_start__text {
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
-  .exercises-start__svg {
+  .exercises_start__svg {
     width: 11.38px;
     height: 11.38px;
   }
 
-  .exercises-title {
+  .exercises_title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -472,7 +472,7 @@
     white-space: pre-wrap;
   }
 
-  .exercises-text {
+  .exercises_text {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -480,7 +480,7 @@
     gap: 6px 16px;
   }
 
-  .exercises-text__content {
+  .exercises_text__content {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -488,11 +488,11 @@
     line-height: 1.5;
   }
 
-  .exercises-text__static {
+  .exercises_text__static {
     color: rgba(27, 27, 27, 0.4);
   }
 
-  .exercises-text__dynamic {
+  .exercises_text__dynamic {
     color: rgb(27, 27, 27);
   }
 }
@@ -542,7 +542,7 @@
     transform: scale(1.04);
   }
 
-  .exercises-sub-title {
+  .exercises_sub_title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -550,7 +550,7 @@
     margin-bottom: 15px;
   }
 
-  .exercises__workout-rating {
+  .exercises__workout_rating {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -564,7 +564,7 @@
     fill: #ffffff;
   }
 
-  .exercises-workout {
+  .exercises_workout {
     padding: 5px 8px;
     text-transform: uppercase;
     border-radius: 15px;
@@ -574,18 +574,18 @@
     font-weight: 500;
   }
 
-  .exercises-rating {
+  /* .exercises-rating {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2px;
-  }
+  } */
 
-  .exercises-rating__text {
+  /* .exercises_rating__text {
     color: rgb(27, 27, 27);
     font-size: 12px;
     line-height: 1.5;
-  }
+  } */
 
   .exercises_start {
     display: flex;
@@ -599,18 +599,18 @@
     background-color: #ffffff;
   }
 
-  .exercises-start__text {
+  .exercises_start__text {
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
-  .exercises-start__svg {
+  .exercises_start__svg {
     width: 11.38px;
     height: 11.38px;
   }
 
-  .exercises-title {
+  .exercises_title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -628,7 +628,7 @@
     white-space: pre-wrap;
   }
 
-  .exercises-text {
+  .exercises_text {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -636,7 +636,7 @@
     gap: 6px 16px;
   }
 
-  .exercises-text__content {
+  .exercises_text__content {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -644,11 +644,11 @@
     line-height: 1.5;
   }
 
-  .exercises-text__static {
+  .exercises_text__static {
     color: rgba(27, 27, 27, 0.4);
   }
 
-  .exercises-text__dynamic {
+  .exercises_text__dynamic {
     color: rgb(27, 27, 27);
   }
 }
