@@ -3,6 +3,7 @@ import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
+// list.innerHTML = '';
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 export function fetchWorkoutById(workoutId) {
@@ -94,7 +95,7 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   );
 
   // Видалення іншого значення з localStorage, якщо це необхідно
-  localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
+  // localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
 
   // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
@@ -106,6 +107,11 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
     showEmptyMessage();
   }
 }
+
+// const closeModalButton = document.querySelector('.close-modal-button');
+// closeModalButton.addEventListener('click', () => {
+//     addRemoveButtonEventListener();
+// });
 
 function createWorkoutCardMarkup(workoutData) {
   const workoutCardMarkup = `
@@ -175,36 +181,43 @@ function createWorkoutCardMarkup(workoutData) {
 }
 
 export function showEmptyMessage() {
-  if (!isFirstLoad) {
-    list.innerHTML = `
-    <div class="empty-list">
-      <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
-        alt="dumbbell"
-        width="85"
-        height="52"
-      />      
-      <p class="empty-message">
-        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-      </p>
-    </div>`;
-  }
+  // if (!isFirstLoad) {
+  //   list.innerHTML = `
+  //   <div class="empty-list">
+  //     <img class="empty-item"
+  //       srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
+  //       src="./img/dumbbell@1x-min.png"
+  //       alt="dumbbell"
+  //       width="85"
+  //       height="52"
+  //     />
+  //     <p class="empty-message">
+  //       It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
+  //     </p>
+  //   </div>`;
+  //}
 }
 
 // Функція для видалення карточки вправи зі сторінки після закриття модального вікна
-export function removeWorkoutCardVideoWin(workoutId) {
+export function updateWorkoutCardInFavorites() {
+  isFirstLoad = true;
   const storedWorkoutIdsFav =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  const updatedLocalStoredFav = storedWorkoutIdsFav.filter(
-    id => id !== workoutId
-  );
+  list.innerHTML = '';
 
-  // Оновлення storedWorkoutIds після видалення
-  localStorage.setItem(
-    'ENERGY_FLOW_FAVORITES_KEY',
-    JSON.stringify(updatedLocalStoredFav)
-  );
-
-  fetchWorkoutById(workoutId);
+  if (storedWorkoutIdsFav.length > 0) {
+    storedWorkoutIdsFav.forEach(workoutId => {
+      fetchWorkoutById(workoutId)
+        .then(response => {
+          const workoutData = response.data;
+          addWorkoutCardToDOM(workoutData);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
+  } else {
+    isFirstLoad = false;
+    showEmptyMessage();
+  }
 }
