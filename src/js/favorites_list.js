@@ -181,21 +181,21 @@ function createWorkoutCardMarkup(workoutData) {
 }
 
 export function showEmptyMessage() {
-  // if (!isFirstLoad) {
-  //   list.innerHTML = `
-  //   <div class="empty-list">
-  //     <img class="empty-item"
-  //       srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-  //       src="./img/dumbbell@1x-min.png"
-  //       alt="dumbbell"
-  //       width="85"
-  //       height="52"
-  //     />
-  //     <p class="empty-message">
-  //       It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-  //     </p>
-  //   </div>`;
-  // }
+  if (!isFirstLoad) {
+    list.innerHTML = `
+    <div class="empty-list">
+      <img class="empty-item"
+        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
+        src="./img/dumbbell@1x-min.png"
+        alt="dumbbell"
+        width="85"
+        height="52"
+      />
+      <p class="empty-message">
+        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
+      </p>
+    </div>`;
+  }
 }
 
 // Функція для видалення карточки вправи зі сторінки після закриття модального вікна
