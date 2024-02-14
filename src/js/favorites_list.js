@@ -3,6 +3,7 @@ import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
+list.innerHTML = '';
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 export function fetchWorkoutById(workoutId) {
@@ -193,18 +194,25 @@ export function showEmptyMessage() {
 }
 
 // Функція для видалення карточки вправи зі сторінки після закриття модального вікна
-export function removeWorkoutCardVideoWin(workoutId) {
+export function updateWorkoutCardInFavorites() {
+  isFirstLoad = true;
   const storedWorkoutIdsFav =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  const updatedLocalStoredFav = storedWorkoutIdsFav.filter(
-    id => id !== workoutId
-  );
+  list.innerHTML = '';
 
-  // Оновлення storedWorkoutIds після видалення
-  localStorage.setItem(
-    'ENERGY_FLOW_FAVORITES_KEY',
-    JSON.stringify(updatedLocalStoredFav)
-  );
-
-  fetchWorkoutById(workoutId);
+  if (storedWorkoutIdsFav.length > 0) {
+    storedWorkoutIdsFav.forEach(workoutId => {
+      fetchWorkoutById(workoutId)
+        .then(response => {
+          const workoutData = response.data;
+          addWorkoutCardToDOM(workoutData);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
+  } else {
+    isFirstLoad = false;
+    showEmptyMessage();
+  }
 }

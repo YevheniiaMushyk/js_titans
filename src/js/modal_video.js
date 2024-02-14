@@ -2,11 +2,7 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-import {
-  fetchWorkoutById,
-  showEmptyMessage,
-  removeWorkoutCardVideoWin,
-} from '../js/favorites_list.js';
+import { updateWorkoutCardInFavorites } from '../js/favorites_list.js';
 const URL = 'https://energyflow.b.goit.study/api/exercises/';
 
 // Отримуємо необхідні елементи модального вікна
@@ -25,6 +21,7 @@ const descriptionElement = modal.querySelector('.exercise-description');
 const favoriteButton = modal.querySelector('.favorite-button');
 const ratingButton = document.querySelector('.rating-button');
 const ratingNumberElement = document.querySelector('.rating-number');
+let favoritesWindowOpen = 0;
 
 // Отримуємо доступ до модалки з рейтингом
 const modalRating = document.querySelector('.modal_rating');
@@ -44,6 +41,7 @@ export function openExerciseModal(event) {
 
 // Відкриття модального вікна по кнопці "start" з вкладки обраних
 export function openFavExerciseModal(event) {
+  favoritesWindowOpen = 0;
   const exerciseItem = event.target.closest('.exercises_item');
   if (!exerciseItem) {
     return;
@@ -51,6 +49,7 @@ export function openFavExerciseModal(event) {
   const exerciseFavData = getFavExerciseData(exerciseItem);
   fillModalWithData(exerciseFavData);
   modal.style.display = 'block';
+  favoritesWindowOpen = 1;
 }
 
 // Закриття модального вікна при кліку на хрестик
@@ -119,7 +118,6 @@ export function deleteFavorites(id) {
     FAVORITES_KEY_LOCAL_STORAGE,
     JSON.stringify(updFavorites)
   );
-  // removeWorkoutCardVideoWin(id);
 }
 
 favoriteButton.addEventListener('click', event => {
@@ -131,6 +129,9 @@ favoriteButton.addEventListener('click', event => {
   const favorite = checkFavorites(id);
   if (favorite) {
     deleteFavorites(id);
+    if (favoritesWindowOpen === 1) {
+      updateWorkoutCardInFavorites(id);
+    }
   } else {
     setFavorites(id);
   }
@@ -238,3 +239,4 @@ function capitalizeFirstLetter(string) {
 }
 
 export { modal };
+favoritesWindowOpen = 0;
