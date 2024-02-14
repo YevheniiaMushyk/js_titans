@@ -53,9 +53,10 @@
 }
 
 .quote-picture {
+  background-size: cover;
+  background-position: center;
+
   border-radius: 30px;
-  width: 335px;
-  height: 272px;
 }
 
 @media screen and (max-width: 767.9px) {
@@ -245,3 +246,40 @@
     height: 302px;
   }
 }
+
+@media screen and (max-width: 767.9px) {
+  .quote-picture {
+    background-image: url('../img/quote_m@1x-min.png'); 
+  }
+}
+
+@media screen and (max-width: 767.9px) and (min-resolution: 192dpi) {
+  .quote-picture {
+    background-image: url('../img/quote_m@2x-min.png'); 
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .quote-picture {
+    background-image: url('../img/quote_t@1x-min.png'); 
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) and (min-resolution: 192dpi) {
+  .quote-picture {
+    background-image: url('../img/quote_t@2x-min.png');
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote-picture {
+    background-image: url('../img/quote_d@1x-min.png'); 
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .quote-picture {
+    background-image: url('../img/quote_d@2x-min.png'); 
+  }
+}
+
