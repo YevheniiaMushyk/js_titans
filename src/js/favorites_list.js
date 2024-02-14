@@ -4,6 +4,7 @@ import { openExerciseModal } from '../js/modal_video.js';
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
 
+// Функція для додавання нової карточки вправи за ідентифікатором
 function fetchWorkoutById(workoutId) {
   return axios.get(`${API_URL}/${workoutId}`);
 }
@@ -29,6 +30,7 @@ if (storedWorkoutIds.length > 0) {
   showEmptyMessage();
 }
 
+// Функція для додавання нової карточки вправи до списку за _id
 function addNewWorkoutById(workoutId) {
   const storedWorkoutIds =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
@@ -52,33 +54,34 @@ function addNewWorkoutById(workoutId) {
   }
 }
 
-const startButtons = document.querySelectorAll('.exercises-item__button');
-startButtons.forEach(startButton => {
-  startButton.addEventListener('click', event => {
-    openExerciseModal(event);
-  });
-});
-// const startButtons = document.querySelectorAll('.exercises-item__button');
-// startButtons.forEach(startButton => {
-//   startButton.addEventListener('click', () => {
-//     openExerciseModal();
-//   });
-// });
-
-// const startButtons = document.querySelectorAll('.exercises-item__button');
-// startButtons.forEach(startButton => {
-//   startButton.addEventListener('click', () => {
-//     const workoutId = startButton.dataset.workoutId;
-//     console.log('Clicked on Start button with workoutId:', workoutId);
-//     openExerciseModal(workoutId);
-//   });
-// });
-
+// Функція для додавання нової карточки вправи до списку
 function addWorkoutCardToDOM(workoutData) {
+  console.log(workoutData._id); // Виведе значення workoutData._id у консоль
+
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
   list.insertAdjacentHTML('beforeend', workoutCardMarkup);
   addRemoveButtonEventListener(workoutData);
+
+  // // Вибрати всі кнопки з класом .exercises-start-button
+  // const buttons = document.querySelectorAll('.exercises-start-button');
+
+  // buttons.forEach(button => {
+  //   // Отримати дані з атрибуту data-workout-data
+  //   const workoutDataString = button.dataset.workoutData;
+
+  //   // Обробити рядок JSON для отримання об'єкта JavaScript
+  //   const workoutDataObject = JSON.parse(workoutDataString);
+
+  //   console.log(workoutDataObject); // Вивести об'єкт в консоль
+
+  //   // Додати обробник події для кнопки
+  //   button.addEventListener('click', event => {
+  //     openExerciseModal(event, workoutDataObject);
+  //   });
+  // });
 }
+
+// Функція для додавання обробника події для кнопки видалення
 
 function addRemoveButtonEventListener(workoutData) {
   const removeButtons = document.querySelectorAll(`.workout-card__remove-btn`);
@@ -91,6 +94,7 @@ function addRemoveButtonEventListener(workoutData) {
   });
 }
 
+// Функція для видалення карточки вправи зі сторінки та з локального сховища
 function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises-item').remove();
 
@@ -100,36 +104,46 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
     id => id !== workoutId
   );
 
+  // Оновлення storedWorkoutIds після видалення
   localStorage.setItem(
     'ENERGY_FLOW_FAVORITES_KEY',
     JSON.stringify(updatedStoredWorkoutIds)
   );
 
+  // Видалення іншого значення з localStorage, якщо це необхідно
   localStorage.removeItem('workoutId');
 
+  // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
     isFirstLoad = false;
   }
 
+  // Виклик функції showEmptyMessage, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
     showEmptyMessage();
   }
 }
 
 function createWorkoutCardMarkup(workoutData) {
-  return `
+  const workoutCardMarkup = `
     <li class="exercises-item">
       <div class="exercises-sub-title">
         <div class="exercises__workout-rating">
           <p class="exercises-workout">workout</p>
-          <button class="workout-card__remove-btn" data-workout-id="${workoutData._id}">
+          <button class="workout-card__remove-btn" data-workout-id="${
+            workoutData._id
+          }">
             <svg class="workout-card__icon" width="16" height="16">
               <use href="./img/icons.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
-     <button class="exercises-item__button" data-workout-id="${workoutData._id}">
+       
+    
   <div class="exercises-start">
+  <button class="exercises-start-button" data-workout-data="${JSON.stringify(
+    workoutData
+  )}">
     <span class="exercises-start__text">Start</span>
     <svg
       class="exercises-start__svg"
@@ -138,9 +152,9 @@ function createWorkoutCardMarkup(workoutData) {
       stroke="rgb(27, 27, 27)"
     >
       <use href="./img/icons.svg#icon-arrow"></use>
-    </svg>
+    </svg></button>
   </div>
-</button>
+
       </div>
       <div class="exercises-title">
         <svg class="exercises-title__svg" width="24" height="24">
@@ -151,7 +165,9 @@ function createWorkoutCardMarkup(workoutData) {
       <div class="exercises-text">
         <p class="exercises-text__content">
           <span class="exercises-text__static">Burned calories:</span>
-          <span class="exercises-text__dynamic">${workoutData.burnedCalories} / 3 min</span>
+          <span class="exercises-text__dynamic">${
+            workoutData.burnedCalories
+          } / 3 min</span>
         </p>
         <p class="exercises-text__content">
           <span class="exercises-text__static">Body part:</span>
@@ -164,6 +180,13 @@ function createWorkoutCardMarkup(workoutData) {
       </div>
     </li>
   `;
+  // document.querySelectorAll('.exercises-start-button').forEach(button => {
+  //   if (button.dataset.workoutData === JSON.stringify(workoutData)) {
+  //     button.addEventListener('click', openExerciseModal);
+  //   }
+  // });
+
+  return workoutCardMarkup;
 }
 
 function showEmptyMessage() {
