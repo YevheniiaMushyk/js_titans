@@ -10,11 +10,14 @@ export const containerCardsEl = document.querySelector(
 );
 const searchFormEl = document.querySelector('.exercises-search');
 const exercisesName = document.querySelector('.exercises-name');
+<<<<<<< HEAD
+=======
 const pagination = document.querySelector('#pagination');
 let currentPage = 1;
 
 // Переменная для хранения общего количества результатов на странице
 const resultsPerPage = 9;
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
 const queryParams = {
   name: '',
   page: 1,
@@ -30,7 +33,10 @@ containerCardsEl.addEventListener('click', dataSet);
 async function dataSet(event) {
   event.preventDefault();
   const cardElement = event.target.closest('.card-item');
+<<<<<<< HEAD
+=======
   pagination.classList.add('hidden');
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
   if (cardElement) {
     const nameElement = cardElement.querySelector('.name');
     const filterElement = cardElement.querySelector('.filter');
@@ -43,13 +49,22 @@ async function dataSet(event) {
       if (filter === 'bodyparts') {
         filter = filter.replace(/s$/, '');
       }
+<<<<<<< HEAD
+      exercisesName.innerHTML = `Exercises /<span> ${name.replace(
+        /%20/g,
+        ' '
+      )}</span>`;
+=======
       exercisesName.innerHTML = `Exercises /
         <span>${capitalizeFirstLetter(name.replace(/%20/g, ' '))}</span>`;
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
       try {
         const newURL = `${URL}?${filter}=${name}`;
         const { results, totalPages } = await serchPicture('', 1, newURL);
         searchFormEl.classList.toggle('hidden');
         // пошук за ключовим словом -------------------
+<<<<<<< HEAD
+=======
         const paginationContainer = document.querySelector(
           '.pagination-container'
         );
@@ -107,12 +122,16 @@ async function dataSet(event) {
             event.target.classList.add('active');
           }
         }
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
         form.addEventListener('submit', handleSearch);
         // функція для пошуку за ключовим словом -------------------
         async function handleSearch(event) {
           event.preventDefault();
           containerCardsEl.innerHTML = '';
+<<<<<<< HEAD
+=======
           paginationContainer.innerHTML = '';
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
           const form = event.currentTarget;
           const exercisesCard = form.elements.exercises.value.trim();
           currentSearchQuery = exercisesCard;
@@ -228,6 +247,9 @@ function createexercisesCard(results, containerCardsEl) {
     .querySelectorAll('.exercises-start')
     .forEach(el => el.addEventListener('click', openExerciseModal));
 }
+<<<<<<< HEAD
+=======
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
+>>>>>>> ddeff0093f01af209b67900540c9d61c7fb4a119
