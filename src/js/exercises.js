@@ -1,8 +1,15 @@
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-const searchFormEl = document.querySelector(".exercises-search");
-const exercisesName = document.querySelector(".exercises-name");
+
+///////////////////////////////////////////////////////////////////////////////////////////
+import { loader, activeLoader, disactiveLoader } from './loader';
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// import { loader, activeLoader, disactiveLoader } from '../js/loader';
+const searchFormEl = document.querySelector('.exercises-search');
+// const exercisesName = document.querySelector(".exercises-name");
+
 const refs = {
   buttons: document.querySelector('.exercises-buttons'),
   musclesButton: document.querySelector('[data-filter="muscles"]'),
@@ -12,9 +19,7 @@ const refs = {
   pagination: document.querySelector('#pagination'),
 };
 const form = document.querySelector('.exercises-search-form');
-const loader = document.querySelector('.loader');
 let btnPrev = null;
-let paginationInstance = null;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 const params = {
@@ -26,7 +31,8 @@ const params = {
 };
 
 async function getData() {
-  showLoader(true);
+  makeHeightSec('.exercises-card-container', 'add');
+
   const data = await axios.get('/filters', {
     params: {
       filter: params.filter,
@@ -36,38 +42,47 @@ async function getData() {
   });
   return data.data;
 }
-
 function createMarkup(results) {
   refs.cardContainer.innerHTML = '';
-  const markup = results
-    .map(
-      ({ name, filter, imgUrl }) => `<li class="card-item">
-        <a href="">
-        <img class="card-image" src="${imgUrl}" alt="Card Image">
+  const promises = results.map(({ name, filter, imgUrl }) => {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.src = imgUrl;
+      img.onload = () => {
+        resolve(
+          `<li class="card-item">
+          <a href="">
+            <img class="card-image" src="${imgUrl}" alt="Card Image">
             <ul class="card-item-desc"="${name}">
-                <li class="name" data-source="${name}">${name}</li>
-                <li class="filter" data-source="${filter}">${filter}</li>
+              <li class="name" data-source="${name}">${name}</li>
+              <li class="filter" data-source="${filter}">${filter}</li>
             </ul>
-        </a>
-    </li>`
-    )
-    .join('');
+          </a>
+        </li>`
+        );
+      };
+    });
+  });
 
-  refs.cardContainer.innerHTML = markup;
-  showLoader(false);
+  Promise.all(promises).then(markupArray => {
+    const markup = markupArray.join('');
+    refs.cardContainer.innerHTML = markup;
+    makeHeightSec('.exercises-card-container', 'add');
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    disactiveLoader(loader);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+  });
 }
 
-refs.bodypartButton.addEventListener('click', () => {
-  params.page = 1;
-  onSearch();
-});
-
 function onSearch() {
-  // params.page = 1;
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  activeLoader(loader);
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getData()
     .then(data => {
       const { results, page, totalPages } = data;
       params.totalPages = totalPages;
+      makeHeightSec('.exercises-card-container', 'del');
       createMarkup(results);
       if (totalPages > 1) {
         const pages = pagesPagin(page, totalPages);
@@ -87,7 +102,7 @@ function onSearch() {
       showAlert(error.message, 'ERROR');
     })
     .finally(() => {
-      showLoader(false);
+      // disactiveLoader(loader);
     });
 }
 onSearch();
@@ -98,10 +113,12 @@ refs.buttons.addEventListener('click', e => {
   const cardTarget = e.target;
   refs.pagination.classList.remove('hidden');
   searchFormEl.classList.add('hidden');
+
   exercisesName.innerHTML = `Exercises`;
   const paginationContainer = document.querySelector('.pagination-container');
   paginationContainer.innerHTML = '';
   paginationContainer.classList.add('hidden');
+
   if (cardTarget === e.currentTarget) {
     return;
   } else if (cardTarget === refs.musclesButton) {
@@ -141,6 +158,7 @@ function pagesPagin(page, totalPages) {
 }
 async function onPagination(e) {
   const buttons = document.querySelectorAll('.pag-btn');
+
   buttons.forEach(button => {
     button.classList.remove('active');
   });
@@ -148,6 +166,9 @@ async function onPagination(e) {
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
   try {
+    /////////////////////////////////////////////////////////////////////////////////////
+    activeLoader(loader);
+    ///////////////////////////////////////////////////////////////////////////////////////////
     const { results } = await getData();
     createMarkup(results);
   } catch (error) {
@@ -155,9 +176,17 @@ async function onPagination(e) {
   }
 }
 
-function showLoader(state = true) {
-  loader.style.display = state ? 'inline-block' : 'none';
-  form.disabled = state;
+function makeHeightSec(selector, act) {
+  const block = document.querySelector(selector);
+  const rect = block.getBoundingClientRect();
+  if (rect.height > 100 && act === 'add') {
+    block.setAttribute('style', 'height:' + rect.height + 'px');
+    block.style.height = rect.height + 'px';
+  }
+  if (act === 'del') {
+    block.removeAttribute('style');
+    block.style.height = 'auto';
+  }
 }
 
 function showAlert(msg, type = 'info') {

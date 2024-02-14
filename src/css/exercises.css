@@ -69,12 +69,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-content: flex-start;
   align-items: flex-start;
   row-gap: 20px;
   margin-bottom: 20px;
 }
 
 .card-item {
+  width: 295px;
+  align-self: flex-start;
+  /* height: 250px; */
   overflow: hidden;
   position: relative;
   border-radius: 12px;
