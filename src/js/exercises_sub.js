@@ -33,9 +33,9 @@ async function dataSet(event) {
 
   if (cardElement) {
     ////////////////////////////////////////////////////
-      activeLoader(loader);
-////////////////////////////////////////////////////////
-    
+    activeLoader(loader);
+    ////////////////////////////////////////////////////////
+
     const nameElement = cardElement.querySelector('.name');
     const filterElement = cardElement.querySelector('.filter');
     if (nameElement && filterElement) {
@@ -45,7 +45,6 @@ async function dataSet(event) {
         .toLowerCase()
         .replace(/\s/g, '');
       if (filter === 'bodyparts') {
-
         filter = filter.replace(/s$/, '');
       }
       exercisesName.innerHTML = `Exercises /<span> ${name.replace(
@@ -60,10 +59,9 @@ async function dataSet(event) {
         form.addEventListener('submit', handleSearch);
         // функція для пошуку за ключовим словом -------------------
         async function handleSearch(event) {
-
           ///////////////////////////////////////////////////////////////////////////////////////////////////
           activeLoader(loader);
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           event.preventDefault();
           containerCardsEl.innerHTML = '';
           const form = event.currentTarget;
@@ -118,7 +116,6 @@ async function dataSet(event) {
 }
 // запит-------------------
 function serchPicture(exercisesCard, page = 1, URL) {
-
   return axios
     .get(URL, {
       params: {
@@ -182,7 +179,7 @@ function createexercisesCard(results, containerCardsEl) {
     )
     .join('');
   containerCardsEl.innerHTML = markup;
-  document
+  const dataAndr = document
     .querySelectorAll('.exercises-start')
     .forEach(el => el.addEventListener('click', openExerciseModal));
 }

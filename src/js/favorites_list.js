@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { openExerciseModal } from '../js/modal_video.js';
+import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
@@ -56,11 +56,12 @@ function addNewWorkoutById(workoutId) {
 
 // Функція для додавання нової карточки вправи до списку
 function addWorkoutCardToDOM(workoutData) {
-  console.log(workoutData._id); // Виведе значення workoutData._id у консоль
-
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
   list.insertAdjacentHTML('beforeend', workoutCardMarkup);
   addRemoveButtonEventListener(workoutData);
+  document
+    .querySelectorAll('.exercises_start')
+    .forEach(el => el.addEventListener('click', openFavExerciseModal));
 
   // // Вибрати всі кнопки з класом .exercises-start-button
   // const buttons = document.querySelectorAll('.exercises-start-button');
@@ -126,7 +127,11 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
 
 function createWorkoutCardMarkup(workoutData) {
   const workoutCardMarkup = `
-    <li class="exercises-item">
+    <li class="exercises_item" data-gifUrl=${
+      workoutData.gifUrl
+    } data-description="${workoutData.description}" data-equipment=${
+    workoutData.equipment
+  } data-popularity=${workoutData.popularity} data-id=${workoutData._id}>
       <div class="exercises-sub-title">
         <div class="exercises__workout-rating">
           <p class="exercises-workout">workout</p>
@@ -140,7 +145,7 @@ function createWorkoutCardMarkup(workoutData) {
         </div>
        
     
-  <div class="exercises-start">
+  <div class="exercises_start">
   <button class="exercises-start-button" data-workout-data="${JSON.stringify(
     workoutData
   )}">
@@ -160,31 +165,30 @@ function createWorkoutCardMarkup(workoutData) {
         <svg class="exercises-title__svg" width="24" height="24">
           <use href="./img/icons.svg#icon-fav_run_man"></use>
         </svg>
-        <span class="exercises-title-text">${workoutData.name}</span>
+        <span class="exercises_title_text">${workoutData.name}</span>
       </div>
       <div class="exercises-text">
         <p class="exercises-text__content">
           <span class="exercises-text__static">Burned calories:</span>
-          <span class="exercises-text__dynamic">${
+          <span class="exercises_text__dynamic">${
             workoutData.burnedCalories
           } / 3 min</span>
         </p>
         <p class="exercises-text__content">
           <span class="exercises-text__static">Body part:</span>
-          <span class="exercises-text__dynamic">${workoutData.bodyPart}</span>
+          <span class="exercises_text__dynamic">${workoutData.bodyPart}</span>
         </p>
         <p class="exercises-text__content">
           <span class="exercises-text__static">Target:</span>
-          <span class="exercises-text__dynamic">${workoutData.target}</span>
+          <span class="exercises_text__dynamic">${workoutData.target}</span>
         </p>
       </div>
+      <span class="exercises_rating__text">${String(workoutData.rating).padEnd(
+        3,
+        '.0'
+      )}</span>
     </li>
   `;
-  // document.querySelectorAll('.exercises-start-button').forEach(button => {
-  //   if (button.dataset.workoutData === JSON.stringify(workoutData)) {
-  //     button.addEventListener('click', openExerciseModal);
-  //   }
-  // });
 
   return workoutCardMarkup;
 }
