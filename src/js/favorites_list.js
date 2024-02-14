@@ -3,7 +3,7 @@ import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 const list = document.querySelector('.workouts-list');
-list.innerHTML = '';
+// list.innerHTML = '';
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 export function fetchWorkoutById(workoutId) {
@@ -95,7 +95,7 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   );
 
   // Видалення іншого значення з localStorage, якщо це необхідно
-  localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
+  // localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
 
   // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
@@ -176,21 +176,21 @@ function createWorkoutCardMarkup(workoutData) {
 }
 
 export function showEmptyMessage() {
-  if (!isFirstLoad) {
-    list.innerHTML = `
-    <div class="empty-list">
-      <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
-        alt="dumbbell"
-        width="85"
-        height="52"
-      />      
-      <p class="empty-message">
-        It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
-      </p>
-    </div>`;
-  }
+  // if (!isFirstLoad) {
+  //   list.innerHTML = `
+  //   <div class="empty-list">
+  //     <img class="empty-item"
+  //       srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
+  //       src="./img/dumbbell@1x-min.png"
+  //       alt="dumbbell"
+  //       width="85"
+  //       height="52"
+  //     />
+  //     <p class="empty-message">
+  //       It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
+  //     </p>
+  //   </div>`;
+  //}
 }
 
 // Функція для видалення карточки вправи зі сторінки після закриття модального вікна
