@@ -62,24 +62,6 @@ function addWorkoutCardToDOM(workoutData) {
   document
     .querySelectorAll('.exercises_start')
     .forEach(el => el.addEventListener('click', openFavExerciseModal));
-
-  // // Вибрати всі кнопки з класом .exercises-start-button
-  // const buttons = document.querySelectorAll('.exercises-start-button');
-
-  // buttons.forEach(button => {
-  //   // Отримати дані з атрибуту data-workout-data
-  //   const workoutDataString = button.dataset.workoutData;
-
-  //   // Обробити рядок JSON для отримання об'єкта JavaScript
-  //   const workoutDataObject = JSON.parse(workoutDataString);
-
-  //   console.log(workoutDataObject); // Вивести об'єкт в консоль
-
-  //   // Додати обробник події для кнопки
-  //   button.addEventListener('click', event => {
-  //     openExerciseModal(event, workoutDataObject);
-  //   });
-  // });
 }
 
 // Функція для додавання обробника події для кнопки видалення
@@ -97,7 +79,7 @@ function addRemoveButtonEventListener(workoutData) {
 
 // Функція для видалення карточки вправи зі сторінки та з локального сховища
 function removeWorkoutCardFromDOM(removeButton, workoutId) {
-  removeButton.closest('.exercises-item').remove();
+  removeButton.closest('.exercises_item').remove();
 
   const storedWorkoutIds =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
@@ -183,10 +165,9 @@ function createWorkoutCardMarkup(workoutData) {
           <span class="exercises_text__dynamic">${workoutData.target}</span>
         </p>
       </div>
-      <span class="exercises_rating__text">${String(workoutData.rating).padEnd(
-        3,
-        '.0'
-      )}</span>
+      <span class="exercises_rating__text disactive_video_window">${String(
+        workoutData.rating
+      ).padEnd(3, '.0')}</span>
     </li>
   `;
 
