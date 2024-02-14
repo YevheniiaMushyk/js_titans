@@ -3,6 +3,11 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import { openExerciseModal } from '../js/modal_video.js';
+
+/////////////////////////////////////////////////////////////////////
+import { loader, activeLoader, disactiveLoader } from './loader';
+////////////////////////////////////////////////////////////////////////
+
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
 export const form = document.querySelector('.exercises-search-form');
 export const containerCardsEl = document.querySelector(
@@ -25,7 +30,12 @@ containerCardsEl.addEventListener('click', dataSet);
 async function dataSet(event) {
   event.preventDefault();
   const cardElement = event.target.closest('.card-item');
+
   if (cardElement) {
+    ////////////////////////////////////////////////////
+      activeLoader(loader);
+////////////////////////////////////////////////////////
+    
     const nameElement = cardElement.querySelector('.name');
     const filterElement = cardElement.querySelector('.filter');
     if (nameElement && filterElement) {
@@ -35,6 +45,7 @@ async function dataSet(event) {
         .toLowerCase()
         .replace(/\s/g, '');
       if (filter === 'bodyparts') {
+
         filter = filter.replace(/s$/, '');
       }
       exercisesName.innerHTML = `Exercises /<span> ${name.replace(
@@ -49,6 +60,10 @@ async function dataSet(event) {
         form.addEventListener('submit', handleSearch);
         // функція для пошуку за ключовим словом -------------------
         async function handleSearch(event) {
+
+          ///////////////////////////////////////////////////////////////////////////////////////////////////
+          activeLoader(loader);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           event.preventDefault();
           containerCardsEl.innerHTML = '';
           const form = event.currentTarget;
@@ -83,6 +98,9 @@ async function dataSet(event) {
             console.log(err);
           } finally {
             form.reset();
+            /////////////////////////////////////////////////////////////////////////////
+            disactiveLoader(loader);
+            ////////////////////////////////////////////////////////////////////////////////
           }
         }
         queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
@@ -91,12 +109,16 @@ async function dataSet(event) {
         console.log(err);
       } finally {
         form.reset();
+        //////////////////////////////////////////////////////////////////////////////////////
+        disactiveLoader(loader);
+        ////////////////////////////////////////////////////////////////////////////////////
       }
     }
   }
 }
 // запит-------------------
 function serchPicture(exercisesCard, page = 1, URL) {
+
   return axios
     .get(URL, {
       params: {
