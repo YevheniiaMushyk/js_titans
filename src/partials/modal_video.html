@@ -1,7 +1,12 @@
 <div id="modal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close">
+      <svg class="close-x" width="24" height="24">
+        <use href="./img/icons.svg#icon-xb"></use>
+      </svg>
+    </span>
     <img class="exercise-gif" src="#" alt="Exercise GIF" />
+    <div class="flex-container-modal">
     <h3 class="exercise-title"></h3>
 
     <div class="exercise-rating">
@@ -69,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="custom-hr"></div>
+    <div class="custom-hr-top"></div>
     <div class="exercise-details">
       <p class="exercise-peculiarities">
         Target: <span class="exercise-target"></span>
@@ -87,18 +92,22 @@
         Burned Calories: <span class="exercise-calories"></span>
       </p>
     </div>
-    <div class="custom-hr"></div>
+    <div class="custom-hr-bot"></div>
     <div class="exercise-description">
       <p class="exercise-peculiarities-text">Description goes here...</p>
     </div>
+    <div class="buttons-style">
     <div class="div-button-favorite">
       <button class="favorite-button">
         Add to Favorites
-        <svg class="modal_icon" width="13" height="15">
+        <svg class="modal_icon" width="18" height="18">
           <use href="./img/icons.svg#icon-heart"></use>
         </svg>
       </button>
+      
     </div>
     <button class="rating-button" id="modal_rating">Give a rating</button>
   </div>
+  </div>
+</div>
 </div>
