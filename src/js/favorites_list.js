@@ -2,8 +2,7 @@ import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
-const list = document.querySelector('.workouts-list');
-// list.innerHTML = '';
+const list = document.querySelector('#wl');
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 export function fetchWorkoutById(workoutId) {
@@ -58,6 +57,7 @@ function addNewWorkoutById(workoutId) {
 // Функція для додавання нової карточки вправи до списку
 function addWorkoutCardToDOM(workoutData) {
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
+  const list = document.querySelector('.workouts-list');
   list.insertAdjacentHTML('beforeend', workoutCardMarkup);
   addRemoveButtonEventListener(workoutData);
   document
@@ -195,15 +195,15 @@ export function showEmptyMessage() {
   //       It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
   //     </p>
   //   </div>`;
-  //}
+  // }
 }
 
 // Функція для видалення карточки вправи зі сторінки після закриття модального вікна
 export function updateWorkoutCardInFavorites() {
-  isFirstLoad = true;
+  // isFirstLoad = true;
   const storedWorkoutIdsFav =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  list.innerHTML = '';
+  // list.innerHTML = '';
 
   if (storedWorkoutIdsFav.length > 0) {
     storedWorkoutIdsFav.forEach(workoutId => {

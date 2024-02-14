@@ -17,6 +17,7 @@ const refs = {
   equipmentButton: document.querySelector('[data-filter="equipment"]'),
   cardContainer: document.querySelector('.exercises-card-container'),
   pagination: document.querySelector('#pagination'),
+  excerciceContainer: document.querySelector('.container-ex'),
 };
 const form = document.querySelector('.exercises-search-form');
 let btnPrev = null;
@@ -171,6 +172,9 @@ async function onPagination(e) {
     ///////////////////////////////////////////////////////////////////////////////////////////
     const { results } = await getData();
     createMarkup(results);
+    if (refs.excerciceContainer) {
+      refs.excerciceContainer.scrollIntoView({ behavior: 'smooth' });
+    }
   } catch (error) {
     console.log(error);
   }
