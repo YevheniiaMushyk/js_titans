@@ -107,6 +107,11 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   }
 }
 
+// const closeModalButton = document.querySelector('.close-modal-button');
+// closeModalButton.addEventListener('click', () => {
+//     addRemoveButtonEventListener();
+// });
+
 function createWorkoutCardMarkup(workoutData) {
   const workoutCardMarkup = `
     <li class="exercises_item" data-gifUrl=${
