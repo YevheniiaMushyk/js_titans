@@ -20,7 +20,7 @@
 }
 
 .hidden {
-  display: none;
+    display: none !important;
 }
 
 .card-container {
@@ -86,9 +86,10 @@
 }
 
 .exercises-start {
-  display: flex;
-  align-items: center;
-  gap: 9px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 9px;
 }
 
 .exercises-start__text {
@@ -194,41 +195,87 @@
 }
 
 .no-results-text {
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -1%;
-  text-align: center;
+    align-self: center;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -1%;
+    text-align: center;
+    padding-top: 164px;
+    padding-bottom: 320px;
 }
 
 .no-results-text span {
   color: rgb(126, 132, 127);
 }
 
+.pagination-container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pagination-list {}
+
+.pagination-btn {
+    font-family: 'DM Sans';
+    font-size: 20px !important;
+    padding: 0px !important;
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    border: none !important;
+    background: none !important;
+    display: inline-flex;
+    /*important */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgba(27, 27, 27, 0.4) !important;
+}
+
+.pagination-btn.active {
+    color: #1b1b1b !important;
+    border: 1px solid #1b1b1b !important;
+}
+
 /* ===exercises-body-parts-tab===*/
 @media screen and (min-width: 736px) {
-  .exercises-item,
+
+    .exercises-item,
   .exercises_item {
-    padding: 16px;
-    border-radius: 15px;
-    background: rgb(255, 255, 255);
-    max-width: 313px;
-  }
+        padding: 16px;
+        border-radius: 15px;
+        background: rgb(255, 255, 255);
+        max-width: 313px;
+    }
 
-  .exercises-search {
-    flex-basis: auto;
-  }
+    .exercises-search {
+        flex-basis: auto;
+    }
 
-  .exercises-input {
-    min-width: 0;
-    font-size: 16px;
-    line-height: 24px;
-    padding: 12px 32px 12px 14px;
-  }
+    .exercises-input {
+        min-width: 0;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 12px 32px 12px 14px;
+    }
 
-  .exercises-form-btn {
-    top: 16px;
-    right: 14px;
-  }
+    .exercises-form-btn {
+        top: 16px;
+        right: 14px;
+    }
+
+    .no-results-text {
+        padding: 0 0;
+        max-width: 536px;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: -1%;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 222px;
+        padding-bottom: 525px;
+    }
+
 }
 
 @media screen and (max-width: 1408px) {
@@ -240,12 +287,26 @@
 
 /* ===exercises-body-parts-desk===*/
 @media screen and (min-width: 1408px) {
-  .exercises-item,
-  .exercises_item {
-    max-width: 424px;
-  }
 
-  .exercises-input {
-    min-width: 273px;
-  }
+    .exercises-item,
+  .exercises_item {
+        max-width: 424px;
+    }
+
+    .exercises-input {
+        min-width: 273px;
+    }
+
+    .no-results-text {
+        padding: 0 0;
+        padding-top: 217px;
+        padding-bottom: 350px;
+        margin: 0 auto;
+        max-width: 684px;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: -1%;
+        text-align: center;
+    }
 }
+

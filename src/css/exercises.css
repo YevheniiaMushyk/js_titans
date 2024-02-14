@@ -96,11 +96,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(16, 16, 16, 0.7),
-      rgba(16, 16, 16, 0.7)
-    ),
+      rgba(16, 16, 16, 0.7)),
     linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3));
   position: absolute;
   inset: 0;
@@ -143,7 +141,8 @@
   line-height: 32px !important;
   border: none !important;
   background: none !important;
-  display: inline-flex !important;
+  display: inline-flex;
+  /*important */
   justify-content: center;
   align-items: center;
   border-radius: 50%;
