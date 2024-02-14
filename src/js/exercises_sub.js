@@ -21,15 +21,15 @@ let currentPage = 1;
 // Переменная для хранения общего количества результатов на странице
 const resultsPerPage = 9;
 const queryParams = {
-  name: '',
-  page: 1,
-  maxPage: 0,
-  limit: 9,
+    name: '',
+    page: 1,
+    maxPage: 0,
+    limit: 9,
 };
 let currentSearchQuery = '';
 function noResults() {
-  containerCardsEl.innerHTML =
-    '<div class="no-results-text">Unfortunately, <span>no results</span> were found.You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</div>';
+    containerCardsEl.innerHTML =
+        '<div class="no-results-text">Unfortunately, <span>no results</span> were found.You may want to consider other search options to find the exercise you are looking for.Our range is wide and you have the opportunity to find more options that suit your needs.</div>';
 }
 containerCardsEl.addEventListener('click', dataSet);
 async function dataSet(event) {
@@ -87,9 +87,9 @@ async function dataSet(event) {
                 async function handlePaginationClick(event) {
                     const clickedPage = parseInt(event.target.dataset.page);
                     if (currentPage !== clickedPage) {
-                      ///////////////////////////////////////////////////////////////////////////////////////////////////
-                      activeLoader(loader);
-                      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////
+                        activeLoader(loader);
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         document.querySelectorAll('.pagination-btn').forEach(btn => btn.classList.remove('active'));
                         currentPage = clickedPage;
                         event.target.classList.add('active');
@@ -152,48 +152,38 @@ async function dataSet(event) {
                         console.log(err);
                     } finally {
                         form.reset();
-                  }
+                    }
                 }
-              };
-            } else {
-              containerCardsEl.innerHTML = '';
-              noResults();
+                queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
+                createexercisesCard(results, containerCardsEl);
             }
-          } catch (err) {
-            console.log(err);
-          } finally {
-            form.reset();
-            /////////////////////////////////////////////////////////////////////////////
-            disactiveLoader(loader);
-            ////////////////////////////////////////////////////////////////////////////////
-          }
+            catch (err) {
+                console.log(err);
+            } finally {
+                form.reset();;
+                /////////////////////////////////////////////////////////////////////////////
+                disactiveLoader(loader);
+                ////////////////////////////////////////////////////////////////////////////////
+            }
         }
-        queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
-        createexercisesCard(results, containerCardsEl);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        form.reset();
         //////////////////////////////////////////////////////////////////////////////////////
         disactiveLoader(loader);
         ////////////////////////////////////////////////////////////////////////////////////
-      }
     }
-  }
 }
 // запит-------------------
 function serchPicture(exercisesCard, page = 1, URL) {
-  return axios
-    .get(URL, {
-      params: {
-        keyword: exercisesCard,
-        limit: 9,
-        page,
-      },
-    })
-    .then(res => {
-      return res.data;
-    });
+    return axios
+        .get(URL, {
+            params: {
+                keyword: exercisesCard,
+                limit: 9,
+                page,
+            },
+        })
+        .then(res => {
+            return res.data;
+        });
 }
 // формування розмітки -------------------
 function createexercisesCard(results, containerCardsEl) {
@@ -215,11 +205,11 @@ function createexercisesCard(results, containerCardsEl) {
             <div class="exercises-sub-title">
                 <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(
-                      rating
-                    ).padEnd(
-                      3,
-                      '.0'
-                    )}</span><svg class="exercises-rating__svg" width="18" height="18">
+                rating
+            ).padEnd(
+                3,
+                '.0'
+            )}</span><svg class="exercises-rating__svg" width="18" height="18">
                             <use href="./img/icons.svg#icon-star_yellow"></use>
                         </svg></span>
                 </div>

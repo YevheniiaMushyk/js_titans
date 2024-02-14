@@ -9,7 +9,7 @@ import { loader, activeLoader, disactiveLoader } from './loader';
 // import { loader, activeLoader, disactiveLoader } from '../js/loader';
 const searchFormEl = document.querySelector('.exercises-search');
 // const exercisesName = document.querySelector(".exercises-name");
-
+const exercisesName = document.querySelector(".exercises-name");
 const refs = {
   buttons: document.querySelector('.exercises-buttons'),
   musclesButton: document.querySelector('[data-filter="muscles"]'),
