@@ -119,7 +119,7 @@ export function deleteFavorites(id) {
     FAVORITES_KEY_LOCAL_STORAGE,
     JSON.stringify(updFavorites)
   );
-  removeWorkoutCardVideoWin(id);
+  // removeWorkoutCardVideoWin(id);
 }
 
 favoriteButton.addEventListener('click', event => {

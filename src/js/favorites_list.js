@@ -22,7 +22,7 @@ if (storedWorkoutIds.length > 0) {
         addWorkoutCardToDOM(workoutData);
       })
       .catch(error => {
-        console.error(error);
+        console.log(error);
       });
   });
 } else {
