@@ -134,6 +134,9 @@ favoriteButton.addEventListener('click', event => {
     }
   } else {
     setFavorites(id);
+    if (favoritesWindowOpen === 1) {
+      updateWorkoutCardInFavorites(id);
+    }
   }
   drawFavoritesBtnText(id);
 });
