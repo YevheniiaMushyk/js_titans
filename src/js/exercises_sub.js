@@ -189,9 +189,10 @@ function createexercisesCard(results, containerCardsEl) {
         description,
         equipment,
         popularity,
+        time,
         _id,
       }) => `
-    <li class="exercises-item" data-gifUrl=${gifUrl} data-description="${description}" data-equipment=${equipment} data-popularity=${popularity} data-id=${_id}>
+    <li class="exercises-item" data-gifUrl=${gifUrl} data-description="${description}" data-equipment=${equipment} data-popularity=${popularity} data-time=${time} data-id=${_id}>
             <div class="exercises-sub-title">
 <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(

@@ -2,6 +2,7 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
+import { getFavorites, setFavorites, checkFavorites, deleteFavorites,  } from "../js/favorites_helpers.js"
 import {
   favoritesCardsList,
   updateFavoritesList,
@@ -28,7 +29,7 @@ const ratingNumberElement = document.querySelector('.rating-number');
 // Отримуємо доступ до модалки з рейтингом
 const modalRating = document.querySelector('.modal_rating');
 
-const FAVORITES_KEY_LOCAL_STORAGE = 'ENERGY_FLOW_FAVORITES_KEY';
+
 
 // Відкриття модального вікна по кнопці "start"
 export function openExerciseModal(event) {
@@ -83,24 +84,6 @@ window.addEventListener('keydown', event => {
 // });
 
 // Кнопка "Add to favorites"
-export function getFavorites() {
-  const favorites = window.localStorage.getItem(FAVORITES_KEY_LOCAL_STORAGE);
-  return favorites && favorites !== 'undefined' ? JSON.parse(favorites) : [];
-}
-
-function setFavorites(id) {
-  const favorites = getFavorites();
-  const updFavorites = favorites.length ? [...favorites, id] : [id];
-  window.localStorage.setItem(
-    FAVORITES_KEY_LOCAL_STORAGE,
-    JSON.stringify(updFavorites)
-  );
-}
-
-function checkFavorites(id) {
-  const favorites = getFavorites();
-  return !!favorites.find(el => el === id);
-}
 
 function drawFavoritesBtnText(id) {
   const favorite = checkFavorites(id);
@@ -111,15 +94,6 @@ function drawFavoritesBtnText(id) {
         </svg>`;
 }
 
-export function deleteFavorites(id) {
-  const favorites = getFavorites();
-  const updFavorites = favorites.filter(el => el !== id);
-  window.localStorage.setItem(
-    FAVORITES_KEY_LOCAL_STORAGE,
-    JSON.stringify(updFavorites)
-  );
-}
-
 favoriteButton.addEventListener('click', event => {
   if (!modal) {
     return;
@@ -128,17 +102,17 @@ favoriteButton.addEventListener('click', event => {
   const favorite = checkFavorites(id);
   if (favorite) {
     deleteFavorites(id);
-    if (favoritesCardsList) {
-      updateFavoritesList();
-    }
+    
   } else {
     setFavorites(id);
-    if (favoritesCardsList) {
-      updateFavoritesList();
-    }
+    
+  }
+  if (favoritesCardsList) {
+    updateFavoritesList();
   }
   drawFavoritesBtnText(id);
 });
+
 
 // Функція для отримання даних вправи з HTML-структури
 function getExerciseData(exerciseItem) {
@@ -154,7 +128,7 @@ function getExerciseData(exerciseItem) {
   )[2];
   const ratingElement = exerciseItem.querySelector('.exercises-rating__text');
 
-  const { gifurl, description, equipment, popularity, id } =
+  const { gifurl, description, equipment, popularity, time, id } =
     exerciseItem.dataset;
 
   return {
@@ -167,6 +141,7 @@ function getExerciseData(exerciseItem) {
     description,
     equipment,
     popularity,
+    time, 
     _id: id,
   };
 }
@@ -230,6 +205,7 @@ function fillModalWithData(exerciseData) {
   popularElement.textContent = exerciseData.popularity;
   caloriesElement.textContent = exerciseData.burnedCalories;
   descriptionElement.textContent = exerciseData.description;
+  modal.dataset.time = exerciseData.time;
   modal.dataset.id = exerciseData._id;
 
   drawFavoritesBtnText(exerciseData._id);
