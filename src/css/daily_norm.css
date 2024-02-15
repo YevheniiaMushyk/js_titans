@@ -12,18 +12,13 @@
   height: 269px;
   overflow: hidden;
   position: relative;
+  background-size: cover;
+  background-position: top;
+  border-radius: 30px;
+  
 }
 
-.daily-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 30px;
-}
+
 
 .daily-card {
   background-color: var(--main_text);
@@ -87,6 +82,7 @@
   }
   .daily-container {
     padding: 64px 96px 64px 64px;
+    height: 302;
   }
   .image_container {
     width: 736px;
@@ -101,10 +97,12 @@
   }
   .daily-title {
     font-size: 24px;
+    line-height: 1.2;
   }
 
   .daily-text {
     font-weight: 400;
+    line-height: 1.5;
   }
 
   .daily-text:last-child {
@@ -128,5 +126,42 @@
 
   .daily-info {
     max-width: 526px;
+  }
+}
+
+
+@media screen and (max-width: 767.9px) {
+  .image_container {
+    background-image: url('../img/daily_m@1x-min.png');
+  }
+}
+
+@media screen and (max-width: 767.9px) and (min-resolution: 192dpi) {
+  .image_container {
+    background-image: url('../img/daily_m@2x-min.png');
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .image_container {
+    background-image: url('../img/daily_t@1x-min.png');
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) and (min-resolution: 192dpi) {
+  .image_container {
+    background-image: url('../img/daily_t@2x-min.png');
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .image_container {
+    background-image: url('../img/daily_d@1x-min.png');
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .image_container {
+    background-image: url('../img/daily_d@2x-min.png');
   }
 }
