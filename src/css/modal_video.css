@@ -7,8 +7,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background: rgba(27, 27, 27, 0.6); 
-
+  background: rgba(27, 27, 27, 0.6);
 }
 
 .modal-content {
@@ -27,10 +26,13 @@
 }
 
 .close {
+  display: block;
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
 
 .close:hover,
@@ -38,6 +40,7 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 .exercise-gif {
@@ -111,7 +114,6 @@
   height: 18px;
 }
 
-
 .exercise-target {
   color: rgb(27, 27, 27);
 
@@ -168,15 +170,19 @@
   align-items: center;
   gap: 10px;
   margin-top: 40px;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.div-button-favorite:hover {
+  transform: scale(1.05);
 }
 
 .favorite-button {
-
   display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
   width: 100%;
   height: 48px;
@@ -187,6 +193,7 @@
 }
 
 .rating-button {
+  display: block;
   width: 100%;
   height: 48px;
   border-radius: 30px;
@@ -194,6 +201,12 @@
   box-sizing: border-box;
   border: 1px solid rgb(27, 27, 27);
   border-radius: 30px;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.rating-button:hover {
+  transform: scale(1.05);
 }
 
 .rating-number {
@@ -262,17 +275,15 @@
     margin-bottom: 16px;
   }
 
-.div-button-favorite {
-  margin-top: 0;
-  width: 194px;
-}
+  .div-button-favorite {
+    margin-top: 0;
+    width: 194px;
+  }
 
   .exercise-description {
     margin-bottom: 32px;
     width: 342px;
   }
-
-
 
   .buttons-style {
     display: flex;
@@ -282,7 +293,6 @@
   .div-button-favorite {
     width: 194px;
   }
-
 
   .rating-button {
     width: 140px;

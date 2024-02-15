@@ -12,6 +12,13 @@
   background: rgb(255, 255, 255);
   max-width: 295px;
   overflow: hidden;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.exercises-item:hover,
+.exercises_item:hover {
+  transform: scale(1.05);
 }
 
 .container-ex {
@@ -94,11 +101,13 @@
   align-items: center;
   cursor: pointer;
   gap: 9px;
+  border-radius: 10px;
   transition: all 250ms;
+  transition-timing-function: ease;
 }
 
 .exercises-start:hover {
-  border: 1px solid rgb(27, 27, 27);
+  border: 1px solid var(--button_fon);
   padding: 2px;
   border-radius: 10px;
 }
@@ -249,7 +258,6 @@
 
 /* ===exercises-body-parts-tab===*/
 @media screen and (min-width: 736px) {
-
   .exercises-item,
   .exercises_item {
     padding: 16px;
@@ -296,7 +304,6 @@
 
 /* ===exercises-body-parts-desk===*/
 @media screen and (min-width: 1408px) {
-
   .exercises-item,
   .exercises_item {
     max-width: 424px;

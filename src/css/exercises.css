@@ -83,6 +83,13 @@
   position: relative;
   border-radius: 12px;
   border: 1px solid rgba(246, 246, 246, 0.3);
+  /* transition-property: ; */
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.card-item:hover {
+  transform: scale(1.05);
 }
 
 .card-image {
@@ -96,9 +103,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+      0deg,
       rgba(16, 16, 16, 0.7),
-      rgba(16, 16, 16, 0.7)),
+      rgba(16, 16, 16, 0.7)
+    ),
     linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3));
   position: absolute;
   inset: 0;
