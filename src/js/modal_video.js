@@ -21,6 +21,7 @@ const descriptionElement = modal.querySelector('.exercise-description');
 const favoriteButton = modal.querySelector('.favorite-button');
 const ratingButton = document.querySelector('.rating-button');
 const ratingNumberElement = document.querySelector('.rating-number');
+// Змінна для відслідеовування з якого вікна зпаущена модалка "1"-з вікна обраних карток
 let favoritesWindowOpen = 0;
 
 // Отримуємо доступ до модалки з рейтингом
@@ -39,8 +40,9 @@ export function openExerciseModal(event) {
   modal.style.display = 'block';
 }
 
-// Відкриття модального вікна по кнопці "start" з вкладки обраних
+// Відкриття модального вікна по кнопці "start" з вікна обраних карток
 export function openFavExerciseModal(event) {
+  // Обнулюємо змінну
   favoritesWindowOpen = 0;
   const exerciseItem = event.target.closest('.exercises_item');
   if (!exerciseItem) {
@@ -49,6 +51,7 @@ export function openFavExerciseModal(event) {
   const exerciseFavData = getFavExerciseData(exerciseItem);
   fillModalWithData(exerciseFavData);
   modal.style.display = 'block';
+  // Встановлюємо "1" т.я. відкрита модалка з вікна обраних карток
   favoritesWindowOpen = 1;
 }
 
@@ -132,11 +135,13 @@ favoriteButton.addEventListener('click', event => {
   const favorite = checkFavorites(id);
   if (favorite) {
     deleteFavorites(id);
+    // Встановлюємо "1" для оновлення розмітки вікна обраних карток
     if (favoritesWindowOpen === 1) {
       updateWorkoutCardInFavorites(id);
     }
   } else {
     setFavorites(id);
+    // Встановлюємо "1" для оновлення розмітки вікна обраних карток
     if (favoritesWindowOpen === 1) {
       updateWorkoutCardInFavorites(id);
     }
