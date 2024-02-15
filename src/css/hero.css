@@ -15,7 +15,7 @@
 }
 
 .hero_img_container {
-  background-image: url("../img/hero_m@2x-min.png");
+  background-image: url('../img/hero_m@2x-min.png');
   background-size: cover;
   background-position: center;
   border-radius: 30px;
@@ -25,14 +25,13 @@
 
 @media (min-resolution: 192dpi) {
   .hero_img_container {
-    background-image: url("../img/hero_m@2x-min.png");
+    background-image: url('../img/hero_m@2x-min.png');
   }
 }
 
 .hero_img {
   border-radius: 30px;
-  }
-  
+}
 
 .hero_tag {
   position: absolute;
@@ -95,21 +94,22 @@
     height: 900px;
   }
 
-    .hero_img_container {
-      background-image: url("../img/hero_t@1x-min.png");
-    }
+  .hero_img_container {
+    background-image: url('../img/hero_t@1x-min.png');
+    border-radius: 50px 0px 50px 50px;
+  }
 
-        @media (min-resolution: 192dpi) {
-          .hero_img_container {
-            background-image: url("../img/hero_t@2x-min.png");
-          }
-        }
+  @media (min-resolution: 192dpi) {
+    .hero_img_container {
+      background-image: url('../img/hero_t@2x-min.png');
+      border-radius: 50px 0px 50px 50px;
+    }
+  }
 
   .hero_img {
     width: 248px;
     height: 900px;
     border-radius: 50px 0px 50px 50px;
-    
   }
 
   .hero_tag {
@@ -159,15 +159,17 @@
     gap: 0;
   }
 
-     .hero_img_container {
-       background-image: url("../img/hero_d@1x-min.png");
-     }
+  .hero_img_container {
+    background-image: url('../img/hero_d@1x-min.png');
+    border-radius: 50px 0px 50px 50px;
+  }
 
-         @media (min-resolution: 192dpi) {
-           .hero_img_container {
-             background-image: url("../img/hero_d@2x-min.png");
-           }
-         }
+  @media (min-resolution: 192dpi) {
+    .hero_img_container {
+      background-image: url('../img/hero_d@2x-min.png');
+      border-radius: 50px 0px 50px 50px;
+    }
+  }
 
   .hero_img {
     width: 704px;
