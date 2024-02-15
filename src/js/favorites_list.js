@@ -97,7 +97,7 @@ function createWorkoutCardMarkup(workoutData) {
             workoutData._id
           }">
             <svg class="workout-card__icon" width="16" height="16">
-              <use href="./img/icons.svg#icon-trash"></use>
+              <use href="../img/icons.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -113,7 +113,7 @@ function createWorkoutCardMarkup(workoutData) {
       height="13"
       stroke="rgb(27, 27, 27)"
     >
-      <use href="./img/icons.svg#icon-arrow"></use>
+      <use href="../img/icons.svg#icon-arrow"></use>
     </svg></button>
   </div>
 
@@ -188,8 +188,8 @@ export function showEmptyMessage() {
   favoritesCardsList.innerHTML = `
     <div class="empty-list">
       <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
+        srcset="../img/dumbbell@1x-min.png 1x, ../img/dumbbell@1x-min.png 2x"
+        src="../img/dumbbell@1x-min.png"
         alt="dumbbell"
         width="85"
         height="52"
