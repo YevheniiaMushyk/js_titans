@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
+import { getFavorites, deleteFavorites } from './favorites_helpers.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
-let storedWorkoutIds = [];
+let storedWorkouts = [];
 
 //Нова версія
 // if (favoritesCardsList) {
@@ -27,15 +28,15 @@ if (favoritesCardsList) {
 
 // Функція отримання даних для аналізу localStorage та визначення подальшої логіки
 export function updateFavoritesList() {
-  storedWorkoutIds =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  console.log(storedWorkoutIds);
+  storedWorkouts = 
+    getFavorites()
+  console.log(storedWorkouts);
 
-  if (storedWorkoutIds.length > 0) {
+  if (storedWorkouts.length > 0) {
     console.log('32 JS full');
     favoritesCardsList.innerHTML = '';
-    storedWorkoutIds.forEach(workoutId => {
-      fetchWorkoutById(workoutId)
+    storedWorkouts.forEach(workout => {
+      fetchWorkoutById(workout._id)
         .then(response => {
           const workoutData = response.data;
           console.log('37 dodaem rozmitky');
@@ -89,7 +90,7 @@ function createWorkoutCardMarkup(workoutData) {
       workoutData.gifUrl
     } data-description="${workoutData.description}" data-equipment=${
     workoutData.equipment
-  } data-popularity=${workoutData.popularity} data-id=${workoutData._id}>
+  } data-popularity=${workoutData.popularity} data-id=${workoutData._id} data-time=${workoutData.time}>
       <div class="exercises_sub_title">
         <div class="exercises__workout_rating">
           <p class="exercises_workout">workout</p>
@@ -162,23 +163,13 @@ function addRemoveButtonEventListener(workoutData) {
 }
 
 // Функція для видалення карточки вправи зі сторінки та з локального сховища
-function removeWorkoutCardFromDOM(removeButton, workoutData) {
+function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises_item').remove();
 
-  const storedWorkoutIds =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  const updatedStoredWorkoutIds = storedWorkoutIds.filter(
-    workout => workout._id !== workoutData._id
-  );
-
-  // Оновлення storedWorkoutIds після видалення
-  localStorage.setItem(
-    'ENERGY_FLOW_FAVORITES_KEY',
-    JSON.stringify(updatedStoredWorkoutIds)
-  );
+  deleteFavorites(workoutId)
 
   // Виклик функції showEmptyMessage, якщо немає збережених вправ
-  if (updatedStoredWorkoutIds.length === 0) {
+  if (updatedStoredWorkouts.length === 0) {
     showEmptyMessage();
   }
 }
