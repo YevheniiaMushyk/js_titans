@@ -19,7 +19,7 @@ const refs = {
   pagination: document.querySelector('#pagination'),
   excerciceContainer: document.querySelector('.container-ex'),
 };
-const form = document.querySelector('.exercises-search-form');
+// const form = document.querySelector('.exercises-search-form');
 let btnPrev = null;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 

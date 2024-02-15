@@ -55,12 +55,14 @@ export function openFavExerciseModal(event) {
 // Закриття модального вікна при кліку на хрестик
 closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
+  favoritesWindowOpen = 0;
 });
 
 // Закриття модального вікна при кліку за межами вікна
 window.addEventListener('click', event => {
   if (event.target === modal) {
     modal.style.display = 'none';
+    favoritesWindowOpen = 0;
   }
 });
 
@@ -68,6 +70,7 @@ window.addEventListener('click', event => {
 window.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     modal.style.display = 'none';
+    favoritesWindowOpen = 0;
   }
 });
 
