@@ -2,31 +2,55 @@ import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
-const list = document.querySelector('#wl');
+const list = document.querySelector('.workouts-list');
 
+async function fetchWorkoutById() {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  // console.log(data);
+
+  const workoutData = data.results.filter(workoutId =>
+    storedWorkoutIds.includes(workoutId._id)
+  );
+  console.log(workoutData);
+}
 let isFirstLoad = true;
 
 if (list) {
+const storedWorkoutIds =
+  JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+
+if (storedWorkoutIds.length > 0) {
+  storedWorkoutIds.forEach(workoutData => {
+    fetchWorkoutById(workoutData);
+
+    addWorkoutCardToDOM(workoutData);
+  });
+} else {
+  isFirstLoad = false;
+  showEmptyMessage();
+}}
+// console.log(storedWorkoutIds);
+
+// Функція для додавання нової карточки вправи до списку
+function addNewWorkoutById(workoutData) {
   const storedWorkoutIds =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+  if (!storedWorkoutIds.includes(workoutId.id)) {
+    fetchWorkoutById(workoutData);
 
-  if (storedWorkoutIds.length > 0) {
-    storedWorkoutIds.forEach(workoutId => {
-      fetchWorkoutById(workoutId)
-        .then(response => {
-          const workoutData = response.data;
-          console.log('dodaem rozmitky 19');
-          addWorkoutCardToDOM(workoutData);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    });
-  } else {
-    isFirstLoad = false;
-    showEmptyMessage();
-  }
-}
+    addWorkoutCardToDOM(workoutData);
+
+    storedWorkoutIds.push(workoutData);
+    localStorage.setItem(
+      'ENERGY_FLOW_FAVORITES_KEY',
+      JSON.stringify(storedWorkoutIds)
+    );
+
+    isFirstLoad = false;}}
+  
+// console.log(localStorage);
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 
@@ -71,8 +95,6 @@ function addWorkoutCardToDOM(workoutData) {
     .forEach(el => el.addEventListener('click', openFavExerciseModal));
 }
 
-// Функція для додавання обробника події для кнопки видалення
-
 function addRemoveButtonEventListener(workoutData) {
   const removeButtons = document.querySelectorAll(`.workout-card__remove-btn`);
   removeButtons.forEach(removeButton => {
@@ -84,14 +106,13 @@ function addRemoveButtonEventListener(workoutData) {
   });
 }
 
-// Функція для видалення карточки вправи зі сторінки та з локального сховища
-function removeWorkoutCardFromDOM(removeButton, workoutId) {
+function removeWorkoutCardFromDOM(removeButton, workoutData) {
   removeButton.closest('.exercises_item').remove();
 
   const storedWorkoutIds =
     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
   const updatedStoredWorkoutIds = storedWorkoutIds.filter(
-    id => id !== workoutId
+    workout => workout._id !== workoutData._id
   );
 
   // Оновлення storedWorkoutIds після видалення
@@ -101,7 +122,9 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   );
 
   // Видалення іншого значення з localStorage, якщо це необхідно
+  // localStorage.removeItem('workoutId');
   // localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
+
 
   // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
@@ -114,11 +137,6 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   }
 }
 
-// const closeModalButton = document.querySelector('.close-modal-button');
-// closeModalButton.addEventListener('click', () => {
-//     addRemoveButtonEventListener();
-// });
-
 function createWorkoutCardMarkup(workoutData) {
   const workoutCardMarkup = `
     <li class="exercises_item" data-gifUrl=${
@@ -126,9 +144,9 @@ function createWorkoutCardMarkup(workoutData) {
     } data-description="${workoutData.description}" data-equipment=${
     workoutData.equipment
   } data-popularity=${workoutData.popularity} data-id=${workoutData._id}>
-      <div class="exercises-sub-title">
-        <div class="exercises__workout-rating">
-          <p class="exercises-workout">workout</p>
+      <div class="exercises_sub_title">
+        <div class="exercises__workout_rating">
+          <p class="exercises_workout">workout</p>
           <button class="workout-card__remove-btn" data-workout-id="${
             workoutData._id
           }">
@@ -137,15 +155,14 @@ function createWorkoutCardMarkup(workoutData) {
             </svg>
           </button>
         </div>
-       
-    
+
   <div class="exercises_start">
   <button class="exercises-start-button" data-workout-data="${JSON.stringify(
     workoutData
   )}">
-    <span class="exercises-start__text">Start</span>
+    <span class="exercises_start__text">Start</span>
     <svg
-      class="exercises-start__svg"
+      class="exercises_start__svg"
       width="13"
       height="13"
       stroke="rgb(27, 27, 27)"
@@ -155,25 +172,25 @@ function createWorkoutCardMarkup(workoutData) {
   </div>
 
       </div>
-      <div class="exercises-title">
-        <svg class="exercises-title__svg" width="24" height="24">
+      <div class="exercises_title">
+        <svg class="exercises_title__svg" width="24" height="24">
           <use href="./img/icons.svg#icon-fav_run_man"></use>
         </svg>
         <span class="exercises_title_text">${workoutData.name}</span>
       </div>
-      <div class="exercises-text">
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Burned calories:</span>
+      <div class="exercises_text">
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Burned calories:</span>
           <span class="exercises_text__dynamic">${
             workoutData.burnedCalories
           } / 3 min</span>
         </p>
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Body part:</span>
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Body part:</span>
           <span class="exercises_text__dynamic">${workoutData.bodyPart}</span>
         </p>
-        <p class="exercises-text__content">
-          <span class="exercises-text__static">Target:</span>
+        <p class="exercises_text__content">
+          <span class="exercises_text__static">Target:</span>
           <span class="exercises_text__dynamic">${workoutData.target}</span>
         </p>
       </div>
@@ -226,3 +243,4 @@ export function updateWorkoutCardInFavorites() {
     showEmptyMessage();
   }
 }
+
