@@ -18,19 +18,20 @@ async function fetchWorkoutById() {
 let isFirstLoad = true;
 
 if (list) {
-const storedWorkoutIds =
-  JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+  const storedWorkoutIds =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
 
-if (storedWorkoutIds.length > 0) {
-  storedWorkoutIds.forEach(workoutData => {
-    fetchWorkoutById(workoutData);
+  if (storedWorkoutIds.length > 0) {
+    storedWorkoutIds.forEach(workoutData => {
+      fetchWorkoutById(workoutData);
 
-    addWorkoutCardToDOM(workoutData);
-  });
-} else {
-  isFirstLoad = false;
-  showEmptyMessage();
-}}
+      addWorkoutCardToDOM(workoutData);
+    });
+  } else {
+    isFirstLoad = false;
+    showEmptyMessage();
+  }
+}
 // console.log(storedWorkoutIds);
 
 // Функція для додавання нової карточки вправи до списку
@@ -48,16 +49,18 @@ function addNewWorkoutById(workoutData) {
       JSON.stringify(storedWorkoutIds)
     );
 
-    isFirstLoad = false;}}
-  
+    isFirstLoad = false;
+  }
+}
+
 // console.log(localStorage);
 
 // Функція для додавання нової карточки вправи за ідентифікатором
 
 // Функція отримання карточки вправи за ідентифікатором
-export function fetchWorkoutById(workoutId) {
-  return axios.get(`${API_URL}/${workoutId}`);
-}
+// export function fetchWorkoutById(workoutId) {
+//   return axios.get(`${API_URL}/${workoutId}`);
+// }
 
 // Функція для додавання нової карточки вправи до списку за _id
 // function addNewWorkoutById(workoutId) {
@@ -124,7 +127,6 @@ function removeWorkoutCardFromDOM(removeButton, workoutData) {
   // Видалення іншого значення з localStorage, якщо це необхідно
   // localStorage.removeItem('workoutId');
   // localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
-
 
   // Встановлення isFirstLoad на false, якщо немає збережених вправ
   if (updatedStoredWorkoutIds.length === 0) {
@@ -243,4 +245,3 @@ export function updateWorkoutCardInFavorites() {
     showEmptyMessage();
   }
 }
-
