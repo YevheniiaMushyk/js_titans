@@ -163,20 +163,10 @@ function addRemoveButtonEventListener(workoutData) {
 }
 
 // Функція для видалення карточки вправи зі сторінки та з локального сховища
-function removeWorkoutCardFromDOM(removeButton, workoutData) {
+function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises_item').remove();
 
-  const storedWorkouts =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  const updatedStoredWorkouts = storedWorkouts.filter(
-    workout => workout._id !== workoutData._id
-  );
-
-  // Оновлення storedWorkoutIds після видалення
-  localStorage.setItem(
-    'ENERGY_FLOW_FAVORITES_KEY',
-    JSON.stringify(updatedStoredWorkouts)
-  );
+  deleteFavorites(workoutId)
 
   // Виклик функції showEmptyMessage, якщо немає збережених вправ
   if (updatedStoredWorkouts.length === 0) {
