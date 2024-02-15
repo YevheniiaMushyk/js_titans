@@ -72,15 +72,15 @@ window.addEventListener('keydown', event => {
 });
 
 // Відкриття модального вікна з рейтингом
-window.addEventListener('click', event => {
-  if (!ratingButton) {
-    return;
-  }
-  if (!modalRating) {
-    return;
-  }
-  modalRating.dataset.id = modal.dataset.id;
-});
+// window.addEventListener('click', event => {
+//   if (!ratingButton) {
+//     return;
+//   }
+//   if (!modalRating) {
+//     return;
+//   }
+//   modalRating.dataset.id = modal.dataset.id;
+// });
 
 // Кнопка "Add to favorites"
 export function getFavorites() {
@@ -122,7 +122,6 @@ export function deleteFavorites(id) {
 
 favoriteButton.addEventListener('click', event => {
   if (!modal) {
-    console.log(modal);
     return;
   }
   const id = modal.dataset.id;
