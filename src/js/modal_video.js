@@ -1,8 +1,7 @@
 import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
-import axios from 'axios';
-import { heart } from '../img/icons.svg#icon-heart';
+import { heart } from './img/icons.svg#icon-heart';
 import {
   getFavorites,
   setFavorites,
