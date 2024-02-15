@@ -4,6 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 import { loader, activeLoader, disactiveLoader } from './loader';
+import { capitalizeFirstLetter } from './exercises_sub';
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 // import { loader, activeLoader, disactiveLoader } from '../js/loader';
@@ -55,7 +56,9 @@ function createMarkup(results) {
           <a href="">
             <img class="card-image" src="${imgUrl}" alt="Card Image">
             <ul class="card-item-desc"="${name}">
-              <li class="name" data-source="${name}">${name}</li>
+              <li class="name" data-source="${capitalizeFirstLetter(
+                name
+              )}">${capitalizeFirstLetter(name)}</li>
               <li class="filter" data-source="${filter}">${filter}</li>
             </ul>
           </a>
