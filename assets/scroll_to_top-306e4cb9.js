@@ -8,7 +8,7 @@ import{a as N,i as h}from"./vendor-8cce9181.js";(function(){const t=document.cre
           <p class="exercises_workout">workout</p>
           <button class="workout-card__remove-btn" data-workout-id="${e._id}">
             <svg class="workout-card__icon" width="16" height="16">
-              <use href="./img/icons.svg#icon-trash"></use>
+              <use href="../img/icons.svg#icon-trash"></use>
             </svg>
           </button>
         </div>
@@ -22,7 +22,7 @@ import{a as N,i as h}from"./vendor-8cce9181.js";(function(){const t=document.cre
       height="13"
       stroke="rgb(27, 27, 27)"
     >
-      <use href="./img/icons.svg#icon-arrow"></use>
+      <use href="../img/icons.svg#icon-arrow"></use>
     </svg></button>
   </div>
 
@@ -52,8 +52,8 @@ import{a as N,i as h}from"./vendor-8cce9181.js";(function(){const t=document.cre
   `}function ne(e){document.querySelectorAll(".workout-card__remove-btn").forEach(o=>{o.getAttribute("data-workout-id")===e._id&&o.addEventListener("click",()=>{se(o,e._id)})})}function se(e,t){e.closest(".exercises_item").remove();const i=(JSON.parse(localStorage.getItem("ENERGY_FLOW_FAVORITES_KEY"))||[]).filter(n=>n._id!==t._id);localStorage.setItem("ENERGY_FLOW_FAVORITES_KEY",JSON.stringify(i)),i.length===0&&R()}function R(){d.innerHTML=`
     <div class="empty-list">
       <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
+        srcset="../img/dumbbell@1x-min.png 1x, ../img/dumbbell@1x-min.png 2x"
+        src="../img/dumbbell@1x-min.png"
         alt="dumbbell"
         width="85"
         height="52"
@@ -62,4 +62,4 @@ import{a as N,i as h}from"./vendor-8cce9181.js";(function(){const t=document.cre
         It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
       </p>
     </div>`}const re=document.getElementById("modal_rating"),f=document.getElementById("modal"),ie=document.querySelector(".modal_rating_close"),u=document.querySelector(".modal_rating_window"),L=document.querySelectorAll(".fa-solid"),l=document.querySelector(".modal_rating_digit"),_=document.querySelector(".modal_rating_form");let c=0,M="",I="",m=0,k="";re.addEventListener("click",()=>{c=0,l.textContent=`${c}.0`,f.classList.add("disactive_video_window"),u.showModal()});ie.addEventListener("click",()=>{c=0,l.textContent=`${c}.0`,_.reset(),u.close(),f.classList.remove("disactive_video_window")});u.addEventListener("click",e=>{e.target===e.currentTarget&&(c=0,l.textContent=`${c}.0`,_.reset(),u.close(),f.classList.remove("disactive_video_window"))});const ce=()=>{l.textContent=`${c}.0`};for(let e=0;e<L.length;e++){const t=L[e];t.addEventListener("mouseenter",()=>{const o=t.dataset.rating;l.textContent=`${o}.0`}),t.addEventListener("mouseleave",ce),t.addEventListener("click",()=>{m=t.dataset.rating,c=m,l.textContent=`${m}.0`})}_.addEventListener("submit",ae);function ae(e){e.preventDefault();const t=e.currentTarget;M=t.elements.email.value,I=t.elements.coment.value,c===0?h.error({message:"Please enter your raiting",position:"topCenter",backgroundColor:"#FF6666"}):le().then(()=>{u.close(),f.classList.remove("disactive_video_window"),h.info({message:"Thank you for your feedback",position:"topCenter"})}).catch(()=>{h.error({message:"Something wrong. Please try again later!",position:"topCenter"})}).finally(()=>{c=0,l.textContent=`${c}.0`,_.reset()})}function le(){let e={};e.rate=parseInt(m),e.email=M,e.review=I,k=s.dataset.id;const t={method:"PATCH",body:JSON.stringify(e),headers:{"Content-Type":"application/json; charset=UTF-8"}};return fetch(`https://energyflow.b.goit.study/api/exercises/${k}/rating`,t).then(o=>{if(!o.ok)throw new Error(o.status);return o.json()})}let p=document.getElementById("toTop");p.style.display="none";window.addEventListener("scroll",()=>{window.scrollY>100?p.style.display="block":p.style.display="none"});p.onclick=function(){window.scrollTo({top:0,behavior:"smooth"})};export{ge as a,me as d,ue as l,pe as o};
-//# sourceMappingURL=scroll_to_top-e4c3aa5e.js.map
+//# sourceMappingURL=scroll_to_top-306e4cb9.js.map
