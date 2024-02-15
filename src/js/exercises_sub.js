@@ -3,6 +3,9 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import { openExerciseModal } from '../js/modal_video.js';
+import { yel_star } from '../img/icons.svg#icon-star_yellow';
+import { arrow } from '../img/icons.svg#icon-arrow';
+import { run_man } from '../img/icons.svg#icon-fav_run_man';
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
 export const form = document.querySelector('.exercises-search-form');
 export const containerCardsEl = document.querySelector(
@@ -194,36 +197,28 @@ function createexercisesCard(results, containerCardsEl) {
       }) => `
     <li class="exercises-item" data-gifUrl=${gifUrl} data-description="${description}" data-equipment=${equipment} data-popularity=${popularity} data-time=${time} data-id=${_id}>
             <div class="exercises-sub-title">
-<div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
+                  <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(
                       rating
-                    ).padEnd(
-                      3,
-                      '.0'
-                    )}</span><svg class="exercises-rating__svg" width="18" height="18">
-                            <use href="../img/icons.svg#icon-star_yellow"></use>
-                        </svg></span>
-                </div>
-                <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
-                        class="exercises-start__svg" width="13" height="13">
-                        <use href="../img/icons.svg#icon-arrow"></use>
-                    </svg></div>
-            </div>
-            <div class="exercises-title">
-                <svg class="exercises-title__svg" width="24" height="24">
-                    <use href="../img/icons.svg#icon-fav_run_man"></use>
-                </svg>
-                <span class="exercises-title-text">${capitalizeFirstLetter(
-                  name
-                )}</span>
-            </div>
-            <div class="exercises-text">
-                <p class="exercises-text__content"><span class="exercises-text__static">Burned calories:</span>
-                    <span class="exercises-text__dynamic">${burnedCalories} / 3 min</span></p>
-                <p class="exercises-text__content"><span class="exercises-text__static">Body part:</span>
-                    <span class="exercises-text__dynamic">${bodyPart}</span></p>
-                <p class="exercises-text__content"><span class="exercises-text__static">Target:</span>
-                    <span class="exercises-text__dynamic">${target}</span></p>
+                    ).padEnd(3, '.0')}</span>
+                    <svg class="exercises-rating__svg" width="18" height="18">${yel_star}</svg></span>
+                  </div>
+                  <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
+                        class="exercises-start__svg" width="13" height="13">${arrow}</svg></div>
+                  </div>
+                  <div class="exercises-title">
+                  <svg class="exercises-title__svg" width="24" height="24">${run_man}</svg>
+                  <span class="exercises-title-text">${capitalizeFirstLetter(
+                    name
+                  )}</span>
+                  </div>
+                  <div class="exercises-text">
+                    <p class="exercises-text__content"><span class="exercises-text__static">Burned calories:</span>
+                        <span class="exercises-text__dynamic">${burnedCalories} / 3 min</span></p>
+                    <p class="exercises-text__content"><span class="exercises-text__static">Body part:</span>
+                        <span class="exercises-text__dynamic">${bodyPart}</span></p>
+                    <p class="exercises-text__content"><span class="exercises-text__static">Target:</span>
+                        <span class="exercises-text__dynamic">${target}</span></p>
             </div>
     </li>`
     )

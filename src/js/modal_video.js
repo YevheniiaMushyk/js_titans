@@ -2,7 +2,13 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-import { getFavorites, setFavorites, checkFavorites, deleteFavorites,  } from "../js/favorites_helpers.js"
+import { heart } from '../img/icons.svg#icon-heart';
+import {
+  getFavorites,
+  setFavorites,
+  checkFavorites,
+  deleteFavorites,
+} from '../js/favorites_helpers.js';
 import {
   favoritesCardsList,
   updateFavoritesList,
@@ -28,8 +34,6 @@ const ratingNumberElement = document.querySelector('.rating-number');
 
 // Отримуємо доступ до модалки з рейтингом
 const modalRating = document.querySelector('.modal_rating');
-
-
 
 // Відкриття модального вікна по кнопці "start"
 export function openExerciseModal(event) {
@@ -89,9 +93,7 @@ function drawFavoritesBtnText(id) {
   const favorite = checkFavorites(id);
   const favoriteBtnText = favorite ? 'Remove from' : 'Add to favorites';
   favoriteButton.innerHTML = `${favoriteBtnText}  
-        <svg class="modal_icon" width="13" height="15">  
-            <use href="./img/icons.svg#icon-heart"></use>  
-        </svg>`;
+        <svg class="modal_icon" width="13" height="15">${heart}</svg>`;
 }
 
 favoriteButton.addEventListener('click', event => {
@@ -102,18 +104,15 @@ favoriteButton.addEventListener('click', event => {
   const favorite = checkFavorites(id);
   if (favorite) {
     deleteFavorites(id);
-    
   } else {
-    const exercise = getExerciseDataFromModal()
+    const exercise = getExerciseDataFromModal();
     setFavorites(exercise);
-    
   }
   if (favoritesCardsList) {
     updateFavoritesList();
   }
   drawFavoritesBtnText(id);
 });
-
 
 // Функція для отримання даних вправи з HTML-структури
 function getExerciseData(exerciseItem) {
@@ -142,7 +141,7 @@ function getExerciseData(exerciseItem) {
     description,
     equipment,
     popularity,
-    time, 
+    time,
     _id: id,
   };
 }
@@ -179,7 +178,6 @@ function getFavExerciseData(exerciseItem) {
   };
 }
 
-
 function getExerciseDataFromModal() {
   return {
     rating: parseFloat(ratingNumberElement.textContent),
@@ -192,8 +190,8 @@ function getExerciseDataFromModal() {
     bodyPart: bodypartsElement.textContent,
     burnedCalories: parseFloat(caloriesElement.textContent),
     title: exerciseTitle.textContent,
-    _id: modal.dataset.id
-  }
+    _id: modal.dataset.id,
+  };
 }
 
 // Функція для заповнення модального вікна даними про вправу

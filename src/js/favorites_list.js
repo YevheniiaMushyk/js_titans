@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 import { getFavorites, deleteFavorites } from './favorites_helpers.js';
+import { trash } from '../img/icons.svg#icon-trash';
+import { arow } from '../img/icons.svg#icon-arrow';
+import { rm } from '../img/icons.svg#icon-fav_run_man';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
@@ -28,8 +31,7 @@ if (favoritesCardsList) {
 
 // Функція отримання даних для аналізу localStorage та визначення подальшої логіки
 export function updateFavoritesList() {
-  storedWorkouts = 
-    getFavorites()
+  storedWorkouts = getFavorites();
   console.log(storedWorkouts);
 
   if (storedWorkouts.length > 0) {
@@ -90,16 +92,16 @@ function createWorkoutCardMarkup(workoutData) {
       workoutData.gifUrl
     } data-description="${workoutData.description}" data-equipment=${
     workoutData.equipment
-  } data-popularity=${workoutData.popularity} data-id=${workoutData._id} data-time=${workoutData.time}>
+  } data-popularity=${workoutData.popularity} data-id=${
+    workoutData._id
+  } data-time=${workoutData.time}>
       <div class="exercises_sub_title">
         <div class="exercises__workout_rating">
           <p class="exercises_workout">workout</p>
           <button class="workout-card__remove-btn" data-workout-id="${
             workoutData._id
           }">
-            <svg class="workout-card__icon" width="16" height="16">
-              <use href="../img/icons.svg#icon-trash"></use>
-            </svg>
+            <svg class="workout-card__icon" width="16" height="16">${trash}</svg>
           </button>
         </div>
 
@@ -114,15 +116,13 @@ function createWorkoutCardMarkup(workoutData) {
       height="13"
       stroke="rgb(27, 27, 27)"
     >
-      <use href="../img/icons.svg#icon-arrow"></use>
+      ${arow}
     </svg></button>
   </div>
 
       </div>
       <div class="exercises_title">
-        <svg class="exercises_title__svg" width="24" height="24">
-          <use href="./img/icons.svg#icon-fav_run_man"></use>
-        </svg>
+        <svg class="exercises_title__svg" width="24" height="24">${rm}</svg>
         <span class="exercises_title_text">${workoutData.name}</span>
       </div>
       <div class="exercises_text">
@@ -166,7 +166,7 @@ function addRemoveButtonEventListener(workoutData) {
 function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises_item').remove();
 
-  deleteFavorites(workoutId)
+  deleteFavorites(workoutId);
 
   // Виклик функції showEmptyMessage, якщо немає збережених вправ
   if (updatedStoredWorkouts.length === 0) {
@@ -179,8 +179,8 @@ export function showEmptyMessage() {
   favoritesCardsList.innerHTML = `
     <div class="empty-list">
       <img class="empty-item"
-        srcset="../img/dumbbell@1x-min.png 1x, ../img/dumbbell@1x-min.png 2x"
-        src="../img/dumbbell@1x-min.png"
+        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
+        src="./img/dumbbell@1x-min.png"
         alt="dumbbell"
         width="85"
         height="52"
