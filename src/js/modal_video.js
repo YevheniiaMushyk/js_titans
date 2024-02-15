@@ -112,7 +112,6 @@ favoriteButton.addEventListener('click', event => {
     updateFavoritesList();
   }
   drawFavoritesBtnText(id);
-  console.log("wwwwwwwww")
 });
 
 
