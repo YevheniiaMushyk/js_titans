@@ -104,13 +104,15 @@ favoriteButton.addEventListener('click', event => {
     deleteFavorites(id);
     
   } else {
-    setFavorites(id);
+    const exercise = getExerciseDataFromModal()
+    setFavorites(exercise);
     
   }
   if (favoritesCardsList) {
     updateFavoritesList();
   }
   drawFavoritesBtnText(id);
+  console.log("wwwwwwwww")
 });
 
 
@@ -160,7 +162,7 @@ function getFavExerciseData(exerciseItem) {
   )[2];
   const ratingElement = exerciseItem.querySelector('.exercises_rating__text');
 
-  const { gifurl, description, equipment, popularity, id } =
+  const { gifurl, description, equipment, popularity, time, id } =
     exerciseItem.dataset;
 
   return {
@@ -173,8 +175,26 @@ function getFavExerciseData(exerciseItem) {
     description,
     equipment,
     popularity,
+    time,
     _id: id,
   };
+}
+
+
+function getExerciseDataFromModal() {
+  return {
+    rating: parseFloat(ratingNumberElement.textContent),
+    gifUrl: gifElement.src,
+    time: parseFloat(modal.dataset.time),
+    popularity: parseFloat(popularElement.textContent),
+    equipment: equipmentElement.textContent,
+    description: descriptionElement.textContent,
+    target: targetElement.textContent,
+    bodyPart: bodypartsElement.textContent,
+    burnedCalories: parseFloat(caloriesElement.textContent),
+    title: exerciseTitle.textContent,
+    _id: modal.dataset.id
+  }
 }
 
 // Функція для заповнення модального вікна даними про вправу

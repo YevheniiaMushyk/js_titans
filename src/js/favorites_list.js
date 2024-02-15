@@ -89,7 +89,7 @@ function createWorkoutCardMarkup(workoutData) {
       workoutData.gifUrl
     } data-description="${workoutData.description}" data-equipment=${
     workoutData.equipment
-  } data-popularity=${workoutData.popularity} data-id=${workoutData._id}>
+  } data-popularity=${workoutData.popularity} data-id=${workoutData._id} data-time=${workoutData.time}>
       <div class="exercises_sub_title">
         <div class="exercises__workout_rating">
           <p class="exercises_workout">workout</p>

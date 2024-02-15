@@ -6,9 +6,9 @@ export function getFavorites() {
     return favorites && favorites !== 'undefined' ? JSON.parse(favorites) : [];
   }
   
-  export function setFavorites(id) {
+  export function setFavorites(exercise) {
     const favorites = getFavorites();
-    const updFavorites = favorites.length ? [...favorites, id] : [id];
+    const updFavorites = favorites.length ? [...favorites, exercise] : [exercise];
     window.localStorage.setItem(
       FAVORITES_KEY_LOCAL_STORAGE,
       JSON.stringify(updFavorites)
@@ -17,12 +17,12 @@ export function getFavorites() {
   
   export function checkFavorites(id) {
     const favorites = getFavorites();
-    return !!favorites.find(el => el === id);
+    return !!favorites.find(el => el._id === id);
   }
 
   export function deleteFavorites(id) {
     const favorites = getFavorites();
-    const updFavorites = favorites.filter(el => el !== id);
+    const updFavorites = favorites.filter(el => el._id !== id);
     window.localStorage.setItem(
       FAVORITES_KEY_LOCAL_STORAGE,
       JSON.stringify(updFavorites)
