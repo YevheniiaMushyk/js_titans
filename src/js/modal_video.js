@@ -2,7 +2,10 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-import { updateWorkoutCardInFavorites } from '../js/favorites_list.js';
+import {
+  favoritesCardsList,
+  updateFavoritesList,
+} from '../js/favorites_list.js';
 const URL = 'https://energyflow.b.goit.study/api/exercises/';
 
 // Отримуємо необхідні елементи модального вікна
@@ -21,8 +24,6 @@ const descriptionElement = modal.querySelector('.exercise-description');
 const favoriteButton = modal.querySelector('.favorite-button');
 const ratingButton = document.querySelector('.rating-button');
 const ratingNumberElement = document.querySelector('.rating-number');
-// Змінна для відслідеовування з якого вікна зпаущена модалка "1"-з вікна обраних карток
-let favoritesWindowOpen = 0;
 
 // Отримуємо доступ до модалки з рейтингом
 const modalRating = document.querySelector('.modal_rating');
@@ -42,8 +43,6 @@ export function openExerciseModal(event) {
 
 // Відкриття модального вікна по кнопці "start" з вікна обраних карток
 export function openFavExerciseModal(event) {
-  // Обнулюємо змінну
-  favoritesWindowOpen = 0;
   const exerciseItem = event.target.closest('.exercises_item');
   if (!exerciseItem) {
     return;
@@ -51,21 +50,17 @@ export function openFavExerciseModal(event) {
   const exerciseFavData = getFavExerciseData(exerciseItem);
   fillModalWithData(exerciseFavData);
   modal.style.display = 'block';
-  // Встановлюємо "1" т.я. відкрита модалка з вікна обраних карток
-  favoritesWindowOpen = 1;
 }
 
 // Закриття модального вікна при кліку на хрестик
 closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
-  favoritesWindowOpen = 0;
 });
 
 // Закриття модального вікна при кліку за межами вікна
 window.addEventListener('click', event => {
   if (event.target === modal) {
     modal.style.display = 'none';
-    favoritesWindowOpen = 0;
   }
 });
 
@@ -73,7 +68,6 @@ window.addEventListener('click', event => {
 window.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     modal.style.display = 'none';
-    favoritesWindowOpen = 0;
   }
 });
 
@@ -135,15 +129,13 @@ favoriteButton.addEventListener('click', event => {
   const favorite = checkFavorites(id);
   if (favorite) {
     deleteFavorites(id);
-    // Встановлюємо "1" для оновлення розмітки вікна обраних карток
-    if (favoritesWindowOpen === 1) {
-      updateWorkoutCardInFavorites(id);
+    if (favoritesCardsList) {
+      updateFavoritesList();
     }
   } else {
     setFavorites(id);
-    // Встановлюємо "1" для оновлення розмітки вікна обраних карток
-    if (favoritesWindowOpen === 1) {
-      updateWorkoutCardInFavorites(id);
+    if (favoritesCardsList) {
+      updateFavoritesList();
     }
   }
   drawFavoritesBtnText(id);
@@ -250,4 +242,3 @@ function capitalizeFirstLetter(string) {
 }
 
 export { modal };
-favoritesWindowOpen = 0;

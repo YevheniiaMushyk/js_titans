@@ -2,144 +2,88 @@ import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
-const list = document.querySelector('.workouts-list');
+export const favoritesCardsList = document.querySelector('.workouts-list');
+let storedWorkoutIds = [];
 
-async function fetchWorkoutById() {
-  const response = await fetch(API_URL);
-  const data = await response.json();
-
-  // console.log(data);
-
-  const workoutData = data.results.filter(workoutId =>
-    storedWorkoutIds.includes(workoutId._id)
-  );
-  console.log(workoutData);
-}
-let isFirstLoad = true;
-
-if (list) {
-  const storedWorkoutIds =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-
-  if (storedWorkoutIds.length > 0) {
-    storedWorkoutIds.forEach(workoutData => {
-      fetchWorkoutById(workoutData);
-
-      addWorkoutCardToDOM(workoutData);
-    });
-  } else {
-    isFirstLoad = false;
-    showEmptyMessage();
-  }
-}
-// console.log(storedWorkoutIds);
-
-// Функція для додавання нової карточки вправи до списку
-function addNewWorkoutById(workoutData) {
-  const storedWorkoutIds =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  if (!storedWorkoutIds.includes(workoutId.id)) {
-    fetchWorkoutById(workoutData);
-
-    addWorkoutCardToDOM(workoutData);
-
-    storedWorkoutIds.push(workoutData);
-    localStorage.setItem(
-      'ENERGY_FLOW_FAVORITES_KEY',
-      JSON.stringify(storedWorkoutIds)
-    );
-
-    isFirstLoad = false;
-  }
-}
-
-// console.log(localStorage);
-
-// Функція для додавання нової карточки вправи за ідентифікатором
-
-// Функція отримання карточки вправи за ідентифікатором
-// export function fetchWorkoutById(workoutId) {
-//   return axios.get(`${API_URL}/${workoutId}`);
-// }
-
-// Функція для додавання нової карточки вправи до списку за _id
-// function addNewWorkoutById(workoutId) {
+//Нова версія
+// if (favoritesCardsList) {
 //   const storedWorkoutIds =
 //     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-//   if (!storedWorkoutIds.includes(workoutId)) {
-//     fetchWorkoutById(workoutId)
-//       .then(response => {
-//         const workoutData = response.data;
-//         addWorkoutCardToDOM(workoutData);
 
-//         storedWorkoutIds.push(workoutId);
-//         localStorage.setItem(
-//           'ENERGY_FLOW_FAVORITES_KEY',
-//           JSON.stringify(storedWorkoutIds)
-//         );
-
-//         isFirstLoad = false;
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
+//   if (storedWorkoutIds.length > 0) {
+//     storedWorkoutIds.forEach(workoutData => {
+//       fetchWorkoutById(workoutData);
+//       addWorkoutCardToDOM(workoutData);
+//     });
+//   } else {
+//    //     showEmptyMessage();
 //   }
 // }
 
+//Попередня версія
+if (favoritesCardsList) {
+  updateFavoritesList();
+}
+
+// Функція отримання даних для аналізу localStorage та визначення подальшої логіки
+export function updateFavoritesList() {
+  storedWorkoutIds =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+  console.log(storedWorkoutIds);
+
+  if (storedWorkoutIds.length > 0) {
+    console.log('32 JS full');
+    favoritesCardsList.innerHTML = '';
+    storedWorkoutIds.forEach(workoutId => {
+      fetchWorkoutById(workoutId)
+        .then(response => {
+          const workoutData = response.data;
+          console.log('37 dodaem rozmitky');
+          addWorkoutCardToDOM(workoutData);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
+  } else {
+    console.log('45 JS empty');
+    showEmptyMessage();
+  }
+}
+
+// Функція отримання карточки вправи за ідентифікатором
+// //Нова версія
+// async function fetchWorkoutById() {
+//   const response = await fetch(API_URL);
+//   const data = await response.json();
+//   const workoutData = data.results.filter(workoutId =>
+//     storedWorkoutIds.includes(workoutId._id)
+//   );
+// }
+
+// Функція отримання карточки вправи за ідентифікатором
+//Попередня версія
+export function fetchWorkoutById(workoutId) {
+  console.log('64 zaput');
+  return axios.get(`${API_URL}/${workoutId}`);
+}
+
 // Функція для додавання нової карточки вправи до списку
 function addWorkoutCardToDOM(workoutData) {
+  console.log('70 stvor rozmitku');
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
-  const list = document.querySelector('.workouts-list');
-  // list.innerHTML = '';
-  list.insertAdjacentHTML('beforeend', workoutCardMarkup);
+  favoritesCardsList.insertAdjacentHTML('beforeend', workoutCardMarkup);
+  //Додаємо обробник події кліку на смітник
   addRemoveButtonEventListener(workoutData);
+  //Додаємо обробник події кліку на кнопку Start->
   document
     .querySelectorAll('.exercises_start')
     .forEach(el => el.addEventListener('click', openFavExerciseModal));
 }
 
-function addRemoveButtonEventListener(workoutData) {
-  const removeButtons = document.querySelectorAll(`.workout-card__remove-btn`);
-  removeButtons.forEach(removeButton => {
-    if (removeButton.getAttribute('data-workout-id') === workoutData._id) {
-      removeButton.addEventListener('click', () => {
-        removeWorkoutCardFromDOM(removeButton, workoutData._id);
-      });
-    }
-  });
-}
-
-function removeWorkoutCardFromDOM(removeButton, workoutData) {
-  removeButton.closest('.exercises_item').remove();
-
-  const storedWorkoutIds =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  const updatedStoredWorkoutIds = storedWorkoutIds.filter(
-    workout => workout._id !== workoutData._id
-  );
-
-  // Оновлення storedWorkoutIds після видалення
-  localStorage.setItem(
-    'ENERGY_FLOW_FAVORITES_KEY',
-    JSON.stringify(updatedStoredWorkoutIds)
-  );
-
-  // Видалення іншого значення з localStorage, якщо це необхідно
-  // localStorage.removeItem('workoutId');
-  // localStorage.removeItem('ENERGY_FLOW_FAVORITES_KEY');
-
-  // Встановлення isFirstLoad на false, якщо немає збережених вправ
-  if (updatedStoredWorkoutIds.length === 0) {
-    isFirstLoad = false;
-  }
-
-  // Виклик функції showEmptyMessage, якщо немає збережених вправ
-  if (updatedStoredWorkoutIds.length === 0) {
-    showEmptyMessage();
-  }
-}
-
+// Функція для розмітки однієї картки
 function createWorkoutCardMarkup(workoutData) {
+  console.log('125 rozmitka Li');
   const workoutCardMarkup = `
     <li class="exercises_item" data-gifUrl=${
       workoutData.gifUrl
@@ -205,9 +149,43 @@ function createWorkoutCardMarkup(workoutData) {
   return workoutCardMarkup;
 }
 
+// Функція для додавання обробника події для кнопки видалення
+function addRemoveButtonEventListener(workoutData) {
+  const removeButtons = document.querySelectorAll(`.workout-card__remove-btn`);
+  removeButtons.forEach(removeButton => {
+    if (removeButton.getAttribute('data-workout-id') === workoutData._id) {
+      removeButton.addEventListener('click', () => {
+        removeWorkoutCardFromDOM(removeButton, workoutData._id);
+      });
+    }
+  });
+}
+
+// Функція для видалення карточки вправи зі сторінки та з локального сховища
+function removeWorkoutCardFromDOM(removeButton, workoutData) {
+  removeButton.closest('.exercises_item').remove();
+
+  const storedWorkoutIds =
+    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
+  const updatedStoredWorkoutIds = storedWorkoutIds.filter(
+    workout => workout._id !== workoutData._id
+  );
+
+  // Оновлення storedWorkoutIds після видалення
+  localStorage.setItem(
+    'ENERGY_FLOW_FAVORITES_KEY',
+    JSON.stringify(updatedStoredWorkoutIds)
+  );
+
+  // Виклик функції showEmptyMessage, якщо немає збережених вправ
+  if (updatedStoredWorkoutIds.length === 0) {
+    showEmptyMessage();
+  }
+}
+
+// Функція виводу повідомлення про пустий список обраних
 export function showEmptyMessage() {
-  if (!isFirstLoad) {
-    list.innerHTML = `
+  favoritesCardsList.innerHTML = `
     <div class="empty-list">
       <img class="empty-item"
         srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
@@ -220,28 +198,4 @@ export function showEmptyMessage() {
         It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.
       </p>
     </div>`;
-  }
-}
-
-// Функція для видалення карточки вправи зі сторінки після закриття модального вікна
-export function updateWorkoutCardInFavorites() {
-  // isFirstLoad = true;
-  const storedWorkoutIdsFav =
-    JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-  if (storedWorkoutIdsFav.length > 0) {
-    storedWorkoutIdsFav.forEach(workoutId => {
-      fetchWorkoutById(workoutId)
-        .then(response => {
-          const workoutData = response.data;
-          console.log('dodaem rozmitky 216');
-          addWorkoutCardToDOM(workoutData);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    });
-  } else {
-    isFirstLoad = false;
-    showEmptyMessage();
-  }
 }
