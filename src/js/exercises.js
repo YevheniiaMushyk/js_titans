@@ -9,7 +9,7 @@ import { loader, activeLoader, disactiveLoader } from './loader';
 // import { loader, activeLoader, disactiveLoader } from '../js/loader';
 const searchFormEl = document.querySelector('.exercises-search');
 // const exercisesName = document.querySelector(".exercises-name");
-
+const exercisesName = document.querySelector('.exercises-name');
 const refs = {
   buttons: document.querySelector('.exercises-buttons'),
   musclesButton: document.querySelector('[data-filter="muscles"]'),
@@ -17,8 +17,9 @@ const refs = {
   equipmentButton: document.querySelector('[data-filter="equipment"]'),
   cardContainer: document.querySelector('.exercises-card-container'),
   pagination: document.querySelector('#pagination'),
+  excerciceContainer: document.querySelector('.container-ex'),
 };
-const form = document.querySelector('.exercises-search-form');
+// const form = document.querySelector('.exercises-search-form');
 let btnPrev = null;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
@@ -68,16 +69,18 @@ function createMarkup(results) {
     const markup = markupArray.join('');
     refs.cardContainer.innerHTML = markup;
     makeHeightSec('.exercises-card-container', 'add');
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
     disactiveLoader(loader);
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    refs.cardContainer.insertAdjacentHTML(
+      'beforeend',
+      '<div id="pagination" class="tui-pagination"></div>'
+    );
   });
 }
 
 function onSearch() {
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
   activeLoader(loader);
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   getData()
     .then(data => {
       const { results, page, totalPages } = data;
@@ -111,9 +114,13 @@ refs.musclesButton.classList.add('active');
 refs.buttons.addEventListener('click', e => {
   selected(e);
   const cardTarget = e.target;
-
+  refs.pagination.classList.remove('hidden');
   searchFormEl.classList.add('hidden');
 
+  exercisesName.innerHTML = `Exercises`;
+  const paginationContainer = document.querySelector('.pagination-container');
+  paginationContainer.innerHTML = '';
+  paginationContainer.classList.add('hidden');
   //   exercisesName.innerHTML = `Exercises`;
 
   if (cardTarget === e.currentTarget) {
@@ -163,11 +170,12 @@ async function onPagination(e) {
   params.page = e.target.textContent;
   refs.cardContainer.innerHTML = '';
   try {
-    /////////////////////////////////////////////////////////////////////////////////////
     activeLoader(loader);
-    ///////////////////////////////////////////////////////////////////////////////////////////
     const { results } = await getData();
     createMarkup(results);
+    if (refs.excerciceContainer) {
+      refs.excerciceContainer.scrollIntoView({ behavior: 'smooth' });
+    }
   } catch (error) {
     console.log(error);
   }

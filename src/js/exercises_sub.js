@@ -3,11 +3,6 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import { openExerciseModal } from '../js/modal_video.js';
-
-/////////////////////////////////////////////////////////////////////
-import { loader, activeLoader, disactiveLoader } from './loader';
-////////////////////////////////////////////////////////////////////////
-
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
 export const form = document.querySelector('.exercises-search-form');
 export const containerCardsEl = document.querySelector(
@@ -15,6 +10,11 @@ export const containerCardsEl = document.querySelector(
 );
 const searchFormEl = document.querySelector('.exercises-search');
 const exercisesName = document.querySelector('.exercises-name');
+const pagination = document.querySelector('#pagination');
+let currentPage = 1;
+
+// Переменная для хранения общего количества результатов на странице
+const resultsPerPage = 9;
 const queryParams = {
   name: '',
   page: 1,
@@ -30,12 +30,9 @@ containerCardsEl.addEventListener('click', dataSet);
 async function dataSet(event) {
   event.preventDefault();
   const cardElement = event.target.closest('.card-item');
+  pagination.classList.add('hidden');
 
   if (cardElement) {
-    ////////////////////////////////////////////////////
-    activeLoader(loader);
-    ////////////////////////////////////////////////////////
-
     const nameElement = cardElement.querySelector('.name');
     const filterElement = cardElement.querySelector('.filter');
     if (nameElement && filterElement) {
@@ -47,23 +44,79 @@ async function dataSet(event) {
       if (filter === 'bodyparts') {
         filter = filter.replace(/s$/, '');
       }
-      exercisesName.innerHTML = `Exercises /<span> ${name.replace(
-        /%20/g,
-        ' '
-      )}</span>`;
+
+      exercisesName.innerHTML = `Exercises /
+        <span>${capitalizeFirstLetter(name.replace(/%20/g, ' '))}</span>`;
+
       try {
         const newURL = `${URL}?${filter}=${name}`;
         const { results, totalPages } = await serchPicture('', 1, newURL);
         searchFormEl.classList.toggle('hidden');
         // пошук за ключовим словом -------------------
+        const paginationContainer = document.querySelector(
+          '.pagination-container'
+        );
+        if (resultsPerPage >= totalPages) {
+          // Нет необходимости в пагинации
+          queryParams.maxPage = 1;
+        } else {
+          queryParams.maxPage = 3;
+          updatePagination(3);
+          paginationContainer.classList.remove('hidden');
+        }
+
+        function updatePagination(totalPages) {
+          paginationContainer.innerHTML = '';
+
+          for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.classList.add('pagination-btn');
+            button.textContent = i;
+            button.setAttribute('data-page', i);
+            button.addEventListener('click', handlePaginationClick);
+            paginationContainer.appendChild(button);
+          }
+          document
+            .querySelectorAll('.pagination-btn')
+            .forEach(btn => btn.classList.remove('active'));
+          document
+            .querySelector(`.pagination-btn[data-page='${currentPage}']`)
+            .classList.add('active');
+        }
+
+        // Функция для обработки клика по кнопке пагинации
+        async function handlePaginationClick(event) {
+          const clickedPage = parseInt(event.target.dataset.page);
+          if (currentPage !== clickedPage) {
+            document
+              .querySelectorAll('.pagination-btn')
+              .forEach(btn => btn.classList.remove('active'));
+            currentPage = clickedPage;
+            event.target.classList.add('active');
+            // Пересчитываем индекс начальной карточки для запроса
+            const startIndex = (currentPage - 1) * resultsPerPage;
+            try {
+              const { results } = await serchPicture('', currentPage, newURL);
+
+              if (results && results.length > 0) {
+                createexercisesCard(results, containerCardsEl);
+              } else {
+                containerCardsEl.innerHTML = '';
+                noResults();
+              }
+            } catch (err) {
+              console.log(err);
+            }
+            event.target.classList.add('active');
+          }
+        }
+
         form.addEventListener('submit', handleSearch);
         // функція для пошуку за ключовим словом -------------------
         async function handleSearch(event) {
-          ///////////////////////////////////////////////////////////////////////////////////////////////////
-          activeLoader(loader);
-          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           event.preventDefault();
           containerCardsEl.innerHTML = '';
+          paginationContainer.innerHTML = '';
           const form = event.currentTarget;
           const exercisesCard = form.elements.exercises.value.trim();
           currentSearchQuery = exercisesCard;
@@ -96,9 +149,6 @@ async function dataSet(event) {
             console.log(err);
           } finally {
             form.reset();
-            /////////////////////////////////////////////////////////////////////////////
-            disactiveLoader(loader);
-            ////////////////////////////////////////////////////////////////////////////////
           }
         }
         queryParams.maxPage = Math.ceil(totalPages / queryParams.perpage);
@@ -107,9 +157,6 @@ async function dataSet(event) {
         console.log(err);
       } finally {
         form.reset();
-        //////////////////////////////////////////////////////////////////////////////////////
-        disactiveLoader(loader);
-        ////////////////////////////////////////////////////////////////////////////////////
       }
     }
   }
@@ -146,26 +193,28 @@ function createexercisesCard(results, containerCardsEl) {
       }) => `
     <li class="exercises-item" data-gifUrl=${gifUrl} data-description="${description}" data-equipment=${equipment} data-popularity=${popularity} data-id=${_id}>
             <div class="exercises-sub-title">
-                <div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
+<div class="exercises__workout-rating"><p class="exercises-workout">workout</p>
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(
                       rating
                     ).padEnd(
                       3,
                       '.0'
                     )}</span><svg class="exercises-rating__svg" width="18" height="18">
-                            <use href="./img/icons.svg#icon-star_yellow"></use>
+                            <use href="../img/icons.svg#icon-star_yellow"></use>
                         </svg></span>
                 </div>
                 <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
                         class="exercises-start__svg" width="13" height="13">
-                        <use href="./img/icons.svg#icon-arrow"></use>
+                        <use href="../img/icons.svg#icon-arrow"></use>
                     </svg></div>
             </div>
             <div class="exercises-title">
                 <svg class="exercises-title__svg" width="24" height="24">
-                    <use href="./img/icons.svg#icon-fav_run_man"></use>
+                    <use href="../img/icons.svg#icon-fav_run_man"></use>
                 </svg>
-                <span class="exercises-title-text">${name}</span>
+                <span class="exercises-title-text">${capitalizeFirstLetter(
+                  name
+                )}</span>
             </div>
             <div class="exercises-text">
                 <p class="exercises-text__content"><span class="exercises-text__static">Burned calories:</span>
@@ -179,7 +228,11 @@ function createexercisesCard(results, containerCardsEl) {
     )
     .join('');
   containerCardsEl.innerHTML = markup;
-  const dataAndr = document
+  document
     .querySelectorAll('.exercises-start')
     .forEach(el => el.addEventListener('click', openExerciseModal));
+}
+
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
