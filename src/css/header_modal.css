@@ -17,6 +17,7 @@
   min-width: 320px;
   margin: 0 auto;
   padding: 20px;
+  overflow: hidden;
 }
 .modal__structure {
   display: flex;
