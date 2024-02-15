@@ -49,7 +49,7 @@ async function dataSet(event) {
         <span>${capitalizeFirstLetter(name.replace(/%20/g, ' '))}</span>`;
 
       try {
-        const newURL = `${URL}?${filter}=${name}`;
+        const newURL = `${URL}?${filter}=${name.toLowerCase()}`;
         const { results, totalPages } = await serchPicture('', 1, newURL);
         searchFormEl.classList.toggle('hidden');
         // пошук за ключовим словом -------------------
@@ -234,6 +234,6 @@ function createexercisesCard(results, containerCardsEl) {
     .forEach(el => el.addEventListener('click', openExerciseModal));
 }
 
-function capitalizeFirstLetter(str) {
+export function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
