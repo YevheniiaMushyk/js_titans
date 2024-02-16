@@ -1,3 +1,4 @@
+
 .favorites-section {
   display: flex;
   flex-direction: column;
@@ -14,12 +15,15 @@
   border-radius: 30px;
   text-align: left;
   height:272px;
+ 
+
 }
 .favorites-container {
   display: flex;
   column-gap: 14px;
   height: 100%;
   padding: 40px 20px;
+
 }
 
 .favorites-icon-svg {
@@ -82,7 +86,9 @@
   width: 335px;
   height: 269px;
   overflow: hidden;
-  position: relative;
+  position: relative; 
+  background-size: cover;
+ 
 }
 
 .favorites-img {
@@ -102,7 +108,6 @@
   align-items: center;
   background-color: #ffff;
   border-radius: 30px;
-
   width: 335px;
   height: 272px;
 }
@@ -146,6 +151,14 @@
   text-align: left;
   width: 132px;
 }
+.image-container {
+background-image: url(../img/favquote_m@1x-min.png);
+ 
+}
+.image-container {
+  background-image: url(../img/favquote_m@2x-min.png);
+   
+  }
 
 @media screen and (min-width: 736px) {
   .favorites-section {
@@ -208,10 +221,14 @@
     width: 38px;
     height: 32px;
   }
-  .favorites-icon-svg {
- 
-  }
-  
+  .image-container {
+    background-image: url(../img/favquote_t@1x-min.png);
+     
+    }
+    .image-container {
+      background-image: url(../img/favquote_t@2x-min.png);
+       
+      }
   
 }
 
@@ -263,4 +280,13 @@
 
     width: 526px;
   }
+  .image-container {
+    background-image: url(../img/favquote_d@1x-min.png);
+     
+    }
+    .image-container {
+      background-image: url(../img/favquote_d@2x-min.png);
+       
+      }
+  
 }
