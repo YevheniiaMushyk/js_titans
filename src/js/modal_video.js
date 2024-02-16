@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
-import '../img/icons.svg';
+import m_icon from '../img/icons.svg';
 import {
   getFavorites,
   setFavorites,
@@ -92,7 +92,7 @@ function drawFavoritesBtnText(id) {
   const favorite = checkFavorites(id);
   const favoriteBtnText = favorite ? 'Remove from' : 'Add to favorites';
   favoriteButton.innerHTML = `${favoriteBtnText}
-        <svg class="modal_icon" width="13" height="15"><use href="#icon-heart"></use></svg>`;
+        <svg class="modal_icon" width="13" height="15"><use href="${m_icon}#icon-heart"></use></svg>`;
 }
 
 favoriteButton.addEventListener('click', event => {

@@ -2,6 +2,8 @@ import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 import { getFavorites, deleteFavorites } from './favorites_helpers.js';
 import icon from '../img/icons.svg';
+import img1x from '../img/dumbbell@1x-min.png';
+import img2x from '../img/dumbbell@2x-min.png';
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
 let storedWorkouts = [];
@@ -164,8 +166,8 @@ export function showEmptyMessage() {
   favoritesCardsList.innerHTML = `
     <div class="empty-list">
       <img class="empty-item"
-        srcset="./img/dumbbell@1x-min.png 1x, ./img/dumbbell@1x-min.png 2x"
-        src="./img/dumbbell@1x-min.png"
+        srcset="${img1x}, ${img2x}"
+        src="${img1x}"
         alt="dumbbell"
         width="85"
         height="52"

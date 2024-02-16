@@ -3,7 +3,7 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
 import { openExerciseModal } from '../js/modal_video.js';
-import '../img/icons.svg';
+import ex_icon from '../img/icons.svg';
 let URL = `https://energyflow.b.goit.study/api/exercises/`;
 export const form = document.querySelector('.exercises-search-form');
 export const containerCardsEl = document.querySelector(
@@ -199,13 +199,13 @@ function createexercisesCard(results, containerCardsEl) {
                     <span class="exercises-rating"><span class="exercises-rating__text">${String(
                       rating
                     ).padEnd(3, '.0')}</span>
-                    <svg class="exercises-rating__svg" width="18" height="18"><use href="#icon-star_yellow"></use></svg></span>
+                    <svg class="exercises-rating__svg" width="18" height="18"><use href="${ex_icon}#icon-star_yellow"></use></svg></span>
                   </div>
                   <div class="exercises-start"><span class="exercises-start__text">Start</span><svg
-                        class="exercises-start__svg" width="13" height="13"><use href="#icon-arrow"></use></svg></div>
+                        class="exercises-start__svg" width="13" height="13"><use href="${ex_icon}#icon-arrow"></use></svg></div>
                   </div>
                   <div class="exercises-title">
-                  <svg class="exercises-title__svg" width="24" height="24"><use href="#icon-fav_run_man"></use></svg>
+                  <svg class="exercises-title__svg" width="24" height="24"><use href="${ex_icon}#icon-fav_run_man"></use></svg>
                   <span class="exercises-title-text">${capitalizeFirstLetter(
                     name
                   )}</span>
