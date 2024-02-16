@@ -19,8 +19,8 @@
     
     <script type="module" crossorigin src="/js_titans/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/js_titans/assets/vendor-8cce9181.js">
-    <link rel="modulepreload" crossorigin href="/js_titans/assets/scroll_to_top-94bec996.js">
-    <link rel="stylesheet" href="/js_titans/assets/scroll_to_top-7721eb5f.css">
+    <link rel="modulepreload" crossorigin href="/js_titans/assets/scroll_to_top-2a7d987a.js">
+    <link rel="stylesheet" href="/js_titans/assets/scroll_to_top-cb916ede.css">
     <link rel="stylesheet" href="/js_titans/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -81,7 +81,7 @@
         </a>
       </li>
     </ul>
-    <button class="header__button" type="button">
+    <button class="header__button" type="button" title="Burger">
       <svg class="header__button_svg" width="32" height="16">
         <use href="/js_titans/assets/icons-e2846af5.svg#icon-align-justify"></use>
       </svg>
@@ -208,7 +208,7 @@
         </svg>
       </div>
       <div class="daily-info">
-        <h2 class="daily-title">110 min</h2>
+        <h3 class="daily-title">110 min</h3>
         <p class="daily-text">Daily norm of sports</p>
         <p class="daily-text">
           The World Health Organization recommends at least 150 minutes of
@@ -424,7 +424,7 @@
 
     <dialog class="modal_rating_window">
   <div class="modal_rating__container">
-    <button class="modal_rating_close">
+    <button class="modal_rating_close" type="button" title="Close modal window">
       <svg class="modal_rating_icon" width="28" height="28">
         <use href="/js_titans/assets/icons-e2846af5.svg#icon-xb"></use>
       </svg>
@@ -477,7 +477,11 @@
         <a class="modal__logo" href="./index.html" target="_self"
           >energy.flow</a
         >
-        <button class="modal__button_close">
+        <button
+          class="modal__button_close"
+          type="button"
+          title="Close modal window"
+        >
           <svg class="modal__button_icon" width="20" height="20">
             <use href="/js_titans/assets/icons-e2846af5.svg#icon-x"></use>
           </svg>
