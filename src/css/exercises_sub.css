@@ -1,6 +1,5 @@
 /* ===exercises-body-parts-mob===*/
-.exercises-item,
-.exercises_item {
+.exercises-item {
   /* max-width: 295px;
     margin: 0 auto;
     display: flex;
@@ -17,7 +16,7 @@
 }
 
 .exercises-item:hover,
-.exercises_item:hover {
+.exercises-item:focus {
   transform: scale(1.05);
 }
 
@@ -53,6 +52,7 @@
   transition: all 250ms;
 } */
 
+.exercises-item__link:hover,
 .exercises-item__link:hover {
   transform: scale(1.04);
 }
@@ -258,8 +258,7 @@
 
 /* ===exercises-body-parts-tab===*/
 @media screen and (min-width: 736px) {
-  .exercises-item,
-  .exercises_item {
+  .exercises-item {
     padding: 16px;
     border-radius: 15px;
     background: rgb(255, 255, 255);
@@ -304,8 +303,7 @@
 
 /* ===exercises-body-parts-desk===*/
 @media screen and (min-width: 1408px) {
-  .exercises-item,
-  .exercises_item {
+  .exercises-item {
     max-width: 424px;
     max-height: 141px;
     flex-basis: calc((100% - 40px) / 3);

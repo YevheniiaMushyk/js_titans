@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 import { getFavorites, deleteFavorites } from './favorites_helpers.js';
-import '../img/icons.svg';
+import { trash } from '../img/icons.svg#icon-trash';
+import { favarrow } from '../img/icons.svg#icon-arrow';
+import { fav_run_man } from '../img/icons.svg#icon-fav_run_man';
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
 let storedWorkouts = [];
@@ -29,16 +31,13 @@ if (favoritesCardsList) {
 // Функція отримання даних для аналізу localStorage та визначення подальшої логіки
 export function updateFavoritesList() {
   storedWorkouts = getFavorites();
-  console.log(storedWorkouts);
 
   if (storedWorkouts.length > 0) {
-    console.log('32 JS full');
     favoritesCardsList.innerHTML = '';
     storedWorkouts.forEach(workout => {
       fetchWorkoutById(workout._id)
         .then(response => {
           const workoutData = response.data;
-          console.log('37 dodaem rozmitky');
           addWorkoutCardToDOM(workoutData);
         })
         .catch(error => {
@@ -46,7 +45,6 @@ export function updateFavoritesList() {
         });
     });
   } else {
-    console.log('45 JS empty');
     showEmptyMessage();
   }
 }
@@ -64,13 +62,11 @@ export function updateFavoritesList() {
 // Функція отримання карточки вправи за ідентифікатором
 //Попередня версія
 export function fetchWorkoutById(workoutId) {
-  console.log('64 zaput');
   return axios.get(`${API_URL}/${workoutId}`);
 }
 
 // Функція для додавання нової карточки вправи до списку
 function addWorkoutCardToDOM(workoutData) {
-  console.log('70 stvor rozmitku');
   const workoutCardMarkup = createWorkoutCardMarkup(workoutData);
   favoritesCardsList.insertAdjacentHTML('beforeend', workoutCardMarkup);
   //Додаємо обробник події кліку на смітник
@@ -83,7 +79,6 @@ function addWorkoutCardToDOM(workoutData) {
 
 // Функція для розмітки однієї картки
 function createWorkoutCardMarkup(workoutData) {
-  console.log('125 rozmitka Li');
   const workoutCardMarkup = `
     <li class="exercises_item" data-gifUrl=${
       workoutData.gifUrl
@@ -98,28 +93,23 @@ function createWorkoutCardMarkup(workoutData) {
           <button class="workout-card__remove-btn" data-workout-id="${
             workoutData._id
           }">
-            <svg class="workout-card__icon" width="16" height="16"><use href="#icon-trash"></use></svg>
+            <svg class="workout-card__icon" width="16" height="16">${trash}</svg>
           </button>
         </div>
 
-  <div class="exercises_start">
-  <button class="exercises-start-button" data-workout-data="${JSON.stringify(
-    workoutData
-  )}">
+  <div class="exercises_start">  
     <span class="exercises_start__text">Start</span>
     <svg
       class="exercises_start__svg"
       width="13"
       height="13"
       stroke="rgb(27, 27, 27)"
-    >
-      <use href="#icon-arrow"></use>
-    </svg></button>
+    >${favarrow}</svg>    
   </div>
 
       </div>
       <div class="exercises_title">
-        <svg class="exercises_title__svg" width="24" height="24"><use href="#icon-fav_run_man"></use></svg>
+        <svg class="exercises_title__svg" width="24" height="24">${fav_run_man}</svg>
         <span class="exercises_title_text">${workoutData.name}</span>
       </div>
       <div class="exercises_text">

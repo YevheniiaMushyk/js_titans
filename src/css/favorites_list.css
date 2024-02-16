@@ -13,6 +13,10 @@
   border-radius: 12px;
 }
 
+.exercises_item:hover {
+  box-shadow: inset 0px 0px 7px 5px rgba(27, 27, 27, 0.4);
+}
+
 /* Mobile Emty*/
 
 @media screen and (max-width: 767px) {
@@ -216,10 +220,6 @@
     transition: all 250ms;
   } */
 
-  .exercises-item__link:hover {
-    transform: scale(1.04);
-  }
-
   .exercises_sub_title {
     display: flex;
     justify-content: space-between;
@@ -269,8 +269,9 @@
   .exercises_start {
     display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
     gap: 9px;
-    background-color: #ffffff;
     border-radius: 10px;
     transition: all 250ms;
     transition-timing-function: ease;
@@ -298,12 +299,14 @@
   }
 
   .exercises_start__text {
+    display: f;
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
   .exercises_start__svg {
+    display: flex;
     stroke: rgb(27, 27, 27);
     /* fill: #ffffff; */
     width: 11.38px;
@@ -401,10 +404,6 @@
     transition: all 250ms;
   } */
 
-  .exercises-item__link:hover {
-    transform: scale(1.04);
-  }
-
   .exercises_sub_title {
     display: flex;
     justify-content: space-between;
@@ -459,9 +458,15 @@
   .exercises_start {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    cursor: pointer;
+    justify-content: center;
     gap: 9px;
-    background-color: #ffffff;
+  }
+
+  .exercises_start:hover {
+    border: 1px solid var(--button_fon);
+    padding: 2px;
+    border-radius: 10px;
   }
 
   .exercises-start-button {
@@ -469,12 +474,14 @@
   }
 
   .exercises_start__text {
+    display: flex;
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
   .exercises_start__svg {
+    display: flex;
     width: 11.38px;
     height: 11.38px;
   }
@@ -564,10 +571,6 @@
     transition: all 250ms;
   } */
 
-  .exercises-item__link:hover {
-    transform: scale(1.04);
-  }
-
   .exercises_sub_title {
     display: flex;
     justify-content: space-between;
@@ -616,9 +619,14 @@
   .exercises_start {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    cursor: pointer;
     gap: 9px;
-    background-color: #ffffff;
+  }
+  .exercises_start:hover {
+    border: 1px solid var(--button_fon);
+    padding: 2px;
+    border-radius: 10px;
   }
 
   .exercises-start-button {
@@ -626,12 +634,14 @@
   }
 
   .exercises_start__text {
+    display: flex;
     color: rgb(27, 27, 27);
     font-size: 14px;
     line-height: 1.28;
   }
 
   .exercises_start__svg {
+    display: flex;
     width: 11.38px;
     height: 11.38px;
   }
