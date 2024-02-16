@@ -154,9 +154,10 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   removeButton.closest('.exercises_item').remove();
 
   deleteFavorites(workoutId);
+  const updateLS = getFavorites();
 
   // Виклик функції showEmptyMessage, якщо немає збережених вправ
-  if (updFavorites.length === 0) {
+  if (updateLS.length < 1) {
     showEmptyMessage();
   }
 }
