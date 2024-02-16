@@ -91,8 +91,19 @@ window.addEventListener('keydown', event => {
 function drawFavoritesBtnText(id) {
   const favorite = checkFavorites(id);
   const favoriteBtnText = favorite ? 'Remove from' : 'Add to favorites';
-  favoriteButton.innerHTML = `${favoriteBtnText}
+  switch (favoriteBtnText) {
+    case 'Remove from':
+      favoriteButton.innerHTML = `${favoriteBtnText}
+        <svg class="modal_icon" width="13" height="15"><use href="${m_icon}#icon-heart_full"></use></svg>`;
+      break;
+    case 'Add to favorites':
+      favoriteButton.innerHTML = `${favoriteBtnText}
         <svg class="modal_icon" width="13" height="15"><use href="${m_icon}#icon-heart"></use></svg>`;
+      break;
+    default:
+      favoriteButton.innerHTML = `${favoriteBtnText}
+        <svg class="modal_icon" width="13" height="15"><use href="${m_icon}#icon-heart"></use></svg>`;
+  }
 }
 
 favoriteButton.addEventListener('click', event => {
