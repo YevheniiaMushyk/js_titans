@@ -1,8 +1,9 @@
 .header_modal,
 .favmodal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1000;
   height: 100%;
   width: 100%;
@@ -12,7 +13,7 @@
 }
 .header_modal::backdrop,
 .favmodal::backdrop {
-  background-color: rgba(18, 18, 18, 0.4);
+  background-color: rgba(18, 18, 18, 0.6);
 }
 .modal__container {
   position: absolute;

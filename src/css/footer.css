@@ -56,6 +56,11 @@
   transition-duration: 250ms;
   transition-timing-function: ease;
 }
+
+.footer-soc-sv {
+  display: block;
+}
+
 .footer-soc-sv:hover .footer-svg,
 .footer-soc-sv:focus .footer-svg {
   transform: scale(1.1);
