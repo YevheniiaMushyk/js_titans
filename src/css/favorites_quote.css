@@ -91,7 +91,10 @@
   width: 335px;
   height: 269px;
   overflow: hidden;
-  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 30px;
 }
 
 .favorites-img {
@@ -203,6 +206,7 @@
   .image-container {
     width: 368px;
     height: 302px;
+    border-radius: 50px;
   }
   .favorites-card-second {
     width: 368px;
@@ -266,9 +270,7 @@
   .image-container {
     width: 352px;
     height: 302px;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    border-radius: 50px;
   }
   .favorites-card-second {
     width: 352px;
@@ -282,5 +284,41 @@
     line-height: 1.5;
 
     width: 526px;
+  }
+}
+
+@media screen and (max-width: 767.9px) {
+  .image-container {
+    background-image: url('../img/favquote_m@1x-min.png');
+  }
+}
+
+@media screen and (max-width: 767.9px) and (min-resolution: 192dpi) {
+  .image-container {
+    background-image: url('../img/favquote_m@2x-min.png');
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  .image-container {
+    background-image: url('../img/favquote_t@1x-min.png');
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439.9px) and (min-resolution: 192dpi) {
+  .image-container {
+    background-image: url('../img/favquote_t@2x-min.png');
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .image-container {
+    background-image: url('../img/favquote_d@1x-min.png');
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 192dpi) {
+  .image-container {
+    background-image: url('../img/favquote_d@2x-min.png');
   }
 }
