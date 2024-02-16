@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 import { getFavorites, deleteFavorites } from './favorites_helpers.js';
-import { trash } from './img/icons.svg#icon-trash';
-import { favarrow } from './img/icons.svg#icon-arrow';
-import { fav_run_man } from './img/icons.svg#icon-fav_run_man';
+import icon from '../img/icons.svg';
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
 let storedWorkouts = [];
@@ -93,7 +91,7 @@ function createWorkoutCardMarkup(workoutData) {
           <button class="workout-card__remove-btn" data-workout-id="${
             workoutData._id
           }">
-            <svg class="workout-card__icon" width="16" height="16">${trash}</svg>
+            <svg class="workout-card__icon" width="16" height="16"><use href=${icon}#icon-trash></use></svg>
           </button>
         </div>
 
@@ -104,12 +102,12 @@ function createWorkoutCardMarkup(workoutData) {
       width="13"
       height="13"
       stroke="rgb(27, 27, 27)"
-    >${favarrow}</svg>    
+    ><use href=${icon}#icon-arrow></use></svg>    
   </div>
 
       </div>
       <div class="exercises_title">
-        <svg class="exercises_title__svg" width="24" height="24">${fav_run_man}</svg>
+        <svg class="exercises_title__svg" width="24" height="24"><use href=${icon}#icon-fav_run_man></use></svg>
         <span class="exercises_title_text">${workoutData.name}</span>
       </div>
       <div class="exercises_text">
