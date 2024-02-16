@@ -156,13 +156,14 @@ function removeWorkoutCardFromDOM(removeButton, workoutId) {
   deleteFavorites(workoutId);
 
   // Виклик функції showEmptyMessage, якщо немає збережених вправ
-  if (updatedStoredWorkouts.length === 0) {
+  if (updFavorites.length === 0) {
     showEmptyMessage();
   }
 }
 
 // Функція виводу повідомлення про пустий список обраних
 export function showEmptyMessage() {
+  console.log('EmptyMessage');
   favoritesCardsList.innerHTML = `
     <div class="empty-list">
       <img class="empty-item"

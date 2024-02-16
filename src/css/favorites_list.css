@@ -17,6 +17,17 @@
   box-shadow: inset 0px 0px 7px 5px rgba(27, 27, 27, 0.4);
 }
 
+.workout-card__remove-btn {
+  display: flex;
+  background-color: transparent;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.workout-card__remove-btn:hover {
+  transform: scale(1.3);
+}
+
 /* Mobile Emty*/
 
 @media screen and (max-width: 767px) {
@@ -235,9 +246,6 @@
     gap: 16px;
   }
 
-  .workout-card__remove-btn {
-    background-color: #ffffff;
-  }
   .workout-card__icon {
     stroke: rgb(27, 27, 27);
     fill: #ffffff;
@@ -364,7 +372,6 @@
     flex-wrap: wrap;
     gap: 20px 14px;
     overflow-y: scroll;
-    overflow: visible;
     scroll-padding-left: 24px;
     max-height: 720px;
   }
@@ -418,15 +425,6 @@
     gap: 16px;
   }
 
-  .workout-card__remove-btn {
-    background-color: transparent;
-    transition-duration: 250ms;
-    transition-timing-function: ease;
-  }
-
-  .workout-card__remove-btn:hover {
-    transform: scale(1.1);
-  }
   .workout-card__icon {
     stroke: rgb(27, 27, 27);
     fill: #ffffff;
@@ -585,9 +583,6 @@
     gap: 16px;
   }
 
-  .workout-card__remove-btn {
-    background-color: #ffffff;
-  }
   .workout-card__icon {
     stroke: rgb(27, 27, 27);
     fill: #ffffff;
