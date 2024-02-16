@@ -2,9 +2,10 @@
 .favmodal {
   position: fixed;
   top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100vw;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
   background-color: var(--button_fon);
   border-radius: 30px;
   overflow: hidden;
@@ -15,8 +16,9 @@
 }
 .modal__container {
   min-width: 320px;
-  margin: 0 auto;
+  margin: 10% auto;
   padding: 20px;
+  width: 80%;
   overflow: hidden;
 }
 .modal__structure {
@@ -45,7 +47,8 @@
   transition-timing-function: ease;
 }
 
-.modal__logo:hover {
+.modal__logo:hover,
+.modal__logo:focus {
   transform: scale(1.1);
 }
 
