@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { openFavExerciseModal } from '../js/modal_video.js';
 import { getFavorites, deleteFavorites } from './favorites_helpers.js';
-import { trash } from '../img/icons.svg#icon-trash';
-import { favarrow } from '../img/icons.svg#icon-arrow';
-import { fav_run_man } from '../img/icons.svg#icon-fav_run_man';
+import { trash } from './img/icons.svg#icon-trash';
+import { favarrow } from './img/icons.svg#icon-arrow';
+import { fav_run_man } from './img/icons.svg#icon-fav_run_man';
 const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
 let storedWorkouts = [];
