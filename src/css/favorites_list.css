@@ -259,6 +259,7 @@
     color: rgb(246, 246, 246);
     font-size: 12px;
     font-weight: 500;
+    line-height: 1.5;
   }
 
   /* .exercises-rating {
@@ -325,6 +326,9 @@
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
+    overflow: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
@@ -438,6 +442,7 @@
     color: rgb(246, 246, 246);
     font-size: 12px;
     font-weight: 500;
+    line-height: 1.5;
   }
 
   /* .exercises-rating {
@@ -490,6 +495,9 @@
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
+    overflow: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
@@ -596,6 +604,7 @@
     color: rgb(246, 246, 246);
     font-size: 12px;
     font-weight: 500;
+    line-height: 1.5;
   }
 
   /* .exercises-rating {
@@ -647,6 +656,9 @@
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
+    overflow: hidden;
+    flex-grow: 0;
+    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
