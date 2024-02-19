@@ -110,7 +110,9 @@ function createWorkoutCardMarkup(workoutData) {
       </div>
       <div class="exercises_title">
         <svg class="exercises_title__svg" width="24" height="24"><use href=${icon}#icon-fav_run_man></use></svg>
-        <span class="exercises_title_text">${workoutData.name}</span>
+        <span class="exercises_title_text">${
+          workoutData.name
+        }<span class="exercises_tooltiptext">${workoutData.name}</span></span>
       </div>
       <div class="exercises_text">
         <p class="exercises_text__content">

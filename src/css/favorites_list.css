@@ -28,6 +28,39 @@
   transform: scale(1.3);
 }
 
+.exercises_title_text {
+  position: relative;
+}
+
+.exercises_title_text:hover .exercises_tooltiptext {
+  visibility: visible;
+}
+
+.exercises_tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: #555;
+  color: rgb(27, 27, 27);
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.exercises_tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 /* Mobile Emty*/
 
 @media screen and (max-width: 767px) {
@@ -218,6 +251,7 @@
     max-width: 295px;
     max-width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   /* .exercises-item__link {
@@ -326,9 +360,7 @@
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
-    overflow: hidden;
     flex-grow: 0;
-    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
@@ -338,7 +370,8 @@
     color: rgb(27, 27, 27);
     font-size: 20px;
     line-height: 1;
-    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .exercises_text {
@@ -392,6 +425,7 @@
     border-radius: 15px;
     background: rgb(255, 255, 255);
     transition: all 250ms;
+    overflow: hidden;
   }
 
   /* .card-container {
@@ -495,9 +529,7 @@
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
-    overflow: hidden;
     flex-grow: 0;
-    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
@@ -507,8 +539,8 @@
     color: rgb(27, 27, 27);
     font-size: 20px;
     line-height: 1;
-    /* overflow-wrap: break-word; */
-    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .exercises_text {
@@ -564,18 +596,8 @@
     border-radius: 15px;
     background: rgb(255, 255, 255);
     transition: all 250ms;
+    overflow: hidden;
   }
-
-  /* .exercises-item__link {
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background: rgb(255, 255, 255);
-    transition: all 250ms;
-  } */
 
   .exercises_sub_title {
     display: flex;
@@ -607,19 +629,6 @@
     line-height: 1.5;
   }
 
-  /* .exercises-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-  } */
-
-  /* .exercises_rating__text {
-    color: rgb(27, 27, 27);
-    font-size: 12px;
-    line-height: 1.5;
-  } */
-
   .exercises_start {
     display: flex;
     align-items: center;
@@ -645,30 +654,34 @@
   }
 
   .exercises_start__svg {
-    display: flex;
-    width: 11.38px;
-    height: 11.38px;
+    display: block;
+    width: 12px;
+    height: 12px;
   }
 
   .exercises_title {
     display: flex;
+
     align-items: center;
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
+
     overflow: hidden;
-    flex-grow: 0;
-    flex-shrink: 0;
   }
   .exercises_title_text::first-letter {
     text-transform: capitalize;
   }
 
   .exercises_title_text {
+    display: block;
     color: rgb(27, 27, 27);
     font-size: 20px;
     line-height: 1;
-    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 352px;
   }
 
   .exercises_text {
