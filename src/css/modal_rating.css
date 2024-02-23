@@ -9,8 +9,8 @@
   border-radius: 20px;
   overflow: hidden;
 }
-.modal_rating::backdrop {
-  background-color: #1b1b1b99;
+.modal_rating_window::backdrop {
+  background-color: rgba(27, 27, 27, 0.6);
 }
 .modal_rating__container {
   position: relative;
