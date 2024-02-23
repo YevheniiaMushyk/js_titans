@@ -101,6 +101,9 @@ favoriteButton.addEventListener('click', event => {
     updateFavoritesList();
   }
   drawFavoritesBtnText(id);
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 1000);
 });
 
 function drawFavoritesBtnText(id) {

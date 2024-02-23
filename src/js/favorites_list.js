@@ -8,22 +8,6 @@ const API_URL = 'https://energyflow.b.goit.study/api/exercises/';
 export const favoritesCardsList = document.querySelector('.workouts-list');
 let storedWorkouts = [];
 
-//Нова версія
-// if (favoritesCardsList) {
-//   const storedWorkoutIds =
-//     JSON.parse(localStorage.getItem('ENERGY_FLOW_FAVORITES_KEY')) || [];
-
-//   if (storedWorkoutIds.length > 0) {
-//     storedWorkoutIds.forEach(workoutData => {
-//       fetchWorkoutById(workoutData);
-//       addWorkoutCardToDOM(workoutData);
-//     });
-//   } else {
-//    //     showEmptyMessage();
-//   }
-// }
-
-//Попередня версія
 if (favoritesCardsList) {
   updateFavoritesList();
 }
@@ -50,17 +34,7 @@ export function updateFavoritesList() {
 }
 
 // Функція отримання карточки вправи за ідентифікатором
-// //Нова версія
-// async function fetchWorkoutById() {
-//   const response = await fetch(API_URL);
-//   const data = await response.json();
-//   const workoutData = data.results.filter(workoutId =>
-//     storedWorkoutIds.includes(workoutId._id)
-//   );
-// }
 
-// Функція отримання карточки вправи за ідентифікатором
-//Попередня версія
 export function fetchWorkoutById(workoutId) {
   return axios.get(`${API_URL}/${workoutId}`);
 }
@@ -110,9 +84,8 @@ function createWorkoutCardMarkup(workoutData) {
       </div>
       <div class="exercises_title">
         <svg class="exercises_title__svg" width="24" height="24"><use href=${icon}#icon-fav_run_man></use></svg>
-        <span class="exercises_title_text">${
-          workoutData.name
-        }<span class="exercises_tooltiptext">${workoutData.name}</span></span>
+        <span class="exercises_title_text">${workoutData.name}</span>
+        <span class="exercises_tooltiptext">${workoutData.name}</span>
       </div>
       <div class="exercises_text">
         <p class="exercises_text__content">

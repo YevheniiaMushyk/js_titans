@@ -209,6 +209,9 @@ function createexercisesCard(results, containerCardsEl) {
                   <span class="exercises-title-text">${capitalizeFirstLetter(
                     name
                   )}</span>
+                  <span class="exercises-tooltiptext">${capitalizeFirstLetter(
+                    name
+                  )}</span>
                   </div>
                   <div class="exercises-text">
                     <p class="exercises-text__content"><span class="exercises-text__static">Burned calories:</span>

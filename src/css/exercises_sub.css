@@ -1,11 +1,5 @@
 /* ===exercises-body-parts-mob===*/
 .exercises-item {
-  /* max-width: 295px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
   padding: 16px;
   border-radius: 15px;
   background: rgb(255, 255, 255);
@@ -41,19 +35,8 @@
   height: auto !important;
 }
 
-/* .exercises-item__link {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  background: rgb(255, 255, 255);
-  transition: all 250ms;
-} */
-
 .exercises-item__link:hover,
-.exercises-item__link:hover {
+.exercises-item__link:focus {
   transform: scale(1.04);
 }
 
@@ -107,9 +90,10 @@
 }
 
 .exercises-start:hover {
-  border: 1px solid var(--button_fon);
-  padding: 2px;
+  line-height: 1.5;
+  padding: 3px;
   border-radius: 10px;
+  box-shadow: inset 0px 0px 3px 2px var(--button_fon);
 }
 
 .exercises-start__text {
@@ -126,12 +110,10 @@
 }
 
 .exercises-title {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: start;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -145,11 +127,15 @@
   min-height: 24px;
 }
 
-.exercises-title-text,
-.exercises_title_text {
+.exercises-title-text {
+  display: block;
   color: rgb(27, 27, 27);
   font-size: 20px;
-  line-height: 1;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .exercises-text {
@@ -254,6 +240,36 @@
 .pagination-btn.active {
   color: #1b1b1b !important;
   border: 1px solid #1b1b1b !important;
+}
+
+.exercises-tooltiptext {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  top: 200%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(27, 27, 27);
+  text-align: left;
+  text-wrap: none;
+  padding: 12px;
+  border-radius: 6px;
+
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.exercises-title-text:hover ~ .exercises-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+  top: 100%;
+  font-size: 15px;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
 
 /* ===exercises-body-parts-tab===*/
